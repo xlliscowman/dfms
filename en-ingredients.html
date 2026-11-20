@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ingredients · Miusenphytech</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ================= 本页专属 ================= */
+.nav a{font-family:var(--ui);font-size:16.5px;font-weight:600;letter-spacing:.08em;padding:11px 15px;color:inherit;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--gold)}
+
+.mnav{display:none;position:fixed;inset:0;z-index:1250;background:var(--cream);padding:96px var(--pad) 40px;transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s;overflow:auto}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+.menu-open .burger i:nth-child(1){top:16px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:16px;transform:rotate(-45deg)}
+.mnav a{display:block;font-size:22px;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.mnav .m-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- 首屏 ---------- */
+.ing-hero{padding:clamp(130px,17vh,180px) 0 clamp(34px,5vh,56px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,60px);align-items:end}
+.ing-hero h1{font-size:clamp(38px,5.8vw,80px);line-height:1.16;font-weight:400;letter-spacing:.02em;margin:20px 0 20px}
+.ing-hero .lead{font-size:15px;line-height:2;color:rgba(20,37,28,.66);letter-spacing:.06em}
+.hero-acts{display:flex;flex-direction:column;gap:12px;align-items:stretch;padding-bottom:8px}
+.hero-acts .btn{min-width:212px;padding:15px 26px;justify-content:space-between;font-size:13px;letter-spacing:.1em;gap:20px}
+.hero-acts .btn span{font-family:var(--ui);font-size:12px;letter-spacing:.1em;opacity:.55}
+.hero-acts .btn.solid span{opacity:.75}
+
+/* ---------- 区块头 ---------- */
+.blk-head{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:clamp(26px,4vh,42px)}
+.blk-head h2{font-size:clamp(28px,3.8vw,50px);font-weight:500;letter-spacing:.02em;margin-top:12px;line-height:1.25}
+.blk-head .note{font-size:13px;line-height:2;color:rgba(20,37,28,.55);max-width:30em}
+
+/* ---------- 按功效目录 ---------- */
+.by-benefit{padding:clamp(50px,7vh,80px) 0 clamp(40px,6vh,60px)}
+.idx{border-top:1px solid var(--line);transition:opacity .35s var(--ease),filter .35s var(--ease)}
+.idx:last-child{border-bottom:1px solid var(--line)}
+.idx>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:64px minmax(0,1fr) 90px 96px;gap:clamp(12px,2vw,26px);align-items:center;padding:clamp(18px,2.4vh,24px) 0}
+.idx>summary::-webkit-details-marker{display:none}
+.idx .n{font-family:var(--ui);font-size:11px;letter-spacing:.16em;color:rgba(20,37,28,.32)}
+.idx .nm{font-size:clamp(20px,2.2vw,27px);font-weight:500;letter-spacing:.04em;line-height:1.3;transition:color .25s}
+.idx .nm em{display:block;font-style:normal;font-family:var(--ui);font-size:11.5px;letter-spacing:.14em;color:rgba(20,37,28,.35);margin-top:4px}
+.idx .ct{font-family:var(--ui);font-size:12px;letter-spacing:.1em;color:rgba(20,37,28,.45);text-align:right}
+.idx .tg{justify-self:end;font-family:var(--ui);font-size:12px;letter-spacing:.12em;color:var(--moss);display:flex;align-items:center;gap:9px}
+.idx .tg::after{content:"+";font-size:17px;line-height:1;transition:transform .3s var(--ease)}
+.idx[open] .tg::after{transform:rotate(45deg)}
+.idx>summary:hover .nm{color:var(--gold)}
+.idx-preview{grid-column:2/4;grid-row:2;font-size:12px;line-height:1.9;color:rgba(20,37,28,.42);margin-top:6px;letter-spacing:.02em}
+.idx[open] .idx-preview{display:none}
+
+/* 展开内容整体右移，形成二级层次 */
+.idx-body{margin:0 0 clamp(26px,3.6vh,40px) clamp(64px,9vw,120px);
+  border-left:1px solid rgba(20,37,28,.18);padding-left:clamp(20px,3vw,40px)}
+.idx-body .hint{font-size:13px;line-height:1.95;color:rgba(20,37,28,.55);margin-bottom:18px;max-width:38em}
+.plist{border-top:1px solid var(--line)}
+.p{display:grid;grid-template-columns:220px 132px minmax(0,1fr);gap:clamp(12px,2vw,28px);align-items:baseline;padding:15px 0;border-bottom:1px solid rgba(20,37,28,.08)}
+.p .pen{display:inline;font-family:var(--ui);font-size:12px;letter-spacing:.06em;color:var(--gold);margin-right:0}
+.p .pcn{display:inline;font-size:15px;font-weight:500;letter-spacing:.04em;line-height:1.4}
+.p .porg{font-family:var(--ui);font-size:12px;letter-spacing:.06em;color:rgba(20,37,28,.5);line-height:1.7}
+.p .pdesc{font-size:12.5px;line-height:1.9;color:rgba(20,37,28,.6)}
+.p .pflags{display:inline-flex;gap:5px;margin-left:8px;vertical-align:middle}
+.badge{font-family:var(--ui);font-size:9.5px;letter-spacing:.08em;padding:1px 5px;border:1px solid;line-height:1.7;font-style:normal;white-space:nowrap}
+.badge.new{color:#A8462F;border-color:rgba(168,70,47,.35)}
+.badge.award{color:var(--gold);border-color:rgba(169,138,91,.45)}
+.badge.pat{color:var(--moss);border-color:rgba(92,107,79,.4)}
+
+/* 展开某一类时，其他类轻微模糊 */
+.by-benefit.dimmed .idx:not([open]){opacity:.4;filter:blur(.5px)}
+
+/* ---------- 按植物 ---------- */
+.by-plant{background:var(--cream2);padding:clamp(50px,7vh,84px) 0}
+.plants{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(24px,3.4vw,48px)}
+.pl{border-top:1px solid rgba(20,37,28,.16);padding:13px 0 15px}
+.pl .ph{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.pl h3{font-size:15.5px;font-weight:500;letter-spacing:.06em}
+.pl .lat{font-family:var(--ui);font-style:italic;font-size:11.5px;letter-spacing:.02em;color:rgba(20,37,28,.35)}
+.pl .cnt{margin-left:auto;font-family:var(--ui);font-size:10.5px;letter-spacing:.08em;color:var(--gold)}
+.pl .prods{margin-top:6px;font-size:11.5px;line-height:1.85;color:rgba(20,37,28,.62)}
+.pl .prods .pen{font-family:var(--ui);font-size:12px;letter-spacing:.03em;color:var(--gold)}
+.pl .none{margin-top:6px;font-family:var(--ui);font-size:12px;letter-spacing:.06em;color:rgba(20,37,28,.26)}
+.pl.hl{background:rgba(169,138,91,.12);box-shadow:0 0 0 8px rgba(169,138,91,.12)}
+.pl.hl h3{color:var(--gold)}
+.legend{margin-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--ui);font-size:12px;letter-spacing:.05em;color:rgba(20,37,28,.4)}
+
+.multi{margin-top:clamp(30px,4vh,44px);border-top:1px solid var(--ink);padding-top:22px}
+.multi .ph{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.multi h3{font-size:clamp(18px,1.9vw,22px);font-weight:500;letter-spacing:.06em}
+.multi .lat{font-family:var(--ui);font-style:italic;font-size:12px;color:rgba(20,37,28,.4)}
+.multi .cnt{margin-left:auto;font-family:var(--ui);font-size:11px;letter-spacing:.1em;color:rgba(20,37,28,.4)}
+.multi .why{font-size:11.5px;line-height:1.8;color:rgba(20,37,28,.45);margin-top:8px;max-width:32em}
+.multi ul{list-style:none;margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px 24px}
+.multi li{font-size:11.5px;line-height:1.6;color:rgba(20,37,28,.68)}
+.multi li .en{font-family:var(--ui);font-size:11.5px;color:rgba(20,37,28,.4);margin-right:2px}
+
+/* ---------- 底部入口 ---------- */
+.ing-foot{padding:clamp(50px,7vh,80px) 0 clamp(60px,8vh,90px)}
+.entries{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,30px)}
+.entry{border-top:1px solid var(--ink);padding-top:16px;display:flex;flex-direction:column;gap:8px;transition:color .25s}
+.entry .ek{font-family:var(--ui);font-size:11.5px;letter-spacing:.16em;color:var(--gold)}
+.entry h3{font-size:18px;font-weight:500;letter-spacing:.03em}
+.entry p{font-size:12.5px;line-height:1.9;color:rgba(20,37,28,.55);min-height:3.4em}
+.entry .go{margin-top:auto;padding-top:12px;font-family:var(--ui);font-size:12.5px;letter-spacing:.08em;color:var(--moss)}
+.entry:hover .go{color:var(--gold)}
+
+@media (max-width:900px){
+  .mnav{display:block}
+  .ing-hero{padding-top:118px}
+  .hero-grid{grid-template-columns:1fr;align-items:start}
+  .hero-acts{flex-direction:row;flex-wrap:wrap;padding-bottom:0}
+  .hero-acts .btn{min-width:0;flex:1;padding:13px 18px;font-size:12px}
+  .idx>summary{grid-template-columns:44px 1fr 70px;gap:12px}
+  .idx .ct{display:none}
+  .idx-preview{grid-column:2/4}
+  .idx-body{margin-left:0;border-left:0;padding-left:0}
+  .p{grid-template-columns:1fr;gap:4px}
+  .p .porg{font-size:11.5px}
+  .plants{grid-template-columns:1fr 1fr}
+  .multi ul{grid-template-columns:1fr 1fr}
+  .entries{grid-template-columns:1fr;gap:26px}
+  .entry p{min-height:0}
+  .ing-hero h1{font-size:clamp(32px,8vw,48px)}
+}
+@media (max-width:560px){
+  .plants{grid-template-columns:1fr}
+  .multi ul{grid-template-columns:1fr}
+}
+</style>
+<link rel="stylesheet" href="assets/en.css">
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head solid" id="head">
+  <a class="brand" href="en-home.html" aria-label="Miusenphytech">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="Miusenphytech">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="en-home.html">Home</a>
+    <a href="en-ingredients.html" class="on">Ingredients</a>
+    <a href="en-capability.html">Capability</a>
+    <a href="en-insights.html">Insights</a>
+    <a href="en-about.html">About</a>
+    <a href="en-news.html">News</a>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-ingredients.html">CN</a><span class="sep">/</span><a href="en-ingredients.html" class="on">EN</a></span>
+    <a class="btn" href="en-contact.html">Request a sample</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="en-home.html">Home</a>
+  <a href="en-ingredients.html">Ingredients</a>
+  <a href="en-capability.html">Capability</a>
+  <a href="en-insights.html">Insights</a>
+  <a href="en-about.html">About</a>
+  <a href="en-news.html">News</a>
+  <div class="m-cta">
+    <a class="btn solid" href="en-contact.html">Request a sample</a>
+    <a class="btn" href="en-home.html">Back to home</a>
+  </div>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="ing-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">INGREDIENTS</p>
+      <h1>31 ingredients, two ways in.</h1>
+      <p class="lead">By benefit or by plant — choose your route.</p>
+    </div>
+    <div class="hero-acts">
+      <a class="btn solid" href="#by-benefit">By benefit<span>9 categories</span></a>
+      <a class="btn" href="#by-plant">By plant<span>42 plants</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 按功效 -->
+<section class="by-benefit" id="by-benefit">
+  <div class="wrap">
+    <div class="blk-head">
+      <div>
+        <p class="kicker reveal">01 — By benefit</p>
+        <h2 class="reveal" style="--d:1">Nine benefits, one index.</h2>
+      </div>
+      <p class="note reveal" style="--d:2">Open any row to see the ingredients in that category and what each one does. 31 ingredients, 35 category slots — some belong to two.</p>
+    </div>
+
+    <details class="idx">
+      <summary>
+        <span class="n">01</span>
+        <span class="nm">Sensitive skin<em>SENSITIVE SKIN</em></span>
+        <span class="ct">7 products</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">Sensysoothe® · FlexiGlu 992® · CactyCalma® · IrriSooths® II FN · J-guard flowers Oil T · Purple Duo · IrriBate®-SAA</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">Calm the flare first. For redness, stinging, post-procedure and reactive skin.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">Sensysoothe®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Soothing blend for redness, stinging and other sensitivity signs.<span class="pflags"><i class="badge award">Award</i><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">FlexiGlu 992®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Flexible polysaccharide</span><p class="pdesc">Flexible glucan structure for repair and re-epithelialisation; also used for firming.<span class="pflags"><i class="badge award">Award</i><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">CactyCalma®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Cactus</span><p class="pdesc">Self-defence from cactus: calm first, repair next, thicken the barrier last.<span class="pflags"><i class="badge new">NEW</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">IrriSooths® II FN</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Soothing system for immediate relief after irritation.</p></article>
+          <article class="p"><div class="pname"><span class="pen">J-guard flowers Oil T</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Compound · astragalus / atractylodes / siler</span><p class="pdesc">An oil built on the classic Yu Ping Feng formula, for skin tolerance.<span class="pflags"><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Purple Duo</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Perilla · arnebia</span><p class="pdesc">A two-purple blend of perilla and arnebia for soothing and repair.<span class="pflags"><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">IrriBate®-SAA</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">A buffer against surfactant irritation, common in cleansing.</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">02</span>
+        <span class="nm">Firming / anti-wrinkle<em>FIRMING</em></span>
+        <span class="ct">7 products</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">Tik-ageline® · FlexiGlu 992® · Ganoderm® OT · Royal Treat · Avena Extract NP · Oat Glair Taut NP · Phytospectrum® OTS</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">Let the fibres line up again. From ECM quantity to ECM order — structure, not filler.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">Tik-ageline®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Targets SYT2, the core sensor of expression-muscle contraction. Annual Efficacy Ingredient Award; Ringier Technology Innovation Award 2025.<span class="pflags"><i class="badge award">Award</i><i class="badge new">NEW</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">FlexiGlu 992®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Flexible polysaccharide</span><p class="pdesc">Plant EGF × ordered ECM remodelling — repair you can measure.<span class="pflags"><i class="badge award">Award</i><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Ganoderm® OT</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Reishi · ginseng</span><p class="pdesc">A nourishing oil of reishi and ginseng for mature skin.<span class="pflags"><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Royal Treat</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Nourishing blend for dry and mature skin.</p></article>
+          <article class="p"><div class="pname"><span class="pen">Avena Extract NP</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Oat</span><p class="pdesc">Oat-derived peptide for firming and soothing.</p></article>
+          <article class="p"><div class="pname"><span class="pen">Oat Glair Taut NP</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Oat</span><p class="pdesc">Oat protein for an immediate firming feel.<span class="pflags"><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Phytospectrum® OTS</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Oil-phase blend that keeps a formula and its feel stable.</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">03</span>
+        <span class="nm">Hydration<em>HYDRATION</em></span>
+        <span class="ct">5 products</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">DendroMoist® · Amber Peach® NP · Vernix-Care · Dew Dew Moist® · Avena β-Glucan NP</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">Not trapping water — making water want to stay. From polysaccharides to lipids, we rebuild the barrier’s water-holding structure.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">DendroMoist®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Dendrobium</span><p class="pdesc">Dendrobium polysaccharide for long-lasting hydration and feel.<span class="pflags"><i class="badge award">Award</i><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Amber Peach® NP</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Peach</span><p class="pdesc">Peach-based hydration from our Pinggu orchard base.<span class="pflags"><i class="badge award">Award</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Vernix-Care</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">A lipid system modelled on vernix, for barrier repair.<span class="pflags"><i class="badge award">Award</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Dew Dew Moist®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Polysaccharide hydration system that raises stratum corneum water content.<span class="pflags"><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Avena β-Glucan NP</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Oat</span><p class="pdesc">Oat beta-glucan — hydration and soothing in one.</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">04</span>
+        <span class="nm">Brightening / exfoliation<em>BRIGHTENING</em></span>
+        <span class="ct">4 products</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">AuroArc® · Puri-Six® · AHAs Regenaura · Duflorwhite®</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">Light first, whiteness after. Beyond blocking melanin, we tidy the path light travels.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">AuroArc®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Burdock seed</span><p class="pdesc">Luminous brightening | skin light channel | visual refinement | patented supramolecular technology.<span class="pflags"><i class="badge new">NEW</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Puri-Six®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Six-herb compound</span><p class="pdesc">Six-plant blend for brightening and even tone.<span class="pflags"><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">AHAs Regenaura</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">AHA</span><p class="pdesc">A blend of AHAs for cell turnover and roughness.</p></article>
+          <article class="p"><div class="pname"><span class="pen">Duflorwhite®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Brightening blend for dullness and uneven tone.</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">05</span>
+        <span class="nm">Oil control / acne<em>OIL CONTROL</em></span>
+        <span class="ct">4 products</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">ACC-Pure® · Bio-Fornes · Aknas Clear® · SebumBate</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">Regulate oil; don’t drain it. We work on the rhythm of sebum, and bring the microbiome back to balance.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">ACC-Pure®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Kudzu</span><p class="pdesc">Kudzu-derived, for oil control and clearer skin.<span class="pflags"><i class="badge award">Award</i><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Bio-Fornes</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Fermentation · dual strain</span><p class="pdesc">Dual-strain ferment for the microbiome of acne-prone skin.<span class="pflags"><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Aknas Clear®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Salvia</span><p class="pdesc">Salvia-derived, to soothe and clear oily, acne-prone skin.</p></article>
+          <article class="p"><div class="pname"><span class="pen">SebumBate</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Oil-control blend for face and scalp.</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">06</span>
+        <span class="nm">Hair & scalp<em>HAIR &amp; SCALP</em></span>
+        <span class="ct">3 products</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">Hairdensyl® · SebumBate · Yoyumin Peptide NP</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">The scalp is soil, hair is the harvest. Fix the follicle environment before the strand.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">Hairdensyl®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Arborvitae</span><p class="pdesc">Arborvitae-derived, for scalp environment and root care.<span class="pflags"><i class="badge award">Award</i><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">SebumBate</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Oil-control blend for face and scalp.</p></article>
+          <article class="p"><div class="pname"><span class="pen">Yoyumin Peptide NP</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Coix seed</span><p class="pdesc">Coix-derived peptide for scalp and strand care.</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">07</span>
+        <span class="nm">Baby care<em>BABY CARE</em></span>
+        <span class="ct">3 products</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">Vernix-Care · Purple Duo · Arnefix®</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">Less is more; gentle is effective. The shorter the formula, the higher the bar for each ingredient.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">Vernix-Care</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Blend</span><p class="pdesc">Vernix-inspired structure for baby and sensitive-skin barrier care.<span class="pflags"><i class="badge award">Award</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Purple Duo</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Perilla · arnebia</span><p class="pdesc">A two-purple oil blend to soothe baby skin.<span class="pflags"><i class="badge pat">Patent</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Arnefix®</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Arnebia</span><p class="pdesc">Arnebia-derived oil phase for redness and dryness.</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">08</span>
+        <span class="nm">Penetration<em>PENETRATION</em></span>
+        <span class="ct">1 product</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">Botanical penetration enhancer</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">Make the active actually get in. We change the delivery rate, not the formula skeleton.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">PromoSorb® G</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Botanical origin</span><p class="pdesc">Plant-derived enhancer that raises how much active reaches the skin.</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">09</span>
+        <span class="nm">Device-grade<em>MEDICAL DEVICE</em></span>
+        <span class="ct">1 product</span>
+        <span class="tg">Expand</span>
+        <span class="idx-preview">BETA-GLUCAN</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">Medical-grade standard, cosmetic-grade feel. For post-procedure repair and barrier rebuilding.</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">BETA-GLUCAN</span>&nbsp;&nbsp;<span class="pcn"></span></div><span class="porg">Fermented polysaccharide</span><p class="pdesc">Beta-glucan for barrier repair in device-grade applications.</p></article>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 02 按植物 -->
+<section class="by-plant" id="by-plant">
+  <div class="wrap">
+    <div class="blk-head">
+      <div>
+        <p class="kicker reveal">02 — By plant</p>
+        <h2 class="reveal" style="--d:1">Forty-two plants, all of them listed.</h2>
+      </div>
+      <p class="note reveal" style="--d:2">Each plant is annotated with the ingredients that use it. When an ingredient uses several plants, it appears in each column — repetition is fine, invisibility is not.</p>
+    </div>
+
+    <div class="plants">
+      <div class="pl"><div class="ph"><h3>Sophora root</h3><span class="lat">Sophora flavescens</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Oat</h3><span class="lat">Avena sativa</span><span class="cnt">3 products</span></div><p class="prods">Avena Extract NP, Oat Glair Taut NP, Avena β-Glucan NP</p></div>
+      <div class="pl"><div class="ph"><h3>Cactus</h3><span class="lat">Opuntia</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">CactyCalma®</span></p></div>
+      <div class="pl"><div class="ph"><h3>Ophiopogon</h3><span class="lat">Ophiopogon japonicus</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Sunflower</h3><span class="lat">Helianthus annuus</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Safflower</h3><span class="lat">Carthamus tinctorius</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Gardenia</h3><span class="lat">Gardenia jasminoides</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Chrysanthemum</h3><span class="lat">Chrysanthemum morifolium</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Plum blossom</h3><span class="lat">Prunus mume</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Arnebia</h3><span class="lat">Arnebia euchroma</span><span class="cnt">2 products</span></div><p class="prods"><span class="pen">Arnefix®、Purple Duo</span></p></div>
+      <div class="pl"><div class="ph"><h3>Perilla</h3><span class="lat">Perilla frutescens</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">Purple Duo</span></p></div>
+      <div class="pl"><div class="ph"><h3>Peach resin</h3><span class="lat">Prunus persica</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">Amber Peach® NP</span></p></div>
+      <div class="pl"><div class="ph"><h3>Purslane</h3><span class="lat">Portulaca oleracea</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Gentian</h3><span class="lat">Gentiana scabra</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Inula</h3><span class="lat">Inula japonica</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Reishi</h3><span class="lat">Ganoderma lucidum</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">Ganoderm® OT</span></p></div>
+      <div class="pl"><div class="ph"><h3>Ginseng</h3><span class="lat">Panax ginseng</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">Ganoderm® OT</span></p></div>
+      <div class="pl"><div class="ph"><h3>Peony</h3><span class="lat">Paeonia suffruticosa</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Snow lotus</h3><span class="lat">Saussurea involucrata</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Matsutake</h3><span class="lat">Tricholoma matsutake</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Angelica</h3><span class="lat">Angelica sinensis</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Notoginseng</h3><span class="lat">Panax notoginseng</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Astragalus</h3><span class="lat">Astragalus membranaceus</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">J-guard flowers Oil T</span></p></div>
+      <div class="pl"><div class="ph"><h3>Ligustrum</h3><span class="lat">Ligustrum lucidum</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Osmanthus</h3><span class="lat">Osmanthus fragrans</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Dendrobium</h3><span class="lat">Dendrobium officinale</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">DendroMoist®</span></p></div>
+      <div class="pl"><div class="ph"><h3>Cauliflower mushroom</h3><span class="lat">Sparassis crispa</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Tremella</h3><span class="lat">Tremella fuciformis</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Aloe vera</h3><span class="lat">Aloe vera</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Coix seed</h3><span class="lat">Coix lacryma-jobi</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">Yoyumin Peptide NP</span></p></div>
+      <div class="pl"><div class="ph"><h3>Reed</h3><span class="lat">Phragmites australis</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Licorice</h3><span class="lat">Glycyrrhiza uralensis</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Salvia</h3><span class="lat">Salvia miltiorrhiza</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">Aknas Clear®</span></p></div>
+      <div class="pl"><div class="ph"><h3>Cornus</h3><span class="lat">Cornus officinalis</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Goji</h3><span class="lat">Lycium barbarum</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Edelweiss</h3><span class="lat">Leontopodium alpinum</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Kudzu</h3><span class="lat">Pueraria lobata</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">ACC-Pure®</span></p></div>
+      <div class="pl"><div class="ph"><h3>Clove</h3><span class="lat">Syzygium aromaticum</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Scutellaria</h3><span class="lat">Scutellaria baicalensis</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Centella</h3><span class="lat">Centella asiatica</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Calendula</h3><span class="lat">Calendula officinalis</span></div><p class="none">In development</p></div>
+      <div class="pl"><div class="ph"><h3>Arborvitae</h3><span class="lat">Platycladus orientalis</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">Hairdensyl®</span></p></div>
+      <div class="pl"><div class="ph"><h3>Burdock</h3><span class="lat">Arctium lappa</span><span class="cnt">1 product</span></div><p class="prods"><span class="pen">AuroArc®</span></p></div>
+    </div>
+
+    <div class="legend">
+      <span>43 in total: 42 from the site’s plant index, plus burdock, added in the 2026 catalogue.</span>
+      <span>“In development” means we grow or study the plant, but no catalogue product exists yet.</span>
+    </div>
+
+    <div class="multi">
+      <div class="ph"><h3>Blend</h3><span class="lat">Multi-plant systems</span><span class="cnt">18 products</span></div>
+      <p class="why">Ingredients built from several plants, fermentation or compounds — not filed under a single plant.</p>
+      <ul>
+        <li><span class="en">Sensysoothe®</span></li>
+        <li><span class="en">FlexiGlu 992®</span></li>
+        <li><span class="en">IrriSooths® II FN</span></li>
+        <li><span class="en">J-guard flowers Oil T</span></li>
+        <li><span class="en">Purple Duo</span></li>
+        <li><span class="en">IrriBate®-SAA</span></li>
+        <li><span class="en">Tik-ageline®</span></li>
+        <li><span class="en">Royal Treat</span></li>
+        <li><span class="en">Phytospectrum® OTS</span></li>
+        <li><span class="en">Vernix-Care</span></li>
+        <li><span class="en">Dew Dew Moist®</span></li>
+        <li><span class="en">Puri-Six®</span></li>
+        <li><span class="en">AHAs Regenaura</span></li>
+        <li><span class="en">Duflorwhite®</span></li>
+        <li><span class="en">Bio-Fornes</span></li>
+        <li><span class="en">SebumBate</span></li>
+        <li><span class="en">PromoSorb® G</span></li>
+        <li><span class="en">BETA-GLUCAN</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 底部入口 -->
+<section class="ing-foot">
+  <div class="wrap">
+    <div class="entries">
+      <a class="entry" href="en-contact.html?path=rd">
+        <span class="ek">Custom solutions</span>
+        <h3>Nothing on the shelf? Let’s make one.</h3>
+        <p>Plant source, molecular range and blend can all be adjusted. Tell us the target benefit, format and cost band — our technical team picks it up directly.</p>
+        <span class="go">Submit an R&D brief ↗</span>
+      </a>
+      <a class="entry" href="en-contact.html">
+        <span class="ek">Technical data</span>
+        <h3>TDS & test methods</h3>
+        <p>Specification, INCI, compatibility advice, test methods and batch data — per ingredient. Tell us which one to send.</p>
+        <span class="go">Ask us for it ↗</span>
+      </a>
+      <a class="entry" href="assets/ingredient-catalog-2026.pdf" download>
+        <span class="ek">Catalogue</span>
+        <h3>2026 Ingredient Catalogue</h3>
+        <p>All 52 pages: 9 categories, 31 ingredients, mechanisms, study data and formulation notes.</p>
+        <span class="go">Download PDF · 26 MB ↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="en-home.html" aria-label="Miusenphytech">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="Miusenphytech">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">Plant-based cosmetic actives.<br>R&D center in Beijing · Production in Pinggu.</p>
+      </div>
+      <div>
+        <h5>Ingredients</h5>
+        <ul>
+          <li><a href="en-ingredients.html#by-benefit">Sensitive skin</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Firming / anti-wrinkle</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Hydration</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Brightening / exfoliation</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Oil control / acne</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Hair & scalp</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Baby care</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Penetration</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Device-grade</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>About Miusenphytech</h5>
+        <ul>
+          <li><a href="en-about.html#company">Our company</a></li>
+          <li><a href="en-about.html#company">Our locations</a></li>
+          <li><a href="en-about.html#company">Our history</a></li>
+          <li><a href="en-capability.html#rd">Our science</a></li>
+          <li><a href="en-about.html#bases">Our plant bases</a></li>
+          <li><a href="en-news.html">Newsroom</a></li>
+        </ul>
+        <h5>Custom services</h5>
+        <ul>
+          <li><a href="en-contact.html?path=rd">PDRN</a></li>
+          <li><a href="en-contact.html?path=rd">To be added</a></li>
+        </ul>
+        <h5>Join us</h5>
+        <ul>
+          <li><a href="en-contact.html">Roles & team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="en-contact.html">Contact us</a></li>
+          <li><a href="en-contact.html?path=rd">R&D brief</a></li>
+          <li><a href="en-contact.html?path=sample">Sample request</a></li>
+          <li><a href="en-contact.html?path=quote">Quotation</a></li>
+        </ul>
+        <h5>Social</h5>
+        <div class="socials">
+          <a href="#" aria-label="WeChat" title="WeChat">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Channels" title="Channels">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="Mini program" title="Mini program">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>Beaut-N-Health Group</b>
+        <span>Miusenphytech is part of Beaut-N-Health Group</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">Visit the group site ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">Beaut-N-Health TCM Institute</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>Privacy　·　Terms　·　ICP filing No. xxxxxxxx　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rail = document.getElementById('railFill');
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true}); progress();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ mnav.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+  });
+
+  /* 同时只开一类；开着的时候其他类轻微模糊 */
+  var wrap = document.getElementById('by-benefit');
+  var idxs = Array.prototype.slice.call(document.querySelectorAll('.idx'));
+  function syncDim(){
+    var anyOpen = idxs.some(function(d){ return d.open; });
+    wrap.classList.toggle('dimmed', anyOpen);
+  }
+  idxs.forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if (d.open) idxs.forEach(function(o){ if (o !== d) o.open = false; });
+      syncDim();
+    });
+  });
+
+  /* ?cat=Sensitive%20skin 直达某一类 */
+  try {
+    var cat = new URLSearchParams(location.search).get('cat');
+    if (cat) {
+      var hit = null;
+      idxs.forEach(function(d){
+        var nm = d.querySelector('.nm');
+        if (nm && nm.textContent.trim().indexOf(cat) === 0) hit = d;
+      });
+      if (hit) {
+        hit.open = true;
+        syncDim();
+        setTimeout(function(){ hit.scrollIntoView({behavior:'smooth', block:'center'}); }, 150);
+      }
+    }
+  } catch (err) {}
+
+  /* ?plant=XX 直达某个植物 */
+  try {
+    var pl = new URLSearchParams(location.search).get('plant');
+    if (pl) {
+      var blocks = Array.prototype.slice.call(document.querySelectorAll('.pl'));
+      var hitP = null;
+      blocks.forEach(function(b){
+        var h = b.querySelector('h3');
+        if (h && h.textContent.trim() === pl) hitP = b;
+      });
+      if (hitP) {
+        hitP.classList.add('hl');
+        setTimeout(function(){ hitP.scrollIntoView({behavior:'smooth', block:'center'}); }, 150);
+      } else {
+        document.getElementById('by-plant').scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+  } catch (err) {}
+})();
+</script>
+</body>
+</html>

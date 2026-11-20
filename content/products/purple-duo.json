@@ -1,0 +1,33 @@
+{
+  "id": "purple-duo",
+  "nameZh": "双紫油",
+  "nameEn": "Purple Duo",
+  "inci": "",
+  "summaryZh": "紫苏与紫草的双紫复配，用于舒缓与修护。",
+  "summaryEn": "A two-purple blend of perilla and arnebia for soothing and repair.",
+  "originZh": "紫苏 · 紫草",
+  "originEn": "Perilla · arnebia",
+  "categories": [
+    "sensitive-skin",
+    "baby-care"
+  ],
+  "plants": [
+    "arnebia-euchroma",
+    "perilla-frutescens"
+  ],
+  "badges": [
+    "pat"
+  ],
+  "blend": true,
+  "image": "",
+  "documents": [],
+  "published": true,
+  "reviewed": false,
+  "categorySummaries": [
+    {
+      "category": "baby-care",
+      "summaryZh": "双紫复配油，用于婴童肌肤的舒缓。",
+      "summaryEn": "A two-purple oil blend to soothe baby skin."
+    }
+  ]
+}

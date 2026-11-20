@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>关于东方淼森 · miusenphytech</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ================= 本页专属 ================= */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.nav a{font-family:var(--ui);font-size:16.5px;font-weight:600;letter-spacing:.08em;padding:11px 15px;color:inherit;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--gold)}
+
+.mnav{display:none;position:fixed;inset:0;z-index:1250;background:var(--cream);padding:96px var(--pad) 40px;transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s;overflow:auto}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+.menu-open .burger i:nth-child(1){top:16px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:16px;transform:rotate(-45deg)}
+.mnav a{display:block;font-size:22px;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.mnav .m-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- 首屏 ---------- */
+.about-hero{padding:clamp(130px,18vh,190px) 0 clamp(46px,7vh,80px)}
+.about-hero h1{font-size:clamp(38px,6vw,84px);line-height:1.16;font-weight:400;letter-spacing:.02em;margin:20px 0 24px}
+.about-hero .lead{max-width:640px;font-size:15px;line-height:2.05;color:rgba(20,37,28,.66)}
+.about-hero .micro{margin-top:26px;font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:rgba(20,37,28,.42)}
+.about-hero .micro a{color:var(--moss);border-bottom:1px solid rgba(20,37,28,.25);padding-bottom:2px}
+
+/* ---------- 01 公司 ---------- */
+.company{padding:clamp(30px,5vh,60px) 0 clamp(60px,9vh,100px)}
+.company-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:start}
+.company h2{font-size:clamp(26px,3.6vw,46px);font-weight:500;line-height:1.35;letter-spacing:.02em;margin:12px 0 22px}
+.company p{font-size:14px;line-height:2.1;color:rgba(20,37,28,.66);margin-bottom:14px;max-width:34em}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line)}
+.astats b{display:block;font-family:var(--ui);font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.1}
+.astats span{display:block;margin-top:7px;font-family:var(--ui);font-size:11.5px;letter-spacing:.12em;color:rgba(20,37,28,.45)}
+.company .more{display:inline-block;margin-top:26px;font-family:var(--ui);font-size:11px;letter-spacing:.1em;color:var(--moss);border-bottom:1px solid var(--line);padding-bottom:3px}
+.about-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+.about-img .cap{position:absolute;left:14px;bottom:12px;z-index:2;font-family:var(--ui);font-size:11px;letter-spacing:.16em;color:rgba(243,239,230,.75)}
+
+/* ---------- 02 集团 ---------- */
+.group{background:var(--cream2);padding:clamp(60px,9vh,96px) 0}
+.group-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,72px);align-items:center}
+.group h2{font-size:clamp(24px,3.2vw,40px);font-weight:500;line-height:1.4;letter-spacing:.02em;margin:12px 0 18px;max-width:18em}
+.group p{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.62);max-width:32em}
+.group .btn{margin-top:24px}
+.group-card{border:1px solid rgba(20,37,28,.16);background:rgba(255,255,255,.4);padding:clamp(24px,3vw,38px)}
+.group-card .gname{display:block;font-size:clamp(22px,2.4vw,30px);letter-spacing:.12em;font-weight:500}
+.group-card .gen{display:block;margin-top:8px;font-family:var(--ui);font-size:11px;letter-spacing:.26em;color:rgba(20,37,28,.4)}
+.group-card p{margin-top:18px;padding-top:16px;border-top:1px solid rgba(20,37,28,.14);font-size:12px;line-height:1.95;color:rgba(20,37,28,.5);max-width:none}
+.group-card .slot{margin-top:18px;font-family:var(--ui);font-size:11px;letter-spacing:.14em;color:rgba(20,37,28,.3);border:1px dashed rgba(20,37,28,.18);padding:10px;text-align:center}
+
+/* ---------- 03 种植基地 ---------- */
+.bases{padding:clamp(60px,9vh,100px) 0 clamp(40px,6vh,70px)}
+.bases-head{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,70px);align-items:end}
+.bases-head h2{font-size:clamp(28px,3.8vw,50px);font-weight:500;line-height:1.3;letter-spacing:.02em;margin:12px 0 0}
+.bases-head p{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.62);max-width:34em}
+.bstats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:clamp(30px,4vh,46px);padding-top:20px;border-top:1px solid var(--ink)}
+.bstats b{display:block;font-family:var(--ui);font-size:clamp(24px,3vw,38px);font-weight:400;line-height:1.05}
+.bstats span{display:block;margin-top:8px;font-family:var(--ui);font-size:11px;letter-spacing:.1em;color:rgba(20,37,28,.45);line-height:1.6}
+
+.bases-body{display:grid;grid-template-columns:240px 1fr;gap:clamp(26px,4vw,64px);align-items:start;margin-top:clamp(40px,6vh,64px)}
+.bindex{position:sticky;top:100px}
+.bindex .bh{font-family:var(--ui);font-size:11.5px;letter-spacing:.18em;color:var(--gold);margin-bottom:12px}
+.bindex a{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:baseline;padding:6px 0;font-size:12.5px;color:rgba(20,37,28,.42);transition:color .25s}
+.bindex a .n{font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:rgba(20,37,28,.3);transition:color .25s}
+.bindex a .r{font-family:var(--ui);font-size:10.5px;letter-spacing:.08em;color:rgba(20,37,28,.28)}
+.bindex a:hover{color:var(--ink)}
+.bindex a.on{color:var(--ink)}
+.bindex a.on .n{color:var(--gold)}
+
+.bitem{display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(22px,3vw,40px);padding:clamp(26px,4vh,42px) 0;border-top:1px solid var(--line);scroll-margin-top:110px}
+.bitem:first-child{border-top:0;padding-top:0}
+.plate{position:relative;aspect-ratio:4/3;overflow:hidden;
+  background:radial-gradient(120% 100% at 72% 0%,hsl(var(--h) 24% 24%),#0c1511 76%)}
+.plate .pn{position:absolute;left:16px;top:14px;font-family:var(--ui);font-size:12px;letter-spacing:.16em;color:var(--gold)}
+.plate .pp{position:absolute;left:16px;bottom:14px;font-size:clamp(15px,1.5vw,19px);color:rgba(243,239,230,.92);letter-spacing:.08em}
+.plate .pt{position:absolute;right:14px;bottom:14px;font-family:var(--ui);font-size:10px;letter-spacing:.14em;color:rgba(243,239,230,.4)}
+.bitem h3{font-size:clamp(19px,2vw,24px);font-weight:500;margin-bottom:7px;letter-spacing:.02em}
+.bitem .loc{font-family:var(--ui);font-size:12px;letter-spacing:.12em;color:var(--gold);margin-bottom:14px}
+.bitem .desc{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.64);max-width:38em}
+.bmeta{display:flex;gap:clamp(18px,2.4vw,30px);flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.bmeta div b{display:block;font-family:var(--ui);font-size:14px;font-weight:500;letter-spacing:.02em}
+.bmeta div span{display:block;margin-top:5px;font-family:var(--ui);font-size:10.5px;letter-spacing:.1em;color:rgba(20,37,28,.4)}
+
+/* ---------- 预约 ---------- */
+.visit{background:var(--ink);color:var(--cream);padding:clamp(56px,8vh,90px) 0}
+.visit-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.visit h2{font-size:clamp(24px,3vw,40px);font-weight:500;letter-spacing:.02em;margin:10px 0 8px}
+.visit p{font-size:13px;line-height:1.95;color:rgba(243,239,230,.55);max-width:36em}
+.visit .btn{border-color:rgba(243,239,230,.35);color:var(--cream)}
+.visit .btn.solid{background:var(--gold);border-color:var(--gold);color:#fff}
+
+@media (max-width:900px){
+  .mnav{display:block}
+  .about-hero{padding-top:118px}
+  .company-grid,.group-grid,.bases-head{grid-template-columns:1fr}
+  .about-img{aspect-ratio:16/10;order:-1}
+  .bases-body{grid-template-columns:1fr}
+  .bindex{position:static;display:none}
+  .bitem{grid-template-columns:1fr}
+  .plate{aspect-ratio:16/10}
+  .bstats{grid-template-columns:1fr 1fr;gap:22px}
+  .astats{grid-template-columns:1fr 1fr}
+  .about-hero h1{font-size:clamp(34px,9vw,52px)}
+}
+</style>
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head solid" id="head">
+  <a class="brand" href="cn-home.html" aria-label="miusenphytech 东方淼森">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="cn-home.html">主页</a>
+    <a href="cn-ingredients.html">原料</a>
+    <a href="cn-capability.html">能力</a>
+    <a href="cn-insights.html">洞察</a>
+    <a href="cn-about.html" class="on">关于</a>
+    <a href="cn-news.html">新闻</a>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-about.html" class="on">CN</a><span class="sep">/</span><a href="en-about.html">EN</a></span>
+    <a class="btn" href="cn-contact.html">索取样品</a>
+    <button class="burger" id="burger" aria-label="菜单" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="cn-home.html">主页</a>
+  <a href="cn-ingredients.html">原料</a>
+  <a href="cn-capability.html">能力</a>
+  <a href="cn-insights.html">洞察</a>
+  <a href="cn-about.html">关于</a>
+  <a href="cn-news.html">新闻</a>
+  <div class="m-cta">
+    <a class="btn solid" href="cn-contact.html">索取样品</a>
+    <a class="btn" href="cn-home.html">返回首页</a>
+  </div>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="about-hero">
+  <div class="wrap">
+    <p class="kicker">ABOUT</p>
+    <h1>关于东方淼森</h1>
+    <p class="lead">一家把植物当成方法学的公司：从典籍里找线索，在基地里种出来，在实验室里验证，最后变成配方师能直接用的原料。</p>
+    <p class="micro">往下看：公司 / 集团 / <a href="#bases">11 个种植基地</a></p>
+  </div>
+</section>
+
+<!-- 01 公司 -->
+<section class="company" id="company">
+  <div class="wrap company-grid">
+    <div>
+      <p class="kicker reveal">01 — 东方淼森</p>
+      <h2 class="reveal" style="--d:1">把植物，<br>当成一种方法学。</h2>
+      <p class="reveal" style="--d:2">东方淼森是一家专注于化妆品植物功效原料创研的国家高新技术企业。以中医理论为指导，以皮肤养生学和皮肤表观生理学为基础，充分利用现代科技，结合消费者需求与化妆品属性，研发「有思想的植物功效原料」，为化妆品企业提供品质原料及定制化服务。</p>
+      <p class="reveal" style="--d:3">我们只做三件事：找到它，验证它，把它变成配方师能直接用的原料。从北京平谷的产线，到 11 个种植基地，这条链条没有外包。</p>
+      <div class="astats reveal" style="--d:4">
+        <div><b>11</b><span>种植基地</span></div>
+        <div><b>9</b><span>功效方向</span></div>
+        <div><b>48h</b><span>样品响应</span></div>
+      </div>
+      <a class="more" href="#bases">看看这 11 个基地 ↓</a>
+    </div>
+    <div class="about-img">
+      <div class="tex tex-plant"></div>
+      <span class="cap">素材位 · 基地实景</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 集团 -->
+<section class="group" id="group">
+  <div class="wrap group-grid">
+    <div>
+      <p class="kicker reveal">02 — 太和康美集团</p>
+      <h2 class="reveal" style="--d:1">我们背后，是一个把中医研究做到底的集团。</h2>
+      <p class="reveal" style="--d:2">东方淼森是太和康美集团旗下企业。集团以中医研究为起点，覆盖原料研发、生产制造与功效评价；东方淼森负责其中「植物功效原料」这一段。</p>
+      <a class="btn reveal" style="--d:3" href="https://www.beaut-n-health.com" target="_blank" rel="noopener">访问集团官网 ↗</a>
+    </div>
+    <div class="group-card reveal" style="--d:2">
+      <span class="gname">太和康美集团</span>
+      <span class="gen">BEAUT-N-HEALTH GROUP</span>
+      <p>集团以中医研究为起点，覆盖原料、制造与功效评价。</p>
+      <div class="slot">集团标识 · 待提供</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 种植基地 -->
+<section class="bases" id="bases">
+  <div class="wrap">
+    <div class="bases-head">
+      <div>
+        <p class="kicker reveal">03 — 种植基地</p>
+        <h2 class="reveal" style="--d:1">11 个基地，<br>一种种出来的标准。</h2>
+      </div>
+      <p class="reveal" style="--d:2">不是所有植物都值得进配方。我们只在道地产区建基地、按 GAP 管种植、用批次记录每一片叶子的来路——因为原料的稳定性，是从土里开始的。</p>
+    </div>
+
+    <div class="bstats reveal">
+      <div><b>11</b><span>自有种植基地</span></div>
+      <div><b>8</b><span>省 / 自治区 / 直辖市</span></div>
+      <div><b>17°</b><span>纬度跨度</span></div>
+      <div><b>400–1480m</b><span>海拔跨度</span></div>
+    </div>
+
+    <div class="bases-body">
+      <nav class="bindex" aria-label="基地索引">
+        <div class="bh">基地索引</div>
+        <a href="#b1" data-target="b1"><span class="n">01</span>药王谷基地<span class="r">京</span></a>
+        <a href="#b2" data-target="b2"><span class="n">02</span>桃树基地<span class="r">京</span></a>
+        <a href="#b3" data-target="b3"><span class="n">03</span>苦参基地<span class="r">蒙</span></a>
+        <a href="#b4" data-target="b4"><span class="n">04</span>侧柏基地<span class="r">鲁</span></a>
+        <a href="#b5" data-target="b5"><span class="n">05</span>仙人掌基地 · 绍兴<span class="r">浙</span></a>
+        <a href="#b6" data-target="b6"><span class="n">06</span>葛根基地<span class="r">湘</span></a>
+        <a href="#b7" data-target="b7"><span class="n">07</span>麦冬基地<span class="r">川</span></a>
+        <a href="#b8" data-target="b8"><span class="n">08</span>仙人掌基地 · 文山<span class="r">滇</span></a>
+        <a href="#b9" data-target="b9"><span class="n">09</span>芦荟基地<span class="r">滇</span></a>
+        <a href="#b10" data-target="b10"><span class="n">10</span>石斛基地<span class="r">滇</span></a>
+        <a href="#b11" data-target="b11"><span class="n">11</span>牛蒡子基地<span class="r">甘</span></a>
+      </nav>
+
+      <div class="blist">
+
+        <article class="bitem" id="b1">
+          <div class="plate" style="--h:32">
+            <span class="pn">01 / 华北</span>
+            <span class="pp">黄芩 · 当归</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>药王谷基地</h3>
+            <p class="loc">北京 · 房山　/　周口店镇泗马沟村　·　<a href="cn-ingredients.html?plant=%E9%BB%84%E8%8A%A9">看对应原料 →</a></p>
+            <p class="desc">药王谷风景区群山环抱、林木茂密，负氧离子超市区 100 倍。山中生长上百种中药材，行于山中就能遇到野生药源——这是我们观察植物原生状态的最近样本。</p>
+            <div class="bmeta">
+              <div><b>100×</b><span>负氧离子</span></div>
+              <div><b>上百种</b><span>野生中药材</span></div>
+              <div><b>黄芩 / 当归</b><span>主要植物</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b2">
+          <div class="plate" style="--h:345">
+            <span class="pn">02 / 华北</span>
+            <span class="pp">桃 · 桃花 · 桃胶</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>桃树基地</h3>
+            <p class="loc">北京 · 平谷　/　N 40°13′　E 117°15′　·　<a href="cn-ingredients.html?plant=%E6%A1%83%E6%A0%91%E8%84%82">看对应原料 →</a></p>
+            <p class="desc">平谷桃树种植面积 22 万亩以上，素有「中国桃乡」之称，被欧盟确定为中国地理标志保护产品。基地就设在这里，从源头研究桃花、桃胶的采集、分析与深度利用。</p>
+            <div class="bmeta">
+              <div><b>22 万亩</b><span>平谷桃园</span></div>
+              <div><b>地理标志</b><span>欧盟保护产品</span></div>
+              <div><b>桃花 / 桃胶</b><span>开发方向</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b3">
+          <div class="plate" style="--h:48">
+            <span class="pn">03 / 华北</span>
+            <span class="pp">苦参</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>苦参基地</h3>
+            <p class="loc">内蒙古自治区　/　苦参主产区　·　<a href="cn-ingredients.html?plant=%E8%8B%A6%E5%8F%82">看对应原料 →</a></p>
+            <p class="desc">我国苦参主产区之一，占地 500 余亩。土层深厚、肥沃、向阳、排水良好，采用无公害方式种植，严格把控土壤湿润度。经过 3–5 年精心呵护，才进入采收。</p>
+            <div class="bmeta">
+              <div><b>500 余亩</b><span>种植面积</span></div>
+              <div><b>3–5 年</b><span>生长周期</span></div>
+              <div><b>无公害</b><span>种植方式</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b4">
+          <div class="plate" style="--h:125">
+            <span class="pn">04 / 华东</span>
+            <span class="pp">侧柏叶</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>侧柏基地</h3>
+            <p class="loc">山东 · 临沂　/　平邑县西山公园周边　·　<a href="cn-ingredients.html?plant=%E4%BE%A7%E6%9F%8F">看对应原料 →</a></p>
+            <p class="desc">4000 亩，海拔 400–800 米，山脉为泰山分支。远离城市，属一级与二级保护区，十公里内无工厂及其他污染源，地下水与地表水均无污染，已获有机认证。</p>
+            <div class="bmeta">
+              <div><b>4000 亩</b><span>基地面积</span></div>
+              <div><b>400–800m</b><span>海拔</span></div>
+              <div><b>有机认证</b><span>资质</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b5">
+          <div class="plate" style="--h:150">
+            <span class="pn">05 / 华东</span>
+            <span class="pp">仙人掌</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>仙人掌基地 · 绍兴</h3>
+            <p class="loc">浙江 · 绍兴　/　上虞区　N 30°11′　E 120°44′　·　<a href="cn-ingredients.html?plant=%E4%BB%99%E4%BA%BA%E6%8E%8C">看对应原料 →</a></p>
+            <p class="desc">地处北纬 30°，日照充足，利于光合作用与养分储存。靠近钱塘江入海口，引原始沟渠储水，远离城市污染。每年集中收割，让土地休养生息。</p>
+            <div class="bmeta">
+              <div><b>北纬 30°</b><span>黄金农业带</span></div>
+              <div><b>集中收割</b><span>年度节奏</span></div>
+              <div><b>上虞</b><span>基地所在</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b6">
+          <div class="plate" style="--h:95">
+            <span class="pn">06 / 华中</span>
+            <span class="pp">葛根</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>葛根基地</h3>
+            <p class="loc">湖南 · 张家界　/　N 29°17′　E 109°41′　·　<a href="cn-ingredients.html?plant=%E8%91%9B%E6%A0%B9">看对应原料 →</a></p>
+            <p class="desc">位于海拔 1200 米的武陵山脉腹地。山青水秀、光热充足、雨量充沛，森林覆盖率达 64.61%，为优质农作物生长奠定了基础。</p>
+            <div class="bmeta">
+              <div><b>1200m</b><span>海拔</span></div>
+              <div><b>64.61%</b><span>森林覆盖率</span></div>
+              <div><b>武陵山脉</b><span>产区</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b7">
+          <div class="plate" style="--h:155">
+            <span class="pn">07 / 西南</span>
+            <span class="pp">川麦冬</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>麦冬基地</h3>
+            <p class="loc">四川 · 绵阳　/　三台县　N 31°16′　E 104°58′　·　<a href="cn-ingredients.html?plant=%E9%BA%A6%E5%86%AC">看对应原料 →</a></p>
+            <p class="desc">川麦冬产于三台县涪江流域，是国家地理标志产品，也是传统名贵中药。基地位于三台县现代农业万亩示范区内，属川麦冬道地产区，种植面积 130 余亩。</p>
+            <div class="bmeta">
+              <div><b>130 余亩</b><span>种植面积</span></div>
+              <div><b>地理标志</b><span>川麦冬</span></div>
+              <div><b>万亩示范区</b><span>所在园区</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b8">
+          <div class="plate" style="--h:165">
+            <span class="pn">08 / 西南</span>
+            <span class="pp">仙人掌</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>仙人掌基地 · 文山</h3>
+            <p class="loc">云南 · 文山　/　庄子田村　N 23°26′　E 104°15′　·　<a href="cn-ingredients.html?plant=%E4%BB%99%E4%BA%BA%E6%8E%8C">看对应原料 →</a></p>
+            <p class="desc">「中国仙人掌第一村」，与墨西哥仙人掌核心产区同纬度。平均海拔 1480 米，日温差 12.5℃，夜间低温触发植物抗逆基因，促发 3 倍于平原的抗氧化物质积累。</p>
+            <div class="bmeta">
+              <div><b>1480m</b><span>平均海拔</span></div>
+              <div><b>12.5℃</b><span>日温差</span></div>
+              <div><b>3×</b><span>抗氧化物质积累</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b9">
+          <div class="plate" style="--h:135">
+            <span class="pn">09 / 西南</span>
+            <span class="pp">库拉索芦荟</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>芦荟基地</h3>
+            <p class="loc">云南 · 玉溪　/　「中国芦荟之乡」　·　<a href="cn-ingredients.html?plant=%E5%BA%93%E6%8B%89%E7%B4%A2%E8%8A%A6%E8%8D%9F">看对应原料 →</a></p>
+            <p class="desc">中国野生芦荟发源地。富含矿物质的土壤、全年高温高湿的干热河谷气候与充沛日照，为芦荟提供了得天独厚的条件。基地 100 余亩，绿色有机种植，只采 2 年以上叶片。</p>
+            <div class="bmeta">
+              <div><b>100 余亩</b><span>基地面积</span></div>
+              <div><b>2 年以上</b><span>叶片标准</span></div>
+              <div><b>有机</b><span>种植方式</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b10">
+          <div class="plate" style="--h:172">
+            <span class="pn">10 / 西南</span>
+            <span class="pp">石斛</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>石斛基地</h3>
+            <p class="loc">云南 · 普洱　/　思茅区　海拔 1400m　·　<a href="cn-ingredients.html?plant=%E9%93%81%E7%9A%AE%E7%9F%B3%E6%96%9B">看对应原料 →</a></p>
+            <p class="desc">与中国科学院昆明植物研究所联合建立，60 亩选育及种植实验基地，年培育优质种苗 100 万株。以 GAP 规范与有机农业要求为指导，2016 年获有机产品认证。</p>
+            <div class="bmeta">
+              <div><b>1400m</b><span>海拔</span></div>
+              <div><b>60 亩</b><span>实验基地</span></div>
+              <div><b>100 万株</b><span>年育苗</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b11">
+          <div class="plate" style="--h:22">
+            <span class="pn">11 / 西北</span>
+            <span class="pp">牛蒡子</span>
+            <span class="pt">素材位 · 基地实景</span>
+          </div>
+          <div>
+            <h3>牛蒡子基地</h3>
+            <p class="loc">甘肃 · 陇中　/　黄土高原　·　<a href="cn-ingredients.html?plant=%E7%89%9B%E8%92%A1">看对应原料 →</a></p>
+            <p class="desc">甘肃广袤的黄土高原，年均日照充足、昼夜温差悬殊，深厚肥沃的黄土层孕育出品质卓绝的牛蒡子。这里是全国牛蒡子核心产区，产量占全国 65% 以上。</p>
+            <div class="bmeta">
+              <div><b>65%+</b><span>全国产量占比</span></div>
+              <div><b>黄土高原</b><span>产区</span></div>
+              <div><b>牛蒡子</b><span>主要植物</span></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 预约 -->
+<section class="visit">
+  <div class="wrap visit-in">
+    <div>
+      <p class="kicker mute">到访</p>
+      <h2>基地与实验室，可以来看。</h2>
+      <p>北京研发中心、平谷生产基地，以及部分种植基地接受预约到访。带上你的配方问题来，比看十页资料快。</p>
+    </div>
+    <a class="btn solid" href="cn-contact.html">预约到访 ↗</a>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="cn-home.html" aria-label="东方淼森">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">植物功效化妆品原料。<br>北京研发中心 · 平谷生产基地。</p>
+      </div>
+      <div>
+        <h5>原料</h5>
+        <ul>
+          <li><a href="cn-home.html#index">敏感肌肤护理</a></li>
+          <li><a href="cn-home.html#index">抗皱 / 紧致</a></li>
+          <li><a href="cn-home.html#index">保湿</a></li>
+          <li><a href="cn-home.html#index">美白 / 去角质</a></li>
+          <li><a href="cn-home.html#index">控油 / 祛痘</a></li>
+          <li><a href="cn-home.html#index">头发 / 头皮护理</a></li>
+          <li><a href="cn-home.html#index">婴童护理</a></li>
+          <li><a href="cn-home.html#index">促渗透</a></li>
+          <li><a href="cn-home.html#index">械字号</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于东方淼森</h5>
+        <ul>
+          <li><a href="cn-about.html#company">我们的公司</a></li>
+          <li><a href="cn-about.html#bases">我们的地点</a></li>
+          <li><a href="cn-about.html#company">我们的历史</a></li>
+          <li><a href="cn-capability.html#rd">我们的科研</a></li>
+          <li><a href="cn-about.html#bases">我们的种植基地</a></li>
+          <li><a href="cn-news.html">新闻中心</a></li>
+        </ul>
+        <h5>定制服务</h5>
+        <ul>
+          <li><a href="cn-contact.html">PDRN</a></li>
+          <li><a href="cn-contact.html">待补充</a></li>
+        </ul>
+        <h5>加入我们</h5>
+        <ul>
+          <li><a href="cn-contact.html">职位与团队</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>联系</h5>
+        <ul>
+          <li><a href="cn-contact.html">联系我们</a></li>
+          <li><a href="cn-contact.html?path=rd">研发需求</a></li>
+          <li><a href="cn-contact.html?path=sample">样品申请</a></li>
+          <li><a href="cn-contact.html?path=quote">报价申请</a></li>
+        </ul>
+        <h5>社交媒体</h5>
+        <div class="socials">
+          <a href="#" aria-label="公众号" title="公众号">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="视频号" title="视频号">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="小程序" title="小程序">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>太和康美集团</b>
+        <span>东方淼森是太和康美集团旗下企业</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">访问集团官网 ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">太和康美中医研究院</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>隐私政策　·　使用条款　·　京ICP备 xxxxxxxx 号　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rail = document.getElementById('railFill');
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true}); progress();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ mnav.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+  });
+
+  /* 基地索引：滚动高亮 */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.bindex a'));
+  var items = links.map(function(a){ return document.getElementById(a.dataset.target); });
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('on', a.dataset.target === id); });
+  }
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) setActive(e.target.id); });
+  }, {rootMargin:'-40% 0px -55% 0px'});
+  items.forEach(function(el){ if (el) spy.observe(el); });
+
+  links.forEach(function(a){
+    a.addEventListener('click', function(){
+      links.forEach(function(x){ x.classList.remove('on'); });
+      a.classList.add('on');
+    });
+  });
+})();
+</script>
+</body>
+</html>

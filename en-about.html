@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About · Miusenphytech</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ================= 本页专属 ================= */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.nav a{font-family:var(--ui);font-size:16.5px;font-weight:600;letter-spacing:.08em;padding:11px 15px;color:inherit;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--gold)}
+
+.mnav{display:none;position:fixed;inset:0;z-index:1250;background:var(--cream);padding:96px var(--pad) 40px;transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s;overflow:auto}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+.menu-open .burger i:nth-child(1){top:16px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:16px;transform:rotate(-45deg)}
+.mnav a{display:block;font-size:22px;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.mnav .m-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- 首屏 ---------- */
+.about-hero{padding:clamp(130px,18vh,190px) 0 clamp(46px,7vh,80px)}
+.about-hero h1{font-size:clamp(38px,6vw,84px);line-height:1.16;font-weight:400;letter-spacing:.02em;margin:20px 0 24px}
+.about-hero .lead{max-width:640px;font-size:15px;line-height:2.05;color:rgba(20,37,28,.66)}
+.about-hero .micro{margin-top:26px;font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:rgba(20,37,28,.42)}
+.about-hero .micro a{color:var(--moss);border-bottom:1px solid rgba(20,37,28,.25);padding-bottom:2px}
+
+/* ---------- 01 公司 ---------- */
+.company{padding:clamp(30px,5vh,60px) 0 clamp(60px,9vh,100px)}
+.company-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:start}
+.company h2{font-size:clamp(26px,3.6vw,46px);font-weight:500;line-height:1.35;letter-spacing:.02em;margin:12px 0 22px}
+.company p{font-size:14px;line-height:2.1;color:rgba(20,37,28,.66);margin-bottom:14px;max-width:34em}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line)}
+.astats b{display:block;font-family:var(--ui);font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.1}
+.astats span{display:block;margin-top:7px;font-family:var(--ui);font-size:11.5px;letter-spacing:.12em;color:rgba(20,37,28,.45)}
+.company .more{display:inline-block;margin-top:26px;font-family:var(--ui);font-size:11px;letter-spacing:.1em;color:var(--moss);border-bottom:1px solid var(--line);padding-bottom:3px}
+.about-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+.about-img .cap{position:absolute;left:14px;bottom:12px;z-index:2;font-family:var(--ui);font-size:11px;letter-spacing:.16em;color:rgba(243,239,230,.75)}
+
+/* ---------- 02 集团 ---------- */
+.group{background:var(--cream2);padding:clamp(60px,9vh,96px) 0}
+.group-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,72px);align-items:center}
+.group h2{font-size:clamp(24px,3.2vw,40px);font-weight:500;line-height:1.4;letter-spacing:.02em;margin:12px 0 18px;max-width:18em}
+.group p{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.62);max-width:32em}
+.group .btn{margin-top:24px}
+.group-card{border:1px solid rgba(20,37,28,.16);background:rgba(255,255,255,.4);padding:clamp(24px,3vw,38px)}
+.group-card .gname{display:block;font-size:clamp(22px,2.4vw,30px);letter-spacing:.12em;font-weight:500}
+.group-card .gen{display:block;margin-top:8px;font-family:var(--ui);font-size:11px;letter-spacing:.26em;color:rgba(20,37,28,.4)}
+.group-card p{margin-top:18px;padding-top:16px;border-top:1px solid rgba(20,37,28,.14);font-size:12px;line-height:1.95;color:rgba(20,37,28,.5);max-width:none}
+.group-card .slot{margin-top:18px;font-family:var(--ui);font-size:11px;letter-spacing:.14em;color:rgba(20,37,28,.3);border:1px dashed rgba(20,37,28,.18);padding:10px;text-align:center}
+
+/* ---------- 03 种植基地 ---------- */
+.bases{padding:clamp(60px,9vh,100px) 0 clamp(40px,6vh,70px)}
+.bases-head{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,70px);align-items:end}
+.bases-head h2{font-size:clamp(28px,3.8vw,50px);font-weight:500;line-height:1.3;letter-spacing:.02em;margin:12px 0 0}
+.bases-head p{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.62);max-width:34em}
+.bstats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:clamp(30px,4vh,46px);padding-top:20px;border-top:1px solid var(--ink)}
+.bstats b{display:block;font-family:var(--ui);font-size:clamp(24px,3vw,38px);font-weight:400;line-height:1.05}
+.bstats span{display:block;margin-top:8px;font-family:var(--ui);font-size:11px;letter-spacing:.1em;color:rgba(20,37,28,.45);line-height:1.6}
+
+.bases-body{display:grid;grid-template-columns:240px 1fr;gap:clamp(26px,4vw,64px);align-items:start;margin-top:clamp(40px,6vh,64px)}
+.bindex{position:sticky;top:100px}
+.bindex .bh{font-family:var(--ui);font-size:11.5px;letter-spacing:.18em;color:var(--gold);margin-bottom:12px}
+.bindex a{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:baseline;padding:6px 0;font-size:12.5px;color:rgba(20,37,28,.42);transition:color .25s}
+.bindex a .n{font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:rgba(20,37,28,.3);transition:color .25s}
+.bindex a .r{font-family:var(--ui);font-size:10.5px;letter-spacing:.08em;color:rgba(20,37,28,.28)}
+.bindex a:hover{color:var(--ink)}
+.bindex a.on{color:var(--ink)}
+.bindex a.on .n{color:var(--gold)}
+
+.bitem{display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(22px,3vw,40px);padding:clamp(26px,4vh,42px) 0;border-top:1px solid var(--line);scroll-margin-top:110px}
+.bitem:first-child{border-top:0;padding-top:0}
+.plate{position:relative;aspect-ratio:4/3;overflow:hidden;
+  background:radial-gradient(120% 100% at 72% 0%,hsl(var(--h) 24% 24%),#0c1511 76%)}
+.plate .pn{position:absolute;left:16px;top:14px;font-family:var(--ui);font-size:12px;letter-spacing:.16em;color:var(--gold)}
+.plate .pp{position:absolute;left:16px;bottom:14px;font-size:clamp(15px,1.5vw,19px);color:rgba(243,239,230,.92);letter-spacing:.08em}
+.plate .pt{position:absolute;right:14px;bottom:14px;font-family:var(--ui);font-size:10px;letter-spacing:.14em;color:rgba(243,239,230,.4)}
+.bitem h3{font-size:clamp(19px,2vw,24px);font-weight:500;margin-bottom:7px;letter-spacing:.02em}
+.bitem .loc{font-family:var(--ui);font-size:12px;letter-spacing:.12em;color:var(--gold);margin-bottom:14px}
+.bitem .desc{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.64);max-width:38em}
+.bmeta{display:flex;gap:clamp(18px,2.4vw,30px);flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.bmeta div b{display:block;font-family:var(--ui);font-size:14px;font-weight:500;letter-spacing:.02em}
+.bmeta div span{display:block;margin-top:5px;font-family:var(--ui);font-size:10.5px;letter-spacing:.1em;color:rgba(20,37,28,.4)}
+
+/* ---------- 预约 ---------- */
+.visit{background:var(--ink);color:var(--cream);padding:clamp(56px,8vh,90px) 0}
+.visit-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.visit h2{font-size:clamp(24px,3vw,40px);font-weight:500;letter-spacing:.02em;margin:10px 0 8px}
+.visit p{font-size:13px;line-height:1.95;color:rgba(243,239,230,.55);max-width:36em}
+.visit .btn{border-color:rgba(243,239,230,.35);color:var(--cream)}
+.visit .btn.solid{background:var(--gold);border-color:var(--gold);color:#fff}
+
+@media (max-width:900px){
+  .mnav{display:block}
+  .about-hero{padding-top:118px}
+  .company-grid,.group-grid,.bases-head{grid-template-columns:1fr}
+  .about-img{aspect-ratio:16/10;order:-1}
+  .bases-body{grid-template-columns:1fr}
+  .bindex{position:static;display:none}
+  .bitem{grid-template-columns:1fr}
+  .plate{aspect-ratio:16/10}
+  .bstats{grid-template-columns:1fr 1fr;gap:22px}
+  .astats{grid-template-columns:1fr 1fr}
+  .about-hero h1{font-size:clamp(34px,9vw,52px)}
+}
+</style>
+<link rel="stylesheet" href="assets/en.css">
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head solid" id="head">
+  <a class="brand" href="en-home.html" aria-label="Miusenphytech">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="Miusenphytech">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="en-home.html">Home</a>
+    <a href="en-ingredients.html">Ingredients</a>
+    <a href="en-capability.html">Capability</a>
+    <a href="en-insights.html">Insights</a>
+    <a href="en-about.html" class="on">About</a>
+    <a href="en-news.html">News</a>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-about.html">CN</a><span class="sep">/</span><a href="en-about.html" class="on">EN</a></span>
+    <a class="btn" href="en-contact.html">Request a sample</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="en-home.html">Home</a>
+  <a href="en-ingredients.html">Ingredients</a>
+  <a href="en-capability.html">Capability</a>
+  <a href="en-insights.html">Insights</a>
+  <a href="en-about.html">About</a>
+  <a href="en-news.html">News</a>
+  <div class="m-cta">
+    <a class="btn solid" href="en-contact.html">Request a sample</a>
+    <a class="btn" href="en-home.html">Back to home</a>
+  </div>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="about-hero">
+  <div class="wrap">
+    <p class="kicker">ABOUT</p>
+    <h1>About Miusenphytech</h1>
+    <p class="lead">A company that treats plants as a methodology: clues from the classics, grown at our own bases, verified in the lab, delivered as an ingredient a formulator can use.</p>
+    <p class="micro">Below: company / group / <a href="#bases">11 plant bases</a></p>
+  </div>
+</section>
+
+<!-- 01 公司 -->
+<section class="company" id="company">
+  <div class="wrap company-grid">
+    <div>
+      <p class="kicker reveal">01 — Miusenphytech</p>
+      <h2 class="reveal" style="--d:1">Treating plants as a methodology.</h2>
+      <p class="reveal" style="--d:2">Miusenphytech is a national high-tech enterprise focused on the research and creation of plant-based cosmetic actives. Guided by TCM theory and grounded in skin wellness and surface physiology, we combine modern science with consumer needs and product realities to develop “thoughtful plant actives”, supplying cosmetic companies with quality ingredients and custom development.</p>
+      <p class="reveal" style="--d:3">We do three things: find it, prove it, make it usable. From the Pinggu line to 11 plant bases, none of this chain is outsourced.</p>
+      <div class="astats reveal" style="--d:4">
+        <div><b>11</b><span>Plant bases</span></div>
+        <div><b>9</b><span>Benefit categories</span></div>
+        <div><b>48h</b><span>Sample turnaround</span></div>
+      </div>
+      <a class="more" href="#bases">See the 11 bases ↓</a>
+    </div>
+    <div class="about-img">
+      <div class="tex tex-plant"></div>
+      <span class="cap">Image · base</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 集团 -->
+<section class="group" id="group">
+  <div class="wrap group-grid">
+    <div>
+      <p class="kicker reveal">02 — Beaut-N-Health Group</p>
+      <h2 class="reveal" style="--d:1">Behind us is a group that takes TCM research all the way.</h2>
+      <p class="reveal" style="--d:2">Miusenphytech is part of Beaut-N-Health Group. The group starts from TCM research and covers ingredient R&D, manufacturing and efficacy evaluation; Miusenphytech owns the botanical actives segment.</p>
+      <a class="btn reveal" style="--d:3" href="https://www.beaut-n-health.com" target="_blank" rel="noopener">Visit the group site ↗</a>
+    </div>
+    <div class="group-card reveal" style="--d:2">
+      <span class="gname">Beaut-N-Health Group</span>
+      <span class="gen">BEAUT-N-HEALTH GROUP</span>
+      <p>The group starts from TCM research, covering ingredients, manufacturing and efficacy.</p>
+      <div class="slot">Group logo · to be supplied</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 种植基地 -->
+<section class="bases" id="bases">
+  <div class="wrap">
+    <div class="bases-head">
+      <div>
+        <p class="kicker reveal">03 — Plant bases</p>
+        <h2 class="reveal" style="--d:1">11 bases, one standard of growing.</h2>
+      </div>
+      <p class="reveal" style="--d:2">Not every plant deserves a place in a formula. We build only in authentic growing regions, manage to GAP and record every leaf by batch — because stability starts in the soil.</p>
+    </div>
+
+    <div class="bstats reveal">
+      <div><b>11</b><span>Owned bases</span></div>
+      <div><b>8</b><span>Provinces / regions</span></div>
+      <div><b>17°</b><span>Latitude span</span></div>
+      <div><b>400–1480m</b><span>Altitude span</span></div>
+    </div>
+
+    <div class="bases-body">
+      <nav class="bindex" aria-label="Base index">
+        <div class="bh">Base index</div>
+        <a href="#b1" data-target="b1"><span class="n">01</span>Yaowang Valley<span class="r">BJ</span></a>
+        <a href="#b2" data-target="b2"><span class="n">02</span>Peach orchard<span class="r">BJ</span></a>
+        <a href="#b3" data-target="b3"><span class="n">03</span>Sophora base<span class="r">NM</span></a>
+        <a href="#b4" data-target="b4"><span class="n">04</span>Arborvitae base<span class="r">SD</span></a>
+        <a href="#b5" data-target="b5"><span class="n">05</span>Cactus · Shaoxing<span class="r">ZJ</span></a>
+        <a href="#b6" data-target="b6"><span class="n">06</span>Kudzu base<span class="r">HN</span></a>
+        <a href="#b7" data-target="b7"><span class="n">07</span>Ophiopogon base<span class="r">SC</span></a>
+        <a href="#b8" data-target="b8"><span class="n">08</span>Cactus · Wenshan<span class="r">YN</span></a>
+        <a href="#b9" data-target="b9"><span class="n">09</span>Aloe base<span class="r">YN</span></a>
+        <a href="#b10" data-target="b10"><span class="n">10</span>Dendrobium base<span class="r">YN</span></a>
+        <a href="#b11" data-target="b11"><span class="n">11</span>Burdock base<span class="r">GS</span></a>
+      </nav>
+
+      <div class="blist">
+
+        <article class="bitem" id="b1">
+          <div class="plate" style="--h:32">
+            <span class="pn">01 / North China</span>
+            <span class="pp">Scutellaria · angelica</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Yaowang Valley</h3>
+            <p class="loc">Fangshan, Beijing　/　Simagou, Zhoukoudian　·　<a href="en-ingredients.html?plant=Scutellaria">See the ingredients →</a></p>
+            <p class="desc">Yaowang Valley is ringed by mountains and dense forest, with negative oxygen ions 100 times the city level. Over a hundred medicinal plants grow here; walking the valley you meet wild sources directly — our closest sample of plants in their native state.</p>
+            <div class="bmeta">
+              <div><b>100×</b><span>Negative ions</span></div>
+              <div><b>100+ species</b><span>wild medicinal plants</span></div>
+              <div><b>Scutellaria / angelica</b><span>Main plants</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b2">
+          <div class="plate" style="--h:345">
+            <span class="pn">02 / North China</span>
+            <span class="pp">Peach · blossom · resin</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Peach orchard</h3>
+            <p class="loc">Pinggu, Beijing　/　N 40°13′　E 117°15′　·　<a href="en-ingredients.html?plant=Peach%20resin">See the ingredients →</a></p>
+            <p class="desc">Pinggu grows over 220,000 mu of peach trees, known as China’s peach capital and protected as a geographical indication by the EU. Our base sits here, studying the harvest, analysis and deeper use of blossom and resin at the source.</p>
+            <div class="bmeta">
+              <div><b>220,000 mu</b><span>Pinggu orchards</span></div>
+              <div><b>Geographical indication</b><span>EU-protected product</span></div>
+              <div><b>Blossom / resin</b><span>Development focus</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b3">
+          <div class="plate" style="--h:48">
+            <span class="pn">03 / North China</span>
+            <span class="pp">Sophora root</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Sophora base</h3>
+            <p class="loc">Inner Mongolia　/　core sophora region　·　<a href="en-ingredients.html?plant=Sophora%20root">See the ingredients →</a></p>
+            <p class="desc">One of China’s main sophora regions, over 500 mu. Deep, fertile, sun-facing soil with good drainage, grown without harmful inputs and with strict moisture control. Roots take 3–5 years of care before harvest.</p>
+            <div class="bmeta">
+              <div><b>500+ mu</b><span>Growing area</span></div>
+              <div><b>3–5 years</b><span>Growth cycle</span></div>
+              <div><b>Clean cultivation</b><span>Method</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b4">
+          <div class="plate" style="--h:125">
+            <span class="pn">04 / East China</span>
+            <span class="pp">Arborvitae leaf</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Arborvitae base</h3>
+            <p class="loc">Linyi, Shandong　/　around Xishan Park, Pingyi　·　<a href="en-ingredients.html?plant=Arborvitae">See the ingredients →</a></p>
+            <p class="desc">4,000 mu at 400–800 m, on a spur of the Taiyi range. Far from cities, inside class I and II protection zones, with no factories or pollution sources within ten kilometres and clean ground and surface water. Organically certified.</p>
+            <div class="bmeta">
+              <div><b>4,000 mu</b><span>Base area</span></div>
+              <div><b>400–800m</b><span>Altitude</span></div>
+              <div><b>Organic</b><span>Status</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b5">
+          <div class="plate" style="--h:150">
+            <span class="pn">05 / East China</span>
+            <span class="pp">Cactus</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Cactus · Shaoxing</h3>
+            <p class="loc">Shaoxing, Zhejiang　/　Shangyu　N 30°11′　E 120°44′　·　<a href="en-ingredients.html?plant=Cactus">See the ingredients →</a></p>
+            <p class="desc">At 30° north with abundant sun, ideal for photosynthesis and nutrient storage. Near the Qiantang estuary, irrigated from original channels and far from urban pollution. Harvested once a year so the land can rest.</p>
+            <div class="bmeta">
+              <div><b>30° N</b><span>prime growing belt</span></div>
+              <div><b>Single harvest</b><span>Annual rhythm</span></div>
+              <div><b>Shangyu</b><span>Location</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b6">
+          <div class="plate" style="--h:95">
+            <span class="pn">06 / Central China</span>
+            <span class="pp">Kudzu</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Kudzu base</h3>
+            <p class="loc">Zhangjiajie, Hunan　/　N 29°17′　E 109°41′　·　<a href="en-ingredients.html?plant=Kudzu">See the ingredients →</a></p>
+            <p class="desc">In the heart of the Wuling mountains at 1,200 m. Clean water, ample light and rainfall, and 64.61% forest cover make this prime growing land.</p>
+            <div class="bmeta">
+              <div><b>1200m</b><span>Altitude</span></div>
+              <div><b>64.61%</b><span>Forest cover</span></div>
+              <div><b>Wuling range</b><span>Region</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b7">
+          <div class="plate" style="--h:155">
+            <span class="pn">07 / Southwest</span>
+            <span class="pp">Sichuan ophiopogon</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Ophiopogon base</h3>
+            <p class="loc">Mianyang, Sichuan　/　Santai　N 31°16′　E 104°58′　·　<a href="en-ingredients.html?plant=Ophiopogon">See the ingredients →</a></p>
+            <p class="desc">Sichuan ophiopogon grows in the Fu River basin of Santai, a national geographical indication and a classic medicinal. Our base sits inside the county’s 10,000-mu modern agriculture zone, in the authentic growing area, on just over 130 mu.</p>
+            <div class="bmeta">
+              <div><b>130+ mu</b><span>Growing area</span></div>
+              <div><b>Geographical indication</b><span>Sichuan ophiopogon</span></div>
+              <div><b>10,000-mu zone</b><span>Zone</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b8">
+          <div class="plate" style="--h:165">
+            <span class="pn">08 / Southwest</span>
+            <span class="pp">Cactus</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Cactus · Wenshan</h3>
+            <p class="loc">Wenshan, Yunnan　/　Zhuangzitian　N 23°26′　E 104°15′　·　<a href="en-ingredients.html?plant=Cactus">See the ingredients →</a></p>
+            <p class="desc">China’s “number one cactus village”, on the same latitude as Mexico’s core cactus region. Average altitude 1,480 m and a 12.5 °C day–night swing; night cold triggers stress-response genes, driving three times the antioxidant accumulation of the plains.</p>
+            <div class="bmeta">
+              <div><b>1480m</b><span>Average altitude</span></div>
+              <div><b>12.5℃</b><span>Day–night swing</span></div>
+              <div><b>3×</b><span>Antioxidant build-up</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b9">
+          <div class="plate" style="--h:135">
+            <span class="pn">09 / Southwest</span>
+            <span class="pp">Aloe vera</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Aloe base</h3>
+            <p class="loc">Yuxi, Yunnan　/　China’s aloe capital　·　<a href="en-ingredients.html?plant=Aloe%20vera">See the ingredients →</a></p>
+            <p class="desc">The birthplace of wild aloe in China. Mineral-rich soil, a hot dry-valley climate with year-round heat and humidity, and abundant sun give aloe ideal conditions. Over 100 mu, grown organically, harvesting only leaves older than two years.</p>
+            <div class="bmeta">
+              <div><b>100+ mu</b><span>Base area</span></div>
+              <div><b>2+ years</b><span>Leaf standard</span></div>
+              <div><b>Organic</b><span>Method</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b10">
+          <div class="plate" style="--h:172">
+            <span class="pn">10 / Southwest</span>
+            <span class="pp">Dendrobium</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Dendrobium base</h3>
+            <p class="loc">Pu’er, Yunnan　/　Simao　1,400 m　·　<a href="en-ingredients.html?plant=Dendrobium">See the ingredients →</a></p>
+            <p class="desc">Built with the Kunming Institute of Botany, CAS: 60 mu of breeding and trial planting, producing one million quality seedlings a year. Managed to GAP and organic standards; certified organic in 2016.</p>
+            <div class="bmeta">
+              <div><b>1400m</b><span>Altitude</span></div>
+              <div><b>60 mu</b><span>Trial base</span></div>
+              <div><b>1M seedlings</b><span>Annual output</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bitem" id="b11">
+          <div class="plate" style="--h:22">
+            <span class="pn">11 / Northwest</span>
+            <span class="pp">Burdock seed</span>
+            <span class="pt">Image · base</span>
+          </div>
+          <div>
+            <h3>Burdock base</h3>
+            <p class="loc">Longzhong, Gansu　/　Loess Plateau　·　<a href="en-ingredients.html?plant=Burdock">See the ingredients →</a></p>
+            <p class="desc">On Gansu’s vast loess plateau, with abundant sun and wide day–night swings, deep fertile loess produces exceptional burdock seed. This is China’s core region, accounting for over 65% of national output.</p>
+            <div class="bmeta">
+              <div><b>65%+</b><span>Share of national output</span></div>
+              <div><b>Loess Plateau</b><span>Region</span></div>
+              <div><b>Burdock seed</b><span>Main plants</span></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 预约 -->
+<section class="visit">
+  <div class="wrap visit-in">
+    <div>
+      <p class="kicker mute">Visit</p>
+      <h2>Bases and labs you can come and see.</h2>
+      <p>The Beijing R&D centre, the Pinggu plant and some bases accept visits by appointment. Bring a formulation problem — it’s faster than ten pages of reading.</p>
+    </div>
+    <a class="btn solid" href="en-contact.html">Book a visit ↗</a>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="en-home.html" aria-label="Miusenphytech">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="Miusenphytech">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">Plant-based cosmetic actives.<br>R&D center in Beijing · Production in Pinggu.</p>
+      </div>
+      <div>
+        <h5>Ingredients</h5>
+        <ul>
+          <li><a href="en-home.html#index">Sensitive skin</a></li>
+          <li><a href="en-home.html#index">Firming / anti-wrinkle</a></li>
+          <li><a href="en-home.html#index">Hydration</a></li>
+          <li><a href="en-home.html#index">Brightening / exfoliation</a></li>
+          <li><a href="en-home.html#index">Oil control / acne</a></li>
+          <li><a href="en-home.html#index">Hair & scalp</a></li>
+          <li><a href="en-home.html#index">Baby care</a></li>
+          <li><a href="en-home.html#index">Penetration</a></li>
+          <li><a href="en-home.html#index">Device-grade</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>About Miusenphytech</h5>
+        <ul>
+          <li><a href="en-about.html#company">Our company</a></li>
+          <li><a href="en-about.html#bases">Our locations</a></li>
+          <li><a href="en-about.html#company">Our history</a></li>
+          <li><a href="en-capability.html#rd">Our science</a></li>
+          <li><a href="en-about.html#bases">Our plant bases</a></li>
+          <li><a href="en-news.html">Newsroom</a></li>
+        </ul>
+        <h5>Custom services</h5>
+        <ul>
+          <li><a href="en-contact.html">PDRN</a></li>
+          <li><a href="en-contact.html">To be added</a></li>
+        </ul>
+        <h5>Join us</h5>
+        <ul>
+          <li><a href="en-contact.html">Roles & team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="en-contact.html">Contact us</a></li>
+          <li><a href="en-contact.html?path=rd">R&D brief</a></li>
+          <li><a href="en-contact.html?path=sample">Sample request</a></li>
+          <li><a href="en-contact.html?path=quote">Quotation</a></li>
+        </ul>
+        <h5>Social</h5>
+        <div class="socials">
+          <a href="#" aria-label="WeChat" title="WeChat">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Channels" title="Channels">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="Mini program" title="Mini program">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>Beaut-N-Health Group</b>
+        <span>Miusenphytech is part of Beaut-N-Health Group</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">Visit the group site ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">Beaut-N-Health TCM Institute</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>Privacy　·　Terms　·　ICP filing No. xxxxxxxx　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rail = document.getElementById('railFill');
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true}); progress();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ mnav.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+  });
+
+  /* 基地索引：滚动高亮 */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.bindex a'));
+  var items = links.map(function(a){ return document.getElementById(a.dataset.target); });
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('on', a.dataset.target === id); });
+  }
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) setActive(e.target.id); });
+  }, {rootMargin:'-40% 0px -55% 0px'});
+  items.forEach(function(el){ if (el) spy.observe(el); });
+
+  links.forEach(function(a){
+    a.addEventListener('click', function(){
+      links.forEach(function(x){ x.classList.remove('on'); });
+      a.classList.add('on');
+    });
+  });
+})();
+</script>
+</body>
+</html>

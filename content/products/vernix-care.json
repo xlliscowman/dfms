@@ -1,0 +1,30 @@
+{
+  "id": "vernix-care",
+  "nameZh": "萌脂素",
+  "nameEn": "Vernix-Care",
+  "inci": "",
+  "summaryZh": "仿胎脂结构的脂质体系，用于屏障修护。",
+  "summaryEn": "A lipid system modelled on vernix, for barrier repair.",
+  "originZh": "复配体系",
+  "originEn": "Blend",
+  "categories": [
+    "hydration",
+    "baby-care"
+  ],
+  "plants": [],
+  "badges": [
+    "award"
+  ],
+  "blend": true,
+  "image": "",
+  "documents": [],
+  "published": true,
+  "reviewed": false,
+  "categorySummaries": [
+    {
+      "category": "baby-care",
+      "summaryZh": "仿胎脂结构，用于婴童与敏感肌的屏障护理。",
+      "summaryEn": "Vernix-inspired structure for baby and sensitive-skin barrier care."
+    }
+  ]
+}

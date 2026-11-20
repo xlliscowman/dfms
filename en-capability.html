@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capability · Miusenphytech</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ================= 本页专属 ================= */
+.nav a{font-family:var(--ui);font-size:16.5px;font-weight:600;letter-spacing:.08em;padding:11px 15px;color:inherit;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--gold)}
+
+.mnav{display:none;position:fixed;inset:0;z-index:1250;background:var(--cream);padding:96px var(--pad) 40px;transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s;overflow:auto}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+.menu-open .burger i:nth-child(1){top:16px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:16px;transform:rotate(-45deg)}
+.mnav a{display:block;font-size:22px;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.mnav .m-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- 首屏 ---------- */
+.cap-hero{padding:clamp(130px,18vh,190px) 0 clamp(30px,4vh,50px)}
+.cap-hero h1{font-size:clamp(34px,5.4vw,74px);line-height:1.2;font-weight:400;letter-spacing:.02em;margin:20px 0 22px}
+.cap-hero .lead{max-width:720px;font-size:15px;line-height:2.05;color:rgba(20,37,28,.66)}
+.cap-hero .lead b{font-weight:500;color:var(--ink)}
+
+/* 九字带 */
+.nine{display:grid;grid-template-columns:repeat(9,1fr);margin-top:clamp(34px,5vh,54px);border-top:1px solid var(--ink)}
+.nine div{padding:16px 0 14px;border-right:1px solid var(--line);text-align:center}
+.nine div:last-child{border-right:0}
+.nine b{display:block;font-size:clamp(22px,2.6vw,32px);font-weight:500;letter-spacing:.1em;color:rgba(20,37,28,.32);line-height:1.2}
+.nine span{display:block;margin-top:8px;font-family:var(--ui);font-size:10px;letter-spacing:.06em;color:rgba(20,37,28,.3);line-height:1.6}
+.nine .ours b{color:var(--ink)}
+.nine .ours span{color:var(--gold)}
+
+/* ---------- 段落 ---------- */
+.stage{padding:clamp(56px,8vh,92px) 0}
+.stage-head{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(26px,4vw,64px);align-items:end;margin-bottom:clamp(32px,4.6vh,50px)}
+.stage-head h2{font-size:clamp(26px,3.5vw,44px);font-weight:500;line-height:1.34;letter-spacing:.02em;margin-top:12px}
+.stage-head p{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.62);max-width:34em}
+
+/* 研发平台 */
+.centers{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(24px,3.4vw,44px)}
+.cen{border-top:1px solid rgba(20,37,28,.2);padding:16px 0 20px}
+.cen .cn{font-family:var(--ui);font-size:10px;letter-spacing:.14em;color:var(--gold)}
+.cen h3{font-size:16.5px;font-weight:500;margin:7px 0 6px;letter-spacing:.03em;line-height:1.5}
+.cen .en{font-family:var(--ui);font-size:9.5px;letter-spacing:.04em;color:rgba(20,37,28,.38);line-height:1.7}
+.cen p{font-size:12px;line-height:1.85;color:rgba(20,37,28,.55);margin-top:8px}
+
+.platforms{display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(20px,2.6vw,36px);margin-top:clamp(34px,5vh,52px);padding-top:22px;border-top:1px solid var(--ink)}
+.pf h4{font-size:14.5px;font-weight:500;letter-spacing:.03em;line-height:1.5}
+.pf .pe{font-family:var(--ui);font-size:9px;letter-spacing:.05em;color:rgba(20,37,28,.4);line-height:1.7;margin-top:5px}
+.pf p{font-size:11.5px;line-height:1.8;color:rgba(20,37,28,.52);margin-top:8px}
+
+.books{margin-top:clamp(34px,5vh,52px);border-top:1px solid var(--line);padding-top:22px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.books h4{font-size:15px;font-weight:500;letter-spacing:.03em}
+.books p{font-size:12.5px;line-height:1.95;color:rgba(20,37,28,.55);margin-top:8px;max-width:40em}
+.books .bks{display:flex;gap:10px}
+.books .bk{width:74px;height:104px;border:1px solid rgba(20,37,28,.2);display:flex;align-items:center;justify-content:center;
+  font-size:11px;letter-spacing:.14em;color:rgba(20,37,28,.5);writing-mode:vertical-rl;background:rgba(255,255,255,.4)}
+
+/* 制造（深色） */
+.make{background:var(--ink);color:var(--cream);padding:clamp(60px,9vh,100px) 0}
+.make .stage-head h2{color:var(--cream)}
+.make .stage-head p{color:rgba(243,239,230,.55)}
+.mk-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:22px;border-top:1px solid rgba(243,239,230,.2);margin-bottom:clamp(34px,5vh,52px)}
+.mk-nums b{display:inline;font-family:var(--ui);font-size:clamp(30px,4vw,52px);font-weight:400;line-height:1.05;letter-spacing:.01em}
+.mk-nums i,.mk-nums b i{font-style:normal;font-size:.42em;color:var(--gold);vertical-align:baseline}
+.mk-nums span{display:block;margin-top:8px;font-family:var(--ui);font-size:10px;letter-spacing:.1em;color:rgba(243,239,230,.45);line-height:1.6}
+.mk-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,44px)}
+.mk-two article{border-top:1px solid rgba(243,239,230,.2);padding-top:16px}
+.mk-two h3{font-size:17px;font-weight:500;letter-spacing:.04em;margin-bottom:6px}
+.mk-two .en{font-family:var(--ui);font-size:9.5px;letter-spacing:.08em;color:var(--gold);margin-bottom:10px;display:block}
+.mk-two p{font-size:12.5px;line-height:1.95;color:rgba(243,239,230,.55)}
+.certs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:clamp(30px,4vh,44px);padding-top:24px;border-top:1px solid rgba(243,239,230,.18)}
+.cert{border:1px dashed rgba(243,239,230,.22);padding:12px;min-height:92px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;transition:border-color .3s}
+.cert:hover{border-color:rgba(201,187,166,.5)}
+.cert b{font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:rgba(243,239,230,.72);font-weight:500;line-height:1.5}
+.cert span{font-family:var(--ui);font-size:9px;letter-spacing:.08em;color:rgba(243,239,230,.32)}
+.certs-note{margin-top:14px;font-family:var(--ui);font-size:10px;letter-spacing:.04em;color:rgba(243,239,230,.35)}
+
+/* 验证 */
+.verify{background:var(--cream2);padding:clamp(60px,9vh,100px) 0}
+.layers{display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(18px,2.4vw,32px);margin-bottom:clamp(34px,5vh,50px)}
+.layer{border-top:1px solid rgba(20,37,28,.2);padding-top:16px}
+.layer .ln{font-family:var(--ui);font-size:10px;letter-spacing:.16em;color:var(--gold)}
+.layer h3{font-size:16px;font-weight:500;margin:8px 0 7px;letter-spacing:.04em}
+.layer p{font-size:12px;line-height:1.85;color:rgba(20,37,28,.58)}
+
+.partners{display:flex;gap:clamp(20px,3vw,40px);flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--ink)}
+.partners div{font-size:12px;line-height:1.8;color:rgba(20,37,28,.6);max-width:22em}
+.partners b{display:block;font-weight:500;color:var(--ink);font-size:13px;margin-bottom:3px}
+
+/* 收尾 */
+.cap-cta{background:var(--ink);color:var(--cream);padding:clamp(56px,8vh,90px) 0}
+.cap-cta .in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.cap-cta h2{font-size:clamp(24px,3vw,40px);font-weight:500;letter-spacing:.02em;margin:10px 0 8px}
+.cap-cta p{font-size:13px;line-height:1.95;color:rgba(243,239,230,.55);max-width:38em}
+.cap-cta .acts{display:flex;gap:12px;flex-wrap:wrap}
+.cap-cta .btn{border-color:rgba(243,239,230,.35);color:var(--cream)}
+.cap-cta .btn.solid{background:var(--gold);border-color:var(--gold);color:#fff}
+
+@media (max-width:900px){
+  .mnav{display:block}
+  .cap-hero{padding-top:118px}
+  .nine{grid-template-columns:repeat(3,1fr)}
+  .nine div:nth-child(3n){border-right:0}
+  .nine div:nth-child(n+4){border-top:1px solid var(--line)}
+  .stage-head,.centers,.platforms,.mk-nums,.mk-two,.layers{grid-template-columns:1fr}
+  .centers,.platforms,.layers{gap:0}
+  .cen,.pf,.layer{border-top:1px solid rgba(20,37,28,.16);padding:18px 0 0;margin-top:18px}
+  .cen:first-child,.pf:first-child,.layer:first-child{border-top:0;margin-top:0;padding-top:0}
+  .books{grid-template-columns:1fr}
+  .certs{grid-template-columns:1fr 1fr}
+  .mk-two article{margin-top:20px}
+  .cap-hero h1{font-size:clamp(30px,8vw,46px)}
+}
+</style>
+<link rel="stylesheet" href="assets/en.css">
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head solid" id="head">
+  <a class="brand" href="en-home.html" aria-label="Miusenphytech">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="Miusenphytech">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="en-home.html">Home</a>
+    <a href="en-ingredients.html">Ingredients</a>
+    <a href="en-capability.html" class="on">Capability</a>
+    <a href="en-insights.html">Insights</a>
+    <a href="en-about.html">About</a>
+    <a href="en-news.html">News</a>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-capability.html">CN</a><span class="sep">/</span><a href="en-capability.html" class="on">EN</a></span>
+    <a class="btn" href="en-contact.html">Request a sample</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="en-home.html">Home</a>
+  <a href="en-ingredients.html">Ingredients</a>
+  <a href="en-capability.html">Capability</a>
+  <a href="en-insights.html">Insights</a>
+  <a href="en-about.html">About</a>
+  <a href="en-news.html">News</a>
+  <div class="m-cta">
+    <a class="btn solid" href="en-contact.html">Request a sample</a>
+    <a class="btn" href="en-home.html">Back to home</a>
+  </div>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="cap-hero">
+  <div class="wrap">
+    <p class="kicker">CAPABILITY</p>
+    <h1>An ingredient has nine steps to pass.</h1>
+    <p class="lead">Symptom, principle, method, formula, material, craft, efficacy, proof, use — this is how Beaut-N-Health develops a botanical ingredient, from a skin problem all the way to launch. Miusenphytech owns the middle:<b>material and craft</b> — find the molecule, then make it identical batch after batch.</p>
+
+    <div class="nine">
+      <div><b>Symptom</b><span>the skin problem</span></div>
+      <div><b>Principle</b><span>skin baseline</span></div>
+      <div><b>Method</b><span>the approach</span></div>
+      <div><b>Formula</b><span>the system</span></div>
+      <div class="ours"><b>Material</b><span>plant & molecule</span></div>
+      <div class="ours"><b>Craft</b><span>extraction</span></div>
+      <div class="ours"><b>Efficacy</b><span>safety & effect</span></div>
+      <div><b>Proof</b><span>in formula</span></div>
+      <div><b>Use</b><span>clinical & launch</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 药 -->
+<section class="stage" id="rd">
+  <div class="wrap">
+    <div class="stage-head">
+      <div>
+        <p class="kicker reveal">01 — Material / find the molecule</p>
+        <h2 class="reveal" style="--d:1">Six R&D centres, one academician workstation.</h2>
+      </div>
+      <p class="reveal" style="--d:2">R&D here isn’t one lab but a set of platforms with clear roles: some find the plants, some study the consumer, some scale the lab process onto the line.</p>
+    </div>
+
+    <div class="centers reveal">
+      <div class="cen">
+        <span class="cn">01</span>
+        <h3>Plant Actives R&D Center</h3>
+        <span class="en">Plant Actives R&amp;D Center</span>
+        <p>Screening Chinese botanical resources for actives, defining the target molecule and its site of action.</p>
+      </div>
+      <div class="cen">
+        <span class="cn">02</span>
+        <h3>Consumer Research Center</h3>
+        <span class="en">Consumer Research Center</span>
+        <p>Studying how skin appearance relates to skin physiology — what sits underneath a visible problem.</p>
+      </div>
+      <div class="cen">
+        <span class="cn">03</span>
+        <h3>Strategic Development Research Center</h3>
+        <span class="en">Strategic Development Research Center</span>
+        <p>Trends, categories, competitors — deciding which ingredients matter for the next three years.</p>
+      </div>
+      <div class="cen">
+        <span class="cn">04</span>
+        <h3>Pilot Research & Manufacturing Center</h3>
+        <span class="en">Pilot Research and Manufacturing Center</span>
+        <p>Scaling lab processes into production parameters — fixing the gap between “works in the lab” and “holds on the line”.</p>
+      </div>
+      <div class="cen">
+        <span class="cn">05</span>
+        <h3>Safety & Efficacy Evaluation Center</h3>
+        <span class="en">Safety and Efficacy Evaluation Research Center</span>
+        <p>Safety, efficacy and mechanism, in three layers; the data and reports come from here.</p>
+      </div>
+      <div class="cen">
+        <span class="cn">06</span>
+        <h3>Chinese Plant Resource Cosmetics Research Center</h3>
+        <span class="en">Chinese Plant Resource Cosmetics Research Center</span>
+        <p>Translating classical usage into modern formulation language.</p>
+      </div>
+    </div>
+
+    <div class="platforms reveal">
+      <div class="pf">
+        <h4>Academician Workstation</h4>
+        <span class="pe">Academician Workstation</span>
+        <p>The Xiao Peigen Academician Workstation, giving academic support to plant selection and evaluation.</p>
+      </div>
+      <div class="pf">
+        <h4>Postdoctoral Workstation</h4>
+        <span class="pe">Postdoctoral Workstation</span>
+        <p>Co-built with Beijing University of Chinese Medicine, on projects where TCM meets skin science.</p>
+      </div>
+      <div class="pf">
+        <h4>Collaborative Innovation Center</h4>
+        <span class="pe">Collaborative Innovation Center</span>
+        <p>China Cosmetics Collaborative Innovation Center, co-built with Beijing Technology and Business University.</p>
+      </div>
+      <div class="pf">
+        <h4>Institute for In Vitro Sciences</h4>
+        <span class="pe">Institute for In Vitro Sciences</span>
+        <p>Working with IIVS in the US to bring internationally accepted in vitro safety and efficacy methods.</p>
+      </div>
+    </div>
+
+    <div class="books reveal">
+      <div>
+        <h4>Turning skin wellness into a teachable theory</h4>
+        <p>Skin Baseline and Skin Surface Physiology — written and published by the team, mapping Chinese skin characteristics against surface physiology. These two books are how R&D decides what is worth doing.</p>
+      </div>
+      <div class="bks">
+        <span class="bk">skin baseline</span>
+        <span class="bk">Skin Surface Physiology</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 艺 -->
+<section class="make" id="make">
+  <div class="wrap">
+    <div class="stage-head">
+      <div>
+        <p class="kicker mute reveal">02 — Craft / make it</p>
+        <h2 class="reveal" style="--d:1">8,494 square metres, actives and finished goods in one place.</h2>
+      </div>
+      <p class="reveal" style="--d:2">At Pinggu, our actives lines and the group’s finished-goods lines sit in the same park. Sampling, scale-up and production happen in one place — the shortest route from lab to shelf.</p>
+    </div>
+
+    <div class="mk-nums reveal">
+      <div><b>8,494.06</b>&nbsp;&nbsp;<i>㎡</i><span>both sites combined · Pinggu, Beijing</span></div>
+      <div><b>2</b><span>production sites · actives + finished goods</span></div>
+      <div><b>27</b>&nbsp;&nbsp;<i>M USD</i><span>annual output</span></div>
+    </div>
+
+    <div class="mk-two">
+      <article class="reveal">
+        <h3>Miusenphytech actives plant</h3>
+        <span class="en">Nutri-Woods Plant Actives</span>
+        <p>Extraction, separation, purification and formulation happen here. Pilot and commercial runs share one parameter logic, keeping batch-to-batch variation to a minimum.</p>
+      </article>
+      <article class="reveal" style="--d:1">
+        <h3>Botaview finished-goods plant</h3>
+        <span class="en">Botaview ODM / OBM</span>
+        <p>The group’s finished-goods arm. Actives go straight into formulation and filling, shortening the path from sample to launch.</p>
+      </article>
+    </div>
+    <div class="certs reveal">
+      <div class="cert"><b>Quality management</b><span>Pending</span></div>
+      <div class="cert"><b>Environmental management</b><span>Pending</span></div>
+      <div class="cert"><b>Production licence</b><span>Pending</span></div>
+      <div class="cert"><b>Organic</b><span>Pending</span></div>
+      <div class="cert"><b>High-tech enterprise</b><span>Pending</span></div>
+      <div class="cert"><b>Other</b><span>Pending</span></div>
+    </div>
+    <p class="certs-note">Certificates pending — to be replaced with scans and registration numbers before launch.</p>
+
+  </div>
+</section>
+
+<!-- 03 效 -->
+<section class="verify" id="eff">
+  <div class="wrap">
+    <div class="stage-head">
+      <div>
+        <p class="kicker reveal">03 — Efficacy / prove it</p>
+        <h2 class="reveal" style="--d:1">From cell to human, four layers of evidence.</h2>
+      </div>
+      <p class="reveal" style="--d:2">Each layer answers one question. Formulators don’t want adjectives; they want methods, data and sample sizes they can check.</p>
+    </div>
+
+    <div class="layers">
+      <div class="layer reveal">
+        <span class="ln">Layer 01</span>
+        <h3>Biochemistry & cells</h3>
+        <p>Enzyme activity and cell models — first, does the activity exist.</p>
+      </div>
+      <div class="layer reveal" style="--d:1">
+        <span class="ln">Layer 02</span>
+        <h3>Tissue & 3D skin</h3>
+        <p>Penetration, barrier and structural change, observed on skin models close to human.</p>
+      </div>
+      <div class="layer reveal" style="--d:2">
+        <span class="ln">Layer 03</span>
+        <h3>Human efficacy</h3>
+        <p>Instrumental measurement plus self-assessment, with duration and sample size stated.</p>
+      </div>
+      <div class="layer reveal" style="--d:3">
+        <span class="ln">Layer 04</span>
+        <h3>Clinical</h3>
+        <p>Aesthetic-clinic settings and physician assessment, testing performance under extreme conditions.</p>
+      </div>
+    </div>
+
+    <div class="partners reveal">
+      <div><b>EviSkin</b>The group’s efficacy platform for human and clinical studies.</div>
+      <div><b>IIVS</b>Institute for In Vitro Sciences, US — in vitro methodology partner.</div>
+      <div><b>Beijing Technology & Business University</b>China Cosmetics Collaborative Innovation Center.</div>
+      <div><b>Beijing University of Chinese Medicine</b>Postdoctoral workstation and TCM theory support.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 收尾 -->
+<section class="cap-cta">
+  <div class="wrap in">
+    <div>
+      <p class="kicker mute">Next</p>
+      <h2>Want to see this process run?</h2>
+      <p>The Beijing R&D centre and Pinggu plant take visits by appointment. Bring a formulation problem — it’s faster than ten pages of reading.</p>
+    </div>
+    <div class="acts">
+      <a class="btn solid" href="en-contact.html">Book a visit</a>
+      <a class="btn" href="assets/ingredient-catalog-2026.pdf" download>Download the catalogue</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="en-home.html" aria-label="Miusenphytech">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="Miusenphytech">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">Plant-based cosmetic actives.<br>R&D center in Beijing · Production in Pinggu.</p>
+      </div>
+      <div>
+        <h5>Ingredients</h5>
+        <ul>
+          <li><a href="en-ingredients.html#by-benefit">Sensitive skin</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Firming / anti-wrinkle</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Hydration</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Brightening / exfoliation</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Oil control / acne</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Hair & scalp</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Baby care</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Penetration</a></li>
+          <li><a href="en-ingredients.html#by-benefit">Device-grade</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>About Miusenphytech</h5>
+        <ul>
+          <li><a href="en-about.html#company">Our company</a></li>
+          <li><a href="en-about.html#company">Our locations</a></li>
+          <li><a href="en-about.html#company">Our history</a></li>
+          <li><a href="en-capability.html#rd">Our science</a></li>
+          <li><a href="en-about.html#bases">Our plant bases</a></li>
+          <li><a href="en-news.html">Newsroom</a></li>
+        </ul>
+        <h5>Custom services</h5>
+        <ul>
+          <li><a href="en-contact.html?path=rd">PDRN</a></li>
+          <li><a href="en-contact.html?path=rd">To be added</a></li>
+        </ul>
+        <h5>Join us</h5>
+        <ul>
+          <li><a href="en-contact.html">Roles & team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="en-contact.html">Contact us</a></li>
+          <li><a href="en-contact.html?path=rd">R&D brief</a></li>
+          <li><a href="en-contact.html?path=sample">Sample request</a></li>
+          <li><a href="en-contact.html?path=quote">Quotation</a></li>
+        </ul>
+        <h5>Social</h5>
+        <div class="socials">
+          <a href="#" aria-label="WeChat" title="WeChat">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Channels" title="Channels">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="Mini program" title="Mini program">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>Beaut-N-Health Group</b>
+        <span>Miusenphytech is part of Beaut-N-Health Group</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">Visit the group site ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">Beaut-N-Health TCM Institute</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>Privacy　·　Terms　·　ICP filing No. xxxxxxxx　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rail = document.getElementById('railFill');
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true}); progress();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ mnav.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
+</body>
+</html>

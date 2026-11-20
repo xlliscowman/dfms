@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>原料 · 东方淼森 miusenphytech</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ================= 本页专属 ================= */
+.nav a{font-family:var(--ui);font-size:16.5px;font-weight:600;letter-spacing:.08em;padding:11px 15px;color:inherit;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--gold)}
+
+.mnav{display:none;position:fixed;inset:0;z-index:1250;background:var(--cream);padding:96px var(--pad) 40px;transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s;overflow:auto}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+.menu-open .burger i:nth-child(1){top:16px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:16px;transform:rotate(-45deg)}
+.mnav a{display:block;font-size:22px;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.mnav .m-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- 首屏 ---------- */
+.ing-hero{padding:clamp(130px,17vh,180px) 0 clamp(34px,5vh,56px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,60px);align-items:end}
+.ing-hero h1{font-size:clamp(38px,5.8vw,80px);line-height:1.16;font-weight:400;letter-spacing:.02em;margin:20px 0 20px}
+.ing-hero .lead{font-size:15px;line-height:2;color:rgba(20,37,28,.66);letter-spacing:.06em}
+.hero-acts{display:flex;flex-direction:column;gap:12px;align-items:stretch;padding-bottom:8px}
+.hero-acts .btn{min-width:212px;padding:15px 26px;justify-content:space-between;font-size:13px;letter-spacing:.1em;gap:20px}
+.hero-acts .btn span{font-family:var(--ui);font-size:12px;letter-spacing:.1em;opacity:.55}
+.hero-acts .btn.solid span{opacity:.75}
+
+/* ---------- 区块头 ---------- */
+.blk-head{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:clamp(26px,4vh,42px)}
+.blk-head h2{font-size:clamp(28px,3.8vw,50px);font-weight:500;letter-spacing:.02em;margin-top:12px;line-height:1.25}
+.blk-head .note{font-size:13px;line-height:2;color:rgba(20,37,28,.55);max-width:30em}
+
+/* ---------- 按功效目录 ---------- */
+.by-benefit{padding:clamp(50px,7vh,80px) 0 clamp(40px,6vh,60px)}
+.idx{border-top:1px solid var(--line);transition:opacity .35s var(--ease),filter .35s var(--ease)}
+.idx:last-child{border-bottom:1px solid var(--line)}
+.idx>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:64px minmax(0,1fr) 90px 96px;gap:clamp(12px,2vw,26px);align-items:center;padding:clamp(18px,2.4vh,24px) 0}
+.idx>summary::-webkit-details-marker{display:none}
+.idx .n{font-family:var(--ui);font-size:11px;letter-spacing:.16em;color:rgba(20,37,28,.32)}
+.idx .nm{font-size:clamp(20px,2.2vw,27px);font-weight:500;letter-spacing:.04em;line-height:1.3;transition:color .25s}
+.idx .nm em{display:block;font-style:normal;font-family:var(--ui);font-size:11.5px;letter-spacing:.14em;color:rgba(20,37,28,.35);margin-top:4px}
+.idx .ct{font-family:var(--ui);font-size:12px;letter-spacing:.1em;color:rgba(20,37,28,.45);text-align:right}
+.idx .tg{justify-self:end;font-family:var(--ui);font-size:12px;letter-spacing:.12em;color:var(--moss);display:flex;align-items:center;gap:9px}
+.idx .tg::after{content:"+";font-size:17px;line-height:1;transition:transform .3s var(--ease)}
+.idx[open] .tg::after{transform:rotate(45deg)}
+.idx>summary:hover .nm{color:var(--gold)}
+.idx-preview{grid-column:2/4;grid-row:2;font-size:12px;line-height:1.9;color:rgba(20,37,28,.42);margin-top:6px;letter-spacing:.02em}
+.idx[open] .idx-preview{display:none}
+
+/* 展开内容整体右移，形成二级层次 */
+.idx-body{margin:0 0 clamp(26px,3.6vh,40px) clamp(64px,9vw,120px);
+  border-left:1px solid rgba(20,37,28,.18);padding-left:clamp(20px,3vw,40px)}
+.idx-body .hint{font-size:13px;line-height:1.95;color:rgba(20,37,28,.55);margin-bottom:18px;max-width:38em}
+.plist{border-top:1px solid var(--line)}
+.p{display:grid;grid-template-columns:220px 132px minmax(0,1fr);gap:clamp(12px,2vw,28px);align-items:baseline;padding:15px 0;border-bottom:1px solid rgba(20,37,28,.08)}
+.p .pen{display:inline;font-family:var(--ui);font-size:12px;letter-spacing:.06em;color:var(--gold);margin-right:0}
+.p .pcn{display:inline;font-size:15px;font-weight:500;letter-spacing:.04em;line-height:1.4}
+.p .porg{font-family:var(--ui);font-size:12px;letter-spacing:.06em;color:rgba(20,37,28,.5);line-height:1.7}
+.p .pdesc{font-size:12.5px;line-height:1.9;color:rgba(20,37,28,.6)}
+.p .pflags{display:inline-flex;gap:5px;margin-left:8px;vertical-align:middle}
+.badge{font-family:var(--ui);font-size:9.5px;letter-spacing:.08em;padding:1px 5px;border:1px solid;line-height:1.7;font-style:normal;white-space:nowrap}
+.badge.new{color:#A8462F;border-color:rgba(168,70,47,.35)}
+.badge.award{color:var(--gold);border-color:rgba(169,138,91,.45)}
+.badge.pat{color:var(--moss);border-color:rgba(92,107,79,.4)}
+
+/* 展开某一类时，其他类轻微模糊 */
+.by-benefit.dimmed .idx:not([open]){opacity:.4;filter:blur(.5px)}
+
+/* ---------- 按植物 ---------- */
+.by-plant{background:var(--cream2);padding:clamp(50px,7vh,84px) 0}
+.plants{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(24px,3.4vw,48px)}
+.pl{border-top:1px solid rgba(20,37,28,.16);padding:13px 0 15px}
+.pl .ph{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.pl h3{font-size:15.5px;font-weight:500;letter-spacing:.06em}
+.pl .lat{font-family:var(--ui);font-style:italic;font-size:11.5px;letter-spacing:.02em;color:rgba(20,37,28,.35)}
+.pl .cnt{margin-left:auto;font-family:var(--ui);font-size:10.5px;letter-spacing:.08em;color:var(--gold)}
+.pl .prods{margin-top:6px;font-size:11.5px;line-height:1.85;color:rgba(20,37,28,.62)}
+.pl .prods .pen{font-family:var(--ui);font-size:12px;letter-spacing:.03em;color:var(--gold)}
+.pl .none{margin-top:6px;font-family:var(--ui);font-size:12px;letter-spacing:.06em;color:rgba(20,37,28,.26)}
+.pl.hl{background:rgba(169,138,91,.12);box-shadow:0 0 0 8px rgba(169,138,91,.12)}
+.pl.hl h3{color:var(--gold)}
+.legend{margin-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--ui);font-size:12px;letter-spacing:.05em;color:rgba(20,37,28,.4)}
+
+.multi{margin-top:clamp(30px,4vh,44px);border-top:1px solid var(--ink);padding-top:22px}
+.multi .ph{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.multi h3{font-size:clamp(18px,1.9vw,22px);font-weight:500;letter-spacing:.06em}
+.multi .lat{font-family:var(--ui);font-style:italic;font-size:12px;color:rgba(20,37,28,.4)}
+.multi .cnt{margin-left:auto;font-family:var(--ui);font-size:11px;letter-spacing:.1em;color:rgba(20,37,28,.4)}
+.multi .why{font-size:11.5px;line-height:1.8;color:rgba(20,37,28,.45);margin-top:8px;max-width:32em}
+.multi ul{list-style:none;margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px 24px}
+.multi li{font-size:11.5px;line-height:1.6;color:rgba(20,37,28,.68)}
+.multi li .en{font-family:var(--ui);font-size:11.5px;color:rgba(20,37,28,.4);margin-right:2px}
+
+/* ---------- 底部入口 ---------- */
+.ing-foot{padding:clamp(50px,7vh,80px) 0 clamp(60px,8vh,90px)}
+.entries{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,30px)}
+.entry{border-top:1px solid var(--ink);padding-top:16px;display:flex;flex-direction:column;gap:8px;transition:color .25s}
+.entry .ek{font-family:var(--ui);font-size:11.5px;letter-spacing:.16em;color:var(--gold)}
+.entry h3{font-size:18px;font-weight:500;letter-spacing:.03em}
+.entry p{font-size:12.5px;line-height:1.9;color:rgba(20,37,28,.55);min-height:3.4em}
+.entry .go{margin-top:auto;padding-top:12px;font-family:var(--ui);font-size:12.5px;letter-spacing:.08em;color:var(--moss)}
+.entry:hover .go{color:var(--gold)}
+
+@media (max-width:900px){
+  .mnav{display:block}
+  .ing-hero{padding-top:118px}
+  .hero-grid{grid-template-columns:1fr;align-items:start}
+  .hero-acts{flex-direction:row;flex-wrap:wrap;padding-bottom:0}
+  .hero-acts .btn{min-width:0;flex:1;padding:13px 18px;font-size:12px}
+  .idx>summary{grid-template-columns:44px 1fr 70px;gap:12px}
+  .idx .ct{display:none}
+  .idx-preview{grid-column:2/4}
+  .idx-body{margin-left:0;border-left:0;padding-left:0}
+  .p{grid-template-columns:1fr;gap:4px}
+  .p .porg{font-size:11.5px}
+  .plants{grid-template-columns:1fr 1fr}
+  .multi ul{grid-template-columns:1fr 1fr}
+  .entries{grid-template-columns:1fr;gap:26px}
+  .entry p{min-height:0}
+  .ing-hero h1{font-size:clamp(32px,8vw,48px)}
+}
+@media (max-width:560px){
+  .plants{grid-template-columns:1fr}
+  .multi ul{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head solid" id="head">
+  <a class="brand" href="cn-home.html" aria-label="miusenphytech 东方淼森">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="cn-home.html">主页</a>
+    <a href="cn-ingredients.html" class="on">原料</a>
+    <a href="cn-capability.html">能力</a>
+    <a href="cn-insights.html">洞察</a>
+    <a href="cn-about.html">关于</a>
+    <a href="cn-news.html">新闻</a>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-ingredients.html" class="on">CN</a><span class="sep">/</span><a href="en-ingredients.html">EN</a></span>
+    <a class="btn" href="cn-contact.html">索取样品</a>
+    <button class="burger" id="burger" aria-label="菜单" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="cn-home.html">主页</a>
+  <a href="cn-ingredients.html">原料</a>
+  <a href="cn-capability.html">能力</a>
+  <a href="cn-insights.html">洞察</a>
+  <a href="cn-about.html">关于</a>
+  <a href="cn-news.html">新闻</a>
+  <div class="m-cta">
+    <a class="btn solid" href="cn-contact.html">索取样品</a>
+    <a class="btn" href="cn-home.html">返回首页</a>
+  </div>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="ing-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">INGREDIENTS</p>
+      <h1>31 款原料，<br>两条路。</h1>
+      <p class="lead">功效，植物，去选择合适的。</p>
+    </div>
+    <div class="hero-acts">
+      <a class="btn solid" href="#by-benefit">按功效<span>9 类</span></a>
+      <a class="btn" href="#by-plant">按植物<span>42 种</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 按功效 -->
+<section class="by-benefit" id="by-benefit">
+  <div class="wrap">
+    <div class="blk-head">
+      <div>
+        <p class="kicker reveal">01 — 按功效 / BY BENEFIT</p>
+        <h2 class="reveal" style="--d:1">九种功效，一张目录。</h2>
+      </div>
+      <p class="note reveal" style="--d:2">点开任意一行，看这一类里有哪些原料、它们各自做什么。共 31 款，35 个类目位——有的原料同时属于两类。</p>
+    </div>
+
+    <details class="idx">
+      <summary>
+        <span class="n">01</span>
+        <span class="nm">敏感肌肤护理<em>SENSITIVE SKIN</em></span>
+        <span class="ct">7 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">舒逸丹 · 妙可修 · 仙之盾 · 肤欣佳 FN · 百花玉屏油 · 双紫油 · 抗表活</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">先把火降下来，再谈修。用于泛红、刺痛、术后与耐受性差的肌肤。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">Sensysoothe®</span>&nbsp;&nbsp;<span class="pcn">舒逸丹</span></div><span class="porg">复配体系</span><p class="pdesc">舒缓类复配体系，用于泛红、刺痛等敏感表现。<span class="pflags"><i class="badge award">获奖</i><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">FlexiGlu 992®</span>&nbsp;&nbsp;<span class="pcn">妙可修</span></div><span class="porg">柔性多糖</span><p class="pdesc">柔性葡聚糖结构，主打修护与再上皮化，也可用于抗皱。<span class="pflags"><i class="badge award">获奖</i><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">CactyCalma®</span>&nbsp;&nbsp;<span class="pcn">仙之盾</span></div><span class="porg">仙人掌</span><p class="pdesc">来自仙人掌的自护力：先安抚，再修护，最后把屏障垒厚。<span class="pflags"><i class="badge new">NEW</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">IrriSooths® II FN</span>&nbsp;&nbsp;<span class="pcn">肤欣佳 FN</span></div><span class="porg">复配体系</span><p class="pdesc">用于刺激后即时安抚的舒缓体系。</p></article>
+          <article class="p"><div class="pname"><span class="pen">J-guard flowers Oil T</span>&nbsp;&nbsp;<span class="pcn">百花玉屏油</span></div><span class="porg">复方 · 黄芪 / 白术 / 防风</span><p class="pdesc">源自「玉屏风」思路的复方油，用于提高肌肤耐受。<span class="pflags"><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Purple Duo</span>&nbsp;&nbsp;<span class="pcn">双紫油</span></div><span class="porg">紫苏 · 紫草</span><p class="pdesc">紫苏与紫草的双紫复配，用于舒缓与修护。<span class="pflags"><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">IrriBate®-SAA</span>&nbsp;&nbsp;<span class="pcn">抗表活</span></div><span class="porg">复配体系</span><p class="pdesc">针对表面活性剂刺激的缓冲体系，常用于洗护。</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">02</span>
+        <span class="nm">抗皱 / 紧致<em>FIRMING</em></span>
+        <span class="ct">7 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">秒肤锦 · 妙可修 · 紫雪参养油 T · 御养欣妍 · 燕麦活性肽 NP · 燕麦紧肤蛋白 NP · 益存油</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">让纤维重新排好队。从 ECM 的「量」到「序」，做的是结构，不只是填充。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">Tik-ageline®</span>&nbsp;&nbsp;<span class="pcn">秒肤锦</span></div><span class="porg">复配体系</span><p class="pdesc">抑制表情肌收缩核心传感器 SYT2；美耀年度功效原料奖、荣格技术创新奖 2025。<span class="pflags"><i class="badge award">获奖</i><i class="badge new">NEW</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">FlexiGlu 992®</span>&nbsp;&nbsp;<span class="pcn">妙可修</span></div><span class="porg">柔性多糖</span><p class="pdesc">植物 EGF × ECM 有序重构，把「修护」做成可测量的秩序。<span class="pflags"><i class="badge award">获奖</i><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Ganoderm® OT</span>&nbsp;&nbsp;<span class="pcn">紫雪参养油 T</span></div><span class="porg">紫芝 · 人参</span><p class="pdesc">紫芝与人参的养肤油，用于熟龄肌滋养。<span class="pflags"><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Royal Treat</span>&nbsp;&nbsp;<span class="pcn">御养欣妍</span></div><span class="porg">复配体系</span><p class="pdesc">滋养类复配体系，用于干性与熟龄肌肤。</p></article>
+          <article class="p"><div class="pname"><span class="pen">Avena Extract NP</span>&nbsp;&nbsp;<span class="pcn">燕麦活性肽 NP</span></div><span class="porg">燕麦</span><p class="pdesc">燕麦来源活性肽，用于紧致与舒缓。</p></article>
+          <article class="p"><div class="pname"><span class="pen">Oat Glair Taut NP</span>&nbsp;&nbsp;<span class="pcn">燕麦紧肤蛋白 NP</span></div><span class="porg">燕麦</span><p class="pdesc">燕麦蛋白，提供即时的紧致肤感。<span class="pflags"><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Phytospectrum® OTS</span>&nbsp;&nbsp;<span class="pcn">益存油</span></div><span class="porg">复配体系</span><p class="pdesc">油相复配体系，用于维持配方与肤感的稳定。</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">03</span>
+        <span class="nm">保湿<em>HYDRATION</em></span>
+        <span class="ct">5 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">林兰汲润 · 桃之娇润 · 萌脂素 · 胶倍湿 · 燕麦β-葡聚糖 NP</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">不是糊住水，是让水愿意留下。从多糖到脂质，补的是屏障的「储水结构」。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">DendroMoist®</span>&nbsp;&nbsp;<span class="pcn">林兰汲润</span></div><span class="porg">石斛</span><p class="pdesc">石斛来源多糖，主打长效保湿与肤感。<span class="pflags"><i class="badge award">获奖</i><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Amber Peach® NP</span>&nbsp;&nbsp;<span class="pcn">桃之娇润</span></div><span class="porg">桃</span><p class="pdesc">桃来源保湿体系，来自平谷桃树基地。<span class="pflags"><i class="badge award">获奖</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Vernix-Care</span>&nbsp;&nbsp;<span class="pcn">萌脂素</span></div><span class="porg">复配体系</span><p class="pdesc">仿胎脂结构的脂质体系，用于屏障修护。<span class="pflags"><i class="badge award">获奖</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Dew Dew Moist®</span>&nbsp;&nbsp;<span class="pcn">胶倍湿</span></div><span class="porg">复配体系</span><p class="pdesc">多糖保湿体系，用于提升角质层含水量。<span class="pflags"><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Avena β-Glucan NP</span>&nbsp;&nbsp;<span class="pcn">燕麦β-葡聚糖 NP</span></div><span class="porg">燕麦</span><p class="pdesc">燕麦β-葡聚糖，保湿与舒缓兼顾。</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">04</span>
+        <span class="nm">美白 / 去角质<em>BRIGHTENING</em></span>
+        <span class="ct">4 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">水光瑧 · 六味臻妍 · AHAs 复合果酸 · 双雪透胭</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">先有光，才有白。除了抑制黑色素，还要把「光走过的路」修整齐。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">AuroArc®</span>&nbsp;&nbsp;<span class="pcn">水光瑧</span></div><span class="porg">牛蒡籽</span><p class="pdesc">光感亮白｜皮肤光通道｜视觉美感｜超分子技术专利背书。<span class="pflags"><i class="badge new">NEW</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Puri-Six®</span>&nbsp;&nbsp;<span class="pcn">六味臻妍</span></div><span class="porg">六味复方</span><p class="pdesc">六味植物复配，用于提亮与均匀肤色。<span class="pflags"><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">AHAs Regenaura</span>&nbsp;&nbsp;<span class="pcn">AHAs 复合果酸</span></div><span class="porg">果酸</span><p class="pdesc">复合果酸体系，用于角质更新与粗糙改善。</p></article>
+          <article class="p"><div class="pname"><span class="pen">Duflorwhite®</span>&nbsp;&nbsp;<span class="pcn">双雪透胭</span></div><span class="porg">复配体系</span><p class="pdesc">提亮类复配体系，用于暗沉与肤色不均。</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">05</span>
+        <span class="nm">控油 / 祛痘<em>OIL CONTROL</em></span>
+        <span class="ct">4 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">葛清妍 · 双菌露 · 丹参净妍 · 控油复合物</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">把油管住，不是把油抽干。控的是分泌节律，顺带把微生态拉回平衡。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">ACC-Pure®</span>&nbsp;&nbsp;<span class="pcn">葛清妍</span></div><span class="porg">葛根</span><p class="pdesc">葛根来源，用于控油与净肤。<span class="pflags"><i class="badge award">获奖</i><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Bio-Fornes</span>&nbsp;&nbsp;<span class="pcn">双菌露</span></div><span class="porg">发酵 · 双菌</span><p class="pdesc">双菌发酵产物，用于痘肌的微生态调理。<span class="pflags"><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Aknas Clear®</span>&nbsp;&nbsp;<span class="pcn">丹参净妍</span></div><span class="porg">丹参</span><p class="pdesc">丹参来源，用于油痘肌的舒缓与净肤。</p></article>
+          <article class="p"><div class="pname"><span class="pen">SebumBate</span>&nbsp;&nbsp;<span class="pcn">控油复合物</span></div><span class="porg">复配体系</span><p class="pdesc">控油复配体系，可用于面部与头皮。</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">06</span>
+        <span class="nm">头发 / 头皮护理<em>HAIR &amp; SCALP</em></span>
+        <span class="ct">3 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">柏丝密 · 控油复合物 · 薏仁肽 NP</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">头皮是土壤，头发是收成。先管好毛囊环境，再谈发丝。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">Hairdensyl®</span>&nbsp;&nbsp;<span class="pcn">柏丝密</span></div><span class="porg">侧柏</span><p class="pdesc">侧柏来源，用于头皮环境与发根护理。<span class="pflags"><i class="badge award">获奖</i><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">SebumBate</span>&nbsp;&nbsp;<span class="pcn">控油复合物</span></div><span class="porg">复配体系</span><p class="pdesc">控油复配体系，可用于面部与头皮。</p></article>
+          <article class="p"><div class="pname"><span class="pen">Yoyumin Peptide NP</span>&nbsp;&nbsp;<span class="pcn">薏仁肽 NP</span></div><span class="porg">薏苡</span><p class="pdesc">薏苡来源活性肽，用于头皮与发丝养护。</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">07</span>
+        <span class="nm">婴童护理<em>BABY CARE</em></span>
+        <span class="ct">3 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">萌脂素 · 双紫油 · 紫草油</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">少即是多，温和即有效。配方越短，对原料的要求越高。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">Vernix-Care</span>&nbsp;&nbsp;<span class="pcn">萌脂素</span></div><span class="porg">复配体系</span><p class="pdesc">仿胎脂结构，用于婴童与敏感肌的屏障护理。<span class="pflags"><i class="badge award">获奖</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Purple Duo</span>&nbsp;&nbsp;<span class="pcn">双紫油</span></div><span class="porg">紫苏 · 紫草</span><p class="pdesc">双紫复配油，用于婴童肌肤的舒缓。<span class="pflags"><i class="badge pat">专利</i></span></p></article>
+          <article class="p"><div class="pname"><span class="pen">Arnefix®</span>&nbsp;&nbsp;<span class="pcn">紫草油</span></div><span class="porg">紫草</span><p class="pdesc">紫草来源油相，用于泛红与干痒的护理。</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">08</span>
+        <span class="nm">促渗透<em>PENETRATION</em></span>
+        <span class="ct">1 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">植物促渗剂</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">让有效成分真的进去。不改变配方骨架，只改「到达率」。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">PromoSorb® G</span>&nbsp;&nbsp;<span class="pcn">植物促渗剂</span></div><span class="porg">植物来源</span><p class="pdesc">植物来源促渗剂，用于提升活性物的透皮到达率。</p></article>
+        </div>
+      </div>
+    </details>
+
+    <details class="idx">
+      <summary>
+        <span class="n">09</span>
+        <span class="nm">械字号<em>MEDICAL DEVICE</em></span>
+        <span class="ct">1 款</span>
+        <span class="tg">展开</span>
+        <span class="idx-preview">β-葡聚糖</span>
+      </summary>
+      <div class="idx-body">
+        <p class="hint">医用级的标准，妆用的体验。用于术后修护与屏障重建场景。</p>
+        <div class="plist">
+          <article class="p"><div class="pname"><span class="pen">BETA-GLUCAN</span>&nbsp;&nbsp;<span class="pcn">β-葡聚糖</span></div><span class="porg">发酵多糖</span><p class="pdesc">β-葡聚糖，用于械字号场景下的屏障修护。</p></article>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 02 按植物 -->
+<section class="by-plant" id="by-plant">
+  <div class="wrap">
+    <div class="blk-head">
+      <div>
+        <p class="kicker reveal">02 — 按植物 / BY PLANT</p>
+        <h2 class="reveal" style="--d:1">四十二种植物，<br>全部列出来。</h2>
+      </div>
+      <p class="note reveal" style="--d:2">每一种都标了「用到它的原料」。一款原料用到多种植物时，会在每一栏里都出现一次——重复没关系，看不到才是问题。</p>
+    </div>
+
+    <div class="plants">
+      <div class="pl"><div class="ph"><h3>苦参</h3><span class="lat">Sophora flavescens</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>燕麦</h3><span class="lat">Avena sativa</span><span class="cnt">3 款</span></div><p class="prods">燕麦活性肽 NP、燕麦紧肤蛋白 NP、燕麦β-葡聚糖 NP</p></div>
+      <div class="pl"><div class="ph"><h3>仙人掌</h3><span class="lat">Opuntia</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">CactyCalma®</span>&nbsp;&nbsp;仙之盾</p></div>
+      <div class="pl"><div class="ph"><h3>麦冬</h3><span class="lat">Ophiopogon japonicus</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>向日葵</h3><span class="lat">Helianthus annuus</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>红花</h3><span class="lat">Carthamus tinctorius</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>栀子花</h3><span class="lat">Gardenia jasminoides</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>菊花</h3><span class="lat">Chrysanthemum morifolium</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>梅花</h3><span class="lat">Prunus mume</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>紫草</h3><span class="lat">Arnebia euchroma</span><span class="cnt">2 款</span></div><p class="prods"><span class="pen">Arnefix®、Purple Duo</span>&nbsp;&nbsp;紫草油、双紫油</p></div>
+      <div class="pl"><div class="ph"><h3>紫苏</h3><span class="lat">Perilla frutescens</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">Purple Duo</span>&nbsp;&nbsp;双紫油</p></div>
+      <div class="pl"><div class="ph"><h3>桃树脂</h3><span class="lat">Prunus persica</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">Amber Peach® NP</span>&nbsp;&nbsp;桃之娇润</p></div>
+      <div class="pl"><div class="ph"><h3>马齿苋</h3><span class="lat">Portulaca oleracea</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>龙胆</h3><span class="lat">Gentiana scabra</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>旋覆花</h3><span class="lat">Inula japonica</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>紫芝</h3><span class="lat">Ganoderma lucidum</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">Ganoderm® OT</span>&nbsp;&nbsp;紫雪参养油 T</p></div>
+      <div class="pl"><div class="ph"><h3>人参</h3><span class="lat">Panax ginseng</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">Ganoderm® OT</span>&nbsp;&nbsp;紫雪参养油 T</p></div>
+      <div class="pl"><div class="ph"><h3>牡丹</h3><span class="lat">Paeonia suffruticosa</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>雪莲花</h3><span class="lat">Saussurea involucrata</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>松口蘑</h3><span class="lat">Tricholoma matsutake</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>当归</h3><span class="lat">Angelica sinensis</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>三七</h3><span class="lat">Panax notoginseng</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>黄芪</h3><span class="lat">Astragalus membranaceus</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">J-guard flowers Oil T</span>&nbsp;&nbsp;百花玉屏油</p></div>
+      <div class="pl"><div class="ph"><h3>女贞果</h3><span class="lat">Ligustrum lucidum</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>桂花</h3><span class="lat">Osmanthus fragrans</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>铁皮石斛</h3><span class="lat">Dendrobium officinale</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">DendroMoist®</span>&nbsp;&nbsp;林兰汲润</p></div>
+      <div class="pl"><div class="ph"><h3>绣球菌</h3><span class="lat">Sparassis crispa</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>银耳</h3><span class="lat">Tremella fuciformis</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>库拉索芦荟</h3><span class="lat">Aloe vera</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>薏苡</h3><span class="lat">Coix lacryma-jobi</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">Yoyumin Peptide NP</span>&nbsp;&nbsp;薏仁肽 NP</p></div>
+      <div class="pl"><div class="ph"><h3>芦苇</h3><span class="lat">Phragmites australis</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>甘草</h3><span class="lat">Glycyrrhiza uralensis</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>丹参</h3><span class="lat">Salvia miltiorrhiza</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">Aknas Clear®</span>&nbsp;&nbsp;丹参净妍</p></div>
+      <div class="pl"><div class="ph"><h3>山茱萸</h3><span class="lat">Cornus officinalis</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>枸杞</h3><span class="lat">Lycium barbarum</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>高山火绒草</h3><span class="lat">Leontopodium alpinum</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>葛根</h3><span class="lat">Pueraria lobata</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">ACC-Pure®</span>&nbsp;&nbsp;葛清妍</p></div>
+      <div class="pl"><div class="ph"><h3>丁香</h3><span class="lat">Syzygium aromaticum</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>黄芩</h3><span class="lat">Scutellaria baicalensis</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>积雪草</h3><span class="lat">Centella asiatica</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>金盏花</h3><span class="lat">Calendula officinalis</span></div><p class="none">原料整理中</p></div>
+      <div class="pl"><div class="ph"><h3>侧柏</h3><span class="lat">Platycladus orientalis</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">Hairdensyl®</span>&nbsp;&nbsp;柏丝密</p></div>
+      <div class="pl"><div class="ph"><h3>牛蒡</h3><span class="lat">Arctium lappa</span><span class="cnt">1 款</span></div><p class="prods"><span class="pen">AuroArc®</span>&nbsp;&nbsp;水光瑧</p></div>
+    </div>
+
+    <div class="legend">
+      <span>＊共 43 种：42 种来自官网植物索引，牛蒡为 2026 手册新增。</span>
+      <span>「原料整理中」＝ 有种植或研究基础，尚未对应到手册中的成品。</span>
+    </div>
+
+    <div class="multi">
+      <div class="ph"><h3>复配体系</h3><span class="lat">Multi-plant systems</span><span class="cnt">18 款</span></div>
+      <p class="why">用到多种植物、发酵或复方来源的原料，不按单一植物归类。</p>
+      <ul>
+        <li><span class="en">Sensysoothe®</span>&nbsp;&nbsp;舒逸丹</li>
+        <li><span class="en">FlexiGlu 992®</span>&nbsp;&nbsp;妙可修</li>
+        <li><span class="en">IrriSooths® II FN</span>&nbsp;&nbsp;肤欣佳 FN</li>
+        <li><span class="en">J-guard flowers Oil T</span>&nbsp;&nbsp;百花玉屏油</li>
+        <li><span class="en">Purple Duo</span>&nbsp;&nbsp;双紫油</li>
+        <li><span class="en">IrriBate®-SAA</span>&nbsp;&nbsp;抗表活</li>
+        <li><span class="en">Tik-ageline®</span>&nbsp;&nbsp;秒肤锦</li>
+        <li><span class="en">Royal Treat</span>&nbsp;&nbsp;御养欣妍</li>
+        <li><span class="en">Phytospectrum® OTS</span>&nbsp;&nbsp;益存油</li>
+        <li><span class="en">Vernix-Care</span>&nbsp;&nbsp;萌脂素</li>
+        <li><span class="en">Dew Dew Moist®</span>&nbsp;&nbsp;胶倍湿</li>
+        <li><span class="en">Puri-Six®</span>&nbsp;&nbsp;六味臻妍</li>
+        <li><span class="en">AHAs Regenaura</span>&nbsp;&nbsp;AHAs 复合果酸</li>
+        <li><span class="en">Duflorwhite®</span>&nbsp;&nbsp;双雪透胭</li>
+        <li><span class="en">Bio-Fornes</span>&nbsp;&nbsp;双菌露</li>
+        <li><span class="en">SebumBate</span>&nbsp;&nbsp;控油复合物</li>
+        <li><span class="en">PromoSorb® G</span>&nbsp;&nbsp;植物促渗剂</li>
+        <li><span class="en">BETA-GLUCAN</span>&nbsp;&nbsp;β-葡聚糖</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 底部入口 -->
+<section class="ing-foot">
+  <div class="wrap">
+    <div class="entries">
+      <a class="entry" href="cn-contact.html?path=rd">
+        <span class="ek">定制解决方案</span>
+        <h3>没有现成的？做一款。</h3>
+        <p>植物基源、分子区间、复配方案都能调。把目标功效、剂型与成本区间告诉我们，技术团队直接接。</p>
+        <span class="go">提交研发需求 ↗</span>
+      </a>
+      <a class="entry" href="cn-contact.html">
+        <span class="ek">技术资料</span>
+        <h3>TDS 与检测方法</h3>
+        <p>规格、INCI、配伍建议、检测方法与批次数据，按原料提供。需要我们发哪一份，说一声。</p>
+        <span class="go">联系我们索取 ↗</span>
+      </a>
+      <a class="entry" href="assets/ingredient-catalog-2026.pdf" download>
+        <span class="ek">原料手册</span>
+        <h3>《2026 原料手册》</h3>
+        <p>整本 52 页，含 9 大类 31 款原料的目录、机理、验证数据与配方建议。</p>
+        <span class="go">下载 PDF · 26 MB ↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="cn-home.html" aria-label="东方淼森">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">植物功效化妆品原料。<br>北京研发中心 · 平谷生产基地。</p>
+      </div>
+      <div>
+        <h5>原料</h5>
+        <ul>
+          <li><a href="cn-ingredients.html#by-benefit">敏感肌肤护理</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">抗皱 / 紧致</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">保湿</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">美白 / 去角质</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">控油 / 祛痘</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">头发 / 头皮护理</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">婴童护理</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">促渗透</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">械字号</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于东方淼森</h5>
+        <ul>
+          <li><a href="cn-about.html#company">我们的公司</a></li>
+          <li><a href="cn-about.html#company">我们的地点</a></li>
+          <li><a href="cn-about.html#company">我们的历史</a></li>
+          <li><a href="cn-capability.html#rd">我们的科研</a></li>
+          <li><a href="cn-about.html#bases">我们的种植基地</a></li>
+          <li><a href="cn-news.html">新闻中心</a></li>
+        </ul>
+        <h5>定制服务</h5>
+        <ul>
+          <li><a href="cn-contact.html?path=rd">PDRN</a></li>
+          <li><a href="cn-contact.html?path=rd">待补充</a></li>
+        </ul>
+        <h5>加入我们</h5>
+        <ul>
+          <li><a href="cn-contact.html">职位与团队</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>联系</h5>
+        <ul>
+          <li><a href="cn-contact.html">联系我们</a></li>
+          <li><a href="cn-contact.html?path=rd">研发需求</a></li>
+          <li><a href="cn-contact.html?path=sample">样品申请</a></li>
+          <li><a href="cn-contact.html?path=quote">报价申请</a></li>
+        </ul>
+        <h5>社交媒体</h5>
+        <div class="socials">
+          <a href="#" aria-label="公众号" title="公众号">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="视频号" title="视频号">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="小程序" title="小程序">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>太和康美集团</b>
+        <span>东方淼森是太和康美集团旗下企业</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">访问集团官网 ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">太和康美中医研究院</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>隐私政策　·　使用条款　·　京ICP备 xxxxxxxx 号　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rail = document.getElementById('railFill');
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true}); progress();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ mnav.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+  });
+
+  /* 同时只开一类；开着的时候其他类轻微模糊 */
+  var wrap = document.getElementById('by-benefit');
+  var idxs = Array.prototype.slice.call(document.querySelectorAll('.idx'));
+  function syncDim(){
+    var anyOpen = idxs.some(function(d){ return d.open; });
+    wrap.classList.toggle('dimmed', anyOpen);
+  }
+  idxs.forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if (d.open) idxs.forEach(function(o){ if (o !== d) o.open = false; });
+      syncDim();
+    });
+  });
+
+  /* ?cat=敏感肌肤护理 直达某一类 */
+  try {
+    var cat = new URLSearchParams(location.search).get('cat');
+    if (cat) {
+      var hit = null;
+      idxs.forEach(function(d){
+        var nm = d.querySelector('.nm');
+        if (nm && nm.textContent.trim().indexOf(cat) === 0) hit = d;
+      });
+      if (hit) {
+        hit.open = true;
+        syncDim();
+        setTimeout(function(){ hit.scrollIntoView({behavior:'smooth', block:'center'}); }, 150);
+      }
+    }
+  } catch (err) {}
+
+  /* ?plant=XX 直达某个植物 */
+  try {
+    var pl = new URLSearchParams(location.search).get('plant');
+    if (pl) {
+      var blocks = Array.prototype.slice.call(document.querySelectorAll('.pl'));
+      var hitP = null;
+      blocks.forEach(function(b){
+        var h = b.querySelector('h3');
+        if (h && h.textContent.trim() === pl) hitP = b;
+      });
+      if (hitP) {
+        hitP.classList.add('hl');
+        setTimeout(function(){ hitP.scrollIntoView({behavior:'smooth', block:'center'}); }, 150);
+      } else {
+        document.getElementById('by-plant').scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+  } catch (err) {}
+})();
+</script>
+</body>
+</html>

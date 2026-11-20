@@ -1,0 +1,28 @@
+name: 构建东方淼森官网
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: miusenphytech-static-site
+          path: dist/
+          if-no-files-found: error

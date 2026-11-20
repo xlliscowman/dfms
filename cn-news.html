@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>新闻与媒体 · 东方淼森 miusenphytech</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ================= 本页专属 ================= */
+.nav a{font-family:var(--ui);font-size:16.5px;font-weight:600;letter-spacing:.08em;padding:11px 15px;color:inherit;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--gold)}
+
+.mnav{display:none;position:fixed;inset:0;z-index:1250;background:var(--cream);padding:96px var(--pad) 40px;transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s;overflow:auto}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+.menu-open .burger i:nth-child(1){top:16px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:16px;transform:rotate(-45deg)}
+.mnav a{display:block;font-size:22px;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.mnav .m-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- 首屏 ---------- */
+.news-hero{padding:clamp(130px,18vh,190px) 0 clamp(40px,6vh,70px)}
+.news-hero h1{font-size:clamp(38px,6vw,84px);line-height:1.16;font-weight:400;letter-spacing:.02em;margin:20px 0 24px}
+.news-hero .lead{max-width:640px;font-size:15px;line-height:2.05;color:rgba(20,37,28,.66)}
+.news-hero .micro{margin-top:26px;font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:rgba(20,37,28,.42)}
+.news-hero .micro a{color:var(--moss);border-bottom:1px solid rgba(20,37,28,.25);padding-bottom:2px}
+
+/* ---------- 区块头 ---------- */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(30px,4vh,46px)}
+.sec-head h2{font-size:clamp(26px,3.4vw,44px);font-weight:500;letter-spacing:.02em;margin-top:12px}
+.sec-head .note{font-family:var(--ui);font-size:12.5px;letter-spacing:.05em;color:rgba(20,37,28,.42);line-height:1.9;max-width:320px;text-align:right}
+.sec-head .more{font-family:var(--ui);font-size:11px;letter-spacing:.1em;color:var(--moss);border-bottom:1px solid var(--line);padding-bottom:3px;white-space:nowrap}
+
+/* ---------- 近期新闻 ---------- */
+.latest{padding:0 0 clamp(70px,10vh,110px)}
+.feature{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(26px,4vw,58px);align-items:center;padding-bottom:clamp(34px,5vh,54px);border-bottom:1px solid var(--line)}
+.feature .cover{position:relative;aspect-ratio:16/10;overflow:hidden}
+.feature .cover .tag{position:absolute;left:16px;top:14px;z-index:2;font-family:var(--ui);font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.8)}
+.feature .date{font-family:var(--ui);font-size:12.5px;letter-spacing:.14em;color:var(--gold)}
+.feature h3{font-size:clamp(22px,2.4vw,32px);font-weight:500;line-height:1.55;margin:12px 0 12px;letter-spacing:.01em}
+.feature p{font-size:13.5px;line-height:2;color:rgba(20,37,28,.62);max-width:34em}
+.feature .go{display:inline-block;margin-top:20px;font-family:var(--ui);font-size:11px;letter-spacing:.12em;color:var(--moss);border-bottom:1px solid var(--line);padding-bottom:3px}
+
+.nrow{display:grid;grid-template-columns:112px 92px 1fr auto;gap:20px;align-items:center;padding:21px 4px;border-bottom:1px solid var(--line);transition:padding .35s var(--ease)}
+.nrow:hover{padding-left:14px}
+.nrow .d{font-family:var(--ui);font-size:12.5px;letter-spacing:.12em;color:rgba(20,37,28,.45)}
+.nrow .c{font-family:var(--ui);font-size:11.5px;letter-spacing:.16em;color:var(--gold)}
+.nrow h3{font-size:15.5px;font-weight:500;line-height:1.65;transition:color .3s}
+.nrow:hover h3{color:var(--moss)}
+.nrow .a{font-family:var(--ui);color:var(--moss);opacity:0;transform:translateX(-6px);transition:.35s var(--ease)}
+.nrow:hover .a{opacity:1;transform:none}
+.latest .foot-note{margin-top:26px;font-family:var(--ui);font-size:12px;letter-spacing:.05em;color:rgba(20,37,28,.35)}
+
+/* ---------- 年度新闻 ---------- */
+.annual{background:var(--cream2);padding:clamp(60px,9vh,100px) 0}
+.year{border-top:1px solid var(--ink)}
+.year summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:150px 1fr auto 132px;gap:20px;align-items:baseline;padding:28px 0;border-bottom:1px solid rgba(20,37,28,.16);transition:color .25s}
+.year summary::-webkit-details-marker{display:none}
+.year summary:hover{color:var(--moss)}
+.year .y{font-family:var(--ui);font-size:clamp(30px,3.4vw,44px);font-weight:400;letter-spacing:.02em;line-height:1}
+.year .lbl{font-size:15px;letter-spacing:.08em}
+.year .cnt{font-family:var(--ui);font-size:12.5px;letter-spacing:.14em;color:rgba(20,37,28,.45)}
+.year .tg{justify-self:end;font-family:var(--ui);font-size:12.5px;letter-spacing:.14em;color:var(--moss);display:flex;align-items:center;gap:10px}
+.year .tg::after{content:"+";font-size:17px;line-height:1;transition:transform .3s var(--ease)}
+.year[open] .tg::after{transform:rotate(45deg)}
+.year-body{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;padding:10px 0 30px;border-bottom:1px solid rgba(20,37,28,.16)}
+.yl{display:grid;grid-template-columns:74px 1fr;gap:14px;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(20,37,28,.1);transition:color .25s}
+.yl:last-child,.yl:nth-last-child(2){border-bottom:0}
+.yl span{font-family:var(--ui);font-size:12px;letter-spacing:.12em;color:var(--gold)}
+.yl:hover{color:var(--gold)}
+.year.soon{opacity:.4}
+.year.soon .yr{display:grid;grid-template-columns:150px 1fr auto;gap:20px;align-items:baseline;padding:28px 0}
+.year.soon .tg::after{content:"—"}
+
+/* ---------- 媒体下载中心 ---------- */
+.media{padding:clamp(60px,9vh,100px) 0;scroll-margin-top:86px}
+.events{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,22px)}
+.ev{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.ev:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(20,37,28,.09)}
+.ev .cover{position:relative;aspect-ratio:4/3;overflow:hidden}
+.ev .cover .tag{position:absolute;left:12px;bottom:10px;z-index:2;font-family:var(--ui);font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.82)}
+.ev .body{padding:16px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.ev h3{font-size:13.5px;font-weight:500;line-height:1.65}
+.ev .meta{font-family:var(--ui);font-size:11.5px;letter-spacing:.1em;color:rgba(20,37,28,.45)}
+.ev .dl{margin-top:auto;padding-top:14px;font-family:var(--ui);font-size:12.5px;letter-spacing:.08em;color:var(--moss);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line)}
+.ev .dl:hover{color:var(--gold)}
+
+.assets-head{margin-top:clamp(46px,7vh,72px);display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:20px;padding-top:clamp(34px,5vh,52px);border-top:1px solid var(--line)}
+.assets-head h3{font-size:18px;font-weight:500;letter-spacing:.04em}
+.assets-head p{font-family:var(--ui);font-size:12.5px;letter-spacing:.04em;color:rgba(20,37,28,.42)}
+.assets{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.5vw,18px)}
+.asset{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
+.asset .ap{height:112px;display:grid;place-items:center;padding:20px;background:var(--cream)}
+.asset .ap.dark{background:var(--ink)}
+.asset .ap img{max-height:100%;max-width:100%;height:auto}
+.asset .ab{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-top:1px solid var(--line)}
+.asset .ab b{font-family:var(--ui);font-size:11.5px;letter-spacing:.08em;font-weight:500;color:rgba(20,37,28,.7)}
+.asset .ab a{font-family:var(--ui);font-size:11.5px;letter-spacing:.08em;color:var(--gold)}
+.asset .ab a:hover{text-decoration:underline}
+.asset .ab span{font-family:var(--ui);font-size:11.5px;letter-spacing:.08em;color:rgba(20,37,28,.3)}
+.asset.muted .ap{background:var(--cream2);border-bottom:1px dashed rgba(20,37,28,.15)}
+.asset .ph{font-family:var(--ui);font-size:11px;letter-spacing:.14em;color:rgba(20,37,28,.28);text-align:center;line-height:2.1}
+.assets-note{margin-top:16px;font-family:var(--ui);font-size:12px;letter-spacing:.04em;color:rgba(20,37,28,.42);line-height:1.9}
+
+/* ---------- 媒体联络 ---------- */
+.press{background:var(--ink);color:var(--cream);padding:clamp(60px,9vh,96px) 0}
+.press-in{display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap}
+.press h2{font-size:clamp(24px,3vw,40px);font-weight:500;letter-spacing:.02em;margin:10px 0 8px}
+.press p{font-size:13px;line-height:1.95;color:rgba(243,239,230,.55);max-width:36em}
+.press .acts{display:flex;gap:12px;flex-wrap:wrap}
+.press .btn{border-color:rgba(243,239,230,.35);color:var(--cream)}
+.press .btn.solid{background:var(--gold);border-color:var(--gold);color:#fff}
+
+@media (max-width:900px){
+  .mnav{display:block}
+  .news-hero{padding-top:118px}
+  .feature{grid-template-columns:1fr}
+  .nrow{grid-template-columns:1fr auto;gap:8px;padding:18px 0}
+  .nrow .d{grid-column:1}
+  .nrow .c{display:none}
+  .nrow h3{grid-column:1/-1;font-size:14.5px}
+  .nrow .a{display:none}
+  .year summary{grid-template-columns:1fr auto;gap:8px}
+  .year .lbl,.year .cnt{display:none}
+  .year-body{grid-template-columns:1fr}
+  .events{grid-template-columns:1fr 1fr}
+  .assets{grid-template-columns:1fr 1fr}
+  .sec-head .note{text-align:left}
+}
+</style>
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head solid" id="head">
+  <a class="brand" href="cn-home.html" aria-label="miusenphytech 东方淼森">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="cn-home.html">主页</a>
+    <a href="cn-ingredients.html">原料</a>
+    <a href="cn-capability.html">能力</a>
+    <a href="cn-insights.html">洞察</a>
+    <a href="cn-about.html">关于</a>
+    <a href="cn-news.html" class="on">新闻</a>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-news.html" class="on">CN</a><span class="sep">/</span><a href="en-news.html">EN</a></span>
+    <a class="btn" href="cn-contact.html">索取样品</a>
+    <button class="burger" id="burger" aria-label="菜单" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="cn-home.html">主页</a>
+  <a href="cn-ingredients.html">原料</a>
+  <a href="cn-capability.html">能力</a>
+  <a href="cn-insights.html">洞察</a>
+  <a href="cn-about.html">关于</a>
+  <a href="cn-news.html">新闻</a>
+  <div class="m-cta">
+    <a class="btn solid" href="cn-contact.html">索取样品</a>
+    <a class="btn" href="cn-home.html">返回首页</a>
+  </div>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="news-hero">
+  <div class="wrap">
+    <p class="kicker">NEWS &amp; MEDIA</p>
+    <h1>新闻与媒体</h1>
+    <p class="lead">近期动态、年度归档，以及可以下载的活动影像。写稿、布展、做提案，素材都在这里。</p>
+    <p class="micro">媒体联络 <a href="mailto:DFMS@beaut-n-health.com">DFMS@beaut-n-health.com</a></p>
+  </div>
+</section>
+
+<!-- 01 近期新闻 -->
+<section class="latest">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker reveal">01 — 近期新闻</p>
+        <h2 class="reveal" style="--d:1;margin-top:12px">最近十条动态。</h2>
+      </div>
+      <a class="more" href="#">公众号原文 ↗</a>
+    </div>
+
+    <div class="feature reveal">
+      <a class="cover" href="#" aria-label="阅读：三奖加冕">
+        <div class="tex tex-powder"></div>
+        <span class="tag">素材位 · 颁奖现场</span>
+      </a>
+      <div>
+        <p class="date">2026.10.28　公司动态</p>
+        <h3>三奖加冕：AuroArc、CactyCalma 与柔性植物 PDRN 技术</h3>
+        <p>从 300 余款参赛原料中，两款原料摘得「年度好原料」，一项技术获「年度好技术」。三座奖杯说的是同一件事：一款原料被配方师看见，一项技术被产业看见。</p>
+        <a class="go" href="#">阅读全文 →</a>
+      </div>
+    </div>
+
+    <div class="nlist">
+      <a class="nrow" href="#"><span class="d">2026.11.12</span><span class="c">展会</span><h3>in-cosmetics Asia 2026 闭幕：三款原料进入东南亚配方体系</h3><span class="a">↗</span></a>
+      <a class="nrow" href="#"><span class="d">2026.09.16</span><span class="c">制造</span><h3>北京平谷生产基地完成新一轮产线升级</h3><span class="a">↗</span></a>
+      <a class="nrow" href="#"><span class="d">2026.08.05</span><span class="c">科研</span><h3>牛蒡籽研究发表：有序胶原纤维与皮下散射的关系</h3><span class="a">↗</span></a>
+      <a class="nrow" href="#"><span class="d">2026.07.22</span><span class="c">合作</span><h3>与中国中医科学院共建植物功效评价联合实验室</h3><span class="a">↗</span></a>
+      <a class="nrow" href="#"><span class="d">2026.06.18</span><span class="c">技术</span><h3>《柔性植物 PDRN 技术白皮书》发布，开放下载</h3><span class="a">↗</span></a>
+      <a class="nrow" href="#"><span class="d">2026.05.09</span><span class="c">公司</span><h3>太和康美集团中医研究院成立十二周年</h3><span class="a">↗</span></a>
+      <a class="nrow" href="#"><span class="d">2026.04.15</span><span class="c">行业</span><h3>当选中国香料香精化妆品工业协会理事单位</h3><span class="a">↗</span></a>
+      <a class="nrow" href="#"><span class="d">2026.03.20</span><span class="c">产品</span><h3>CactyCalma 仙之盾正式量产，首批交付完成</h3><span class="a">↗</span></a>
+      <a class="nrow" href="#"><span class="d">2026.02.26</span><span class="c">洞察</span><h3>《2026 中国功效护肤趋势报告》发布</h3><span class="a">↗</span></a>
+    </div>
+    <p class="foot-note">＊条目为示例，正式上线替换为公众号近 10 条推送</p>
+  </div>
+</section>
+
+<!-- 02 年度新闻 -->
+<section class="annual">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker reveal">02 — 年度新闻</p>
+        <h2 class="reveal" style="--d:1;margin-top:12px">一年一打包。</h2>
+      </div>
+      <p class="note">按年份归档，点开即展开。更早年度整理中。</p>
+    </div>
+
+    <details class="year reveal">
+      <summary>
+        <span class="y">2025</span>
+        <span class="lbl">年度新闻</span>
+        <span class="cnt">6 条</span>
+        <span class="tg">展开</span>
+      </summary>
+      <div class="year-body">
+        <a class="yl" href="#"><span>2025.12</span>年度技术盘点：植物 PDRN 的三条路径</a>
+        <a class="yl" href="#"><span>2025.11</span>参展 in-cosmetics Asia 2025（曼谷）</a>
+        <a class="yl" href="#"><span>2025.09</span>平谷基地二期投产，产能提升 40%</a>
+        <a class="yl" href="#"><span>2025.06</span>与江南大学达成植物提取联合研究</a>
+        <a class="yl" href="#"><span>2025.04</span>入选北京市「专精特新」中小企业</a>
+        <a class="yl" href="#"><span>2025.01</span>官网新版上线，原料库开放检索</a>
+      </div>
+    </details>
+
+    <div class="year soon">
+      <div class="yr">
+        <span class="y">2024</span>
+        <span class="lbl">年度新闻</span>
+        <span class="tg">整理中</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 媒体下载中心 -->
+<section class="media" id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="kicker reveal">03 — 媒体下载中心</p>
+        <h2 class="reveal" style="--d:1;margin-top:12px">活动影像，可下载。</h2>
+      </div>
+      <p class="note">全部素材可下载，注明来源即可使用。<br>每场活动精选不超过 5 张。</p>
+    </div>
+
+    <div class="events reveal">
+      <a class="ev" href="#">
+        <div class="cover"><div class="tex tex-powder"></div><span class="tag">照片 5 张</span></div>
+        <div class="body">
+          <h3>2026「了不起的中国原料」颁奖典礼</h3>
+          <p class="meta">杭州 · 2026.12</p>
+          <span class="dl">下载素材包 <span>ZIP ↗</span></span>
+        </div>
+      </a>
+      <a class="ev" href="#">
+        <div class="cover"><div class="tex tex-lab"></div><span class="tag">照片 4 张 · 视频 1 条</span></div>
+        <div class="body">
+          <h3>in-cosmetics Asia 2026</h3>
+          <p class="meta">曼谷 · 2026.11</p>
+          <span class="dl">下载素材包 <span>ZIP ↗</span></span>
+        </div>
+      </a>
+      <a class="ev" href="#">
+        <div class="cover"><div class="tex tex-factory"></div><span class="tag">照片 4 张</span></div>
+        <div class="body">
+          <h3>平谷生产基地开放日</h3>
+          <p class="meta">北京 · 2025.09</p>
+          <span class="dl">下载素材包 <span>ZIP ↗</span></span>
+        </div>
+      </a>
+      <a class="ev" href="#">
+        <div class="cover"><div class="tex tex-plant"></div><span class="tag">照片 5 张</span></div>
+        <div class="body">
+          <h3>中国化妆品开发者大会</h3>
+          <p class="meta">杭州 · 2025.12</p>
+          <span class="dl">下载素材包 <span>ZIP ↗</span></span>
+        </div>
+      </a>
+    </div>
+
+    
+  </div>
+</section>
+
+<!-- 媒体联络 -->
+<section class="press">
+  <div class="wrap press-in">
+    <div>
+      <p class="kicker mute">媒体联络</p>
+      <h2>还需要更多素材？</h2>
+      <p>完整的媒体资料包——活动高清图、展会视频、公司简介与数据——可以邮件索取，一个工作日内回复。</p>
+    </div>
+    <div class="acts">
+      <a class="btn solid" href="mailto:DFMS@beaut-n-health.com?subject=%E5%AA%92%E4%BD%93%E7%B4%A0%E6%9D%90%E7%94%B3%E8%AF%B7">发邮件索取</a>
+      <a class="btn" href="#media">先下载现有素材</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="cn-home.html" aria-label="东方淼森">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">植物功效化妆品原料。<br>北京研发中心 · 平谷生产基地。</p>
+      </div>
+      <div>
+        <h5>原料</h5>
+        <ul>
+          <li><a href="cn-home.html#index">敏感肌肤护理</a></li>
+          <li><a href="cn-home.html#index">抗皱 / 紧致</a></li>
+          <li><a href="cn-home.html#index">保湿</a></li>
+          <li><a href="cn-home.html#index">美白 / 去角质</a></li>
+          <li><a href="cn-home.html#index">控油 / 祛痘</a></li>
+          <li><a href="cn-home.html#index">头发 / 头皮护理</a></li>
+          <li><a href="cn-home.html#index">婴童护理</a></li>
+          <li><a href="cn-home.html#index">促渗透</a></li>
+          <li><a href="cn-home.html#index">械字号</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于东方淼森</h5>
+        <ul>
+          <li><a href="cn-about.html#company">我们的公司</a></li>
+          <li><a href="cn-about.html#company">我们的地点</a></li>
+          <li><a href="cn-about.html#company">我们的历史</a></li>
+          <li><a href="cn-capability.html#rd">我们的科研</a></li>
+          <li><a href="cn-about.html#bases">我们的种植基地</a></li>
+          <li><a href="cn-news.html">新闻中心</a></li>
+        </ul>
+        <h5>定制服务</h5>
+        <ul>
+          <li><a href="cn-contact.html">PDRN</a></li>
+          <li><a href="cn-contact.html">待补充</a></li>
+        </ul>
+        <h5>加入我们</h5>
+        <ul>
+          <li><a href="cn-contact.html">职位与团队</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>联系</h5>
+        <ul>
+          <li><a href="cn-contact.html">联系我们</a></li>
+          <li><a href="cn-contact.html?path=rd">研发需求</a></li>
+          <li><a href="cn-contact.html?path=sample">样品申请</a></li>
+          <li><a href="cn-contact.html?path=quote">报价申请</a></li>
+        </ul>
+        <h5>社交媒体</h5>
+        <div class="socials">
+          <a href="#" aria-label="公众号" title="公众号">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="视频号" title="视频号">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="小程序" title="小程序">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>太和康美集团</b>
+        <span>东方淼森是太和康美集团旗下企业</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">访问集团官网 ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">太和康美中医研究院</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>隐私政策　·　使用条款　·　京ICP备 xxxxxxxx 号　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rail = document.getElementById('railFill');
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true}); progress();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ mnav.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
+</body>
+</html>

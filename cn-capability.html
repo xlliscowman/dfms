@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>能力 · 东方淼森 miusenphytech</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ================= 本页专属 ================= */
+.nav a{font-family:var(--ui);font-size:16.5px;font-weight:600;letter-spacing:.08em;padding:11px 15px;color:inherit;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--gold)}
+
+.mnav{display:none;position:fixed;inset:0;z-index:1250;background:var(--cream);padding:96px var(--pad) 40px;transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s;overflow:auto}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+.menu-open .burger i:nth-child(1){top:16px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:16px;transform:rotate(-45deg)}
+.mnav a{display:block;font-size:22px;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.mnav .m-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- 首屏 ---------- */
+.cap-hero{padding:clamp(130px,18vh,190px) 0 clamp(30px,4vh,50px)}
+.cap-hero h1{font-size:clamp(34px,5.4vw,74px);line-height:1.2;font-weight:400;letter-spacing:.02em;margin:20px 0 22px}
+.cap-hero .lead{max-width:720px;font-size:15px;line-height:2.05;color:rgba(20,37,28,.66)}
+.cap-hero .lead b{font-weight:500;color:var(--ink)}
+
+/* 九字带 */
+.nine{display:grid;grid-template-columns:repeat(9,1fr);margin-top:clamp(34px,5vh,54px);border-top:1px solid var(--ink)}
+.nine div{padding:16px 0 14px;border-right:1px solid var(--line);text-align:center}
+.nine div:last-child{border-right:0}
+.nine b{display:block;font-size:clamp(22px,2.6vw,32px);font-weight:500;letter-spacing:.1em;color:rgba(20,37,28,.32);line-height:1.2}
+.nine span{display:block;margin-top:8px;font-family:var(--ui);font-size:10px;letter-spacing:.06em;color:rgba(20,37,28,.3);line-height:1.6}
+.nine .ours b{color:var(--ink)}
+.nine .ours span{color:var(--gold)}
+
+/* ---------- 段落 ---------- */
+.stage{padding:clamp(56px,8vh,92px) 0}
+.stage-head{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(26px,4vw,64px);align-items:end;margin-bottom:clamp(32px,4.6vh,50px)}
+.stage-head h2{font-size:clamp(26px,3.5vw,44px);font-weight:500;line-height:1.34;letter-spacing:.02em;margin-top:12px}
+.stage-head p{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.62);max-width:34em}
+
+/* 研发平台 */
+.centers{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(24px,3.4vw,44px)}
+.cen{border-top:1px solid rgba(20,37,28,.2);padding:16px 0 20px}
+.cen .cn{font-family:var(--ui);font-size:10px;letter-spacing:.14em;color:var(--gold)}
+.cen h3{font-size:16.5px;font-weight:500;margin:7px 0 6px;letter-spacing:.03em;line-height:1.5}
+.cen .en{font-family:var(--ui);font-size:9.5px;letter-spacing:.04em;color:rgba(20,37,28,.38);line-height:1.7}
+.cen p{font-size:12px;line-height:1.85;color:rgba(20,37,28,.55);margin-top:8px}
+
+.platforms{display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(20px,2.6vw,36px);margin-top:clamp(34px,5vh,52px);padding-top:22px;border-top:1px solid var(--ink)}
+.pf h4{font-size:14.5px;font-weight:500;letter-spacing:.03em;line-height:1.5}
+.pf .pe{font-family:var(--ui);font-size:9px;letter-spacing:.05em;color:rgba(20,37,28,.4);line-height:1.7;margin-top:5px}
+.pf p{font-size:11.5px;line-height:1.8;color:rgba(20,37,28,.52);margin-top:8px}
+
+.books{margin-top:clamp(34px,5vh,52px);border-top:1px solid var(--line);padding-top:22px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.books h4{font-size:15px;font-weight:500;letter-spacing:.03em}
+.books p{font-size:12.5px;line-height:1.95;color:rgba(20,37,28,.55);margin-top:8px;max-width:40em}
+.books .bks{display:flex;gap:10px}
+.books .bk{width:74px;height:104px;border:1px solid rgba(20,37,28,.2);display:flex;align-items:center;justify-content:center;
+  font-size:11px;letter-spacing:.14em;color:rgba(20,37,28,.5);writing-mode:vertical-rl;background:rgba(255,255,255,.4)}
+
+/* 制造（深色） */
+.make{background:var(--ink);color:var(--cream);padding:clamp(60px,9vh,100px) 0}
+.make .stage-head h2{color:var(--cream)}
+.make .stage-head p{color:rgba(243,239,230,.55)}
+.mk-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:22px;border-top:1px solid rgba(243,239,230,.2);margin-bottom:clamp(34px,5vh,52px)}
+.mk-nums b{display:inline;font-family:var(--ui);font-size:clamp(30px,4vw,52px);font-weight:400;line-height:1.05;letter-spacing:.01em}
+.mk-nums i,.mk-nums b i{font-style:normal;font-size:.42em;color:var(--gold);vertical-align:baseline}
+.mk-nums span{display:block;margin-top:8px;font-family:var(--ui);font-size:10px;letter-spacing:.1em;color:rgba(243,239,230,.45);line-height:1.6}
+.mk-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,44px)}
+.mk-two article{border-top:1px solid rgba(243,239,230,.2);padding-top:16px}
+.mk-two h3{font-size:17px;font-weight:500;letter-spacing:.04em;margin-bottom:6px}
+.mk-two .en{font-family:var(--ui);font-size:9.5px;letter-spacing:.08em;color:var(--gold);margin-bottom:10px;display:block}
+.mk-two p{font-size:12.5px;line-height:1.95;color:rgba(243,239,230,.55)}
+.certs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:clamp(30px,4vh,44px);padding-top:24px;border-top:1px solid rgba(243,239,230,.18)}
+.cert{border:1px dashed rgba(243,239,230,.22);padding:12px;min-height:92px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;transition:border-color .3s}
+.cert:hover{border-color:rgba(201,187,166,.5)}
+.cert b{font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:rgba(243,239,230,.72);font-weight:500;line-height:1.5}
+.cert span{font-family:var(--ui);font-size:9px;letter-spacing:.08em;color:rgba(243,239,230,.32)}
+.certs-note{margin-top:14px;font-family:var(--ui);font-size:10px;letter-spacing:.04em;color:rgba(243,239,230,.35)}
+
+/* 验证 */
+.verify{background:var(--cream2);padding:clamp(60px,9vh,100px) 0}
+.layers{display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(18px,2.4vw,32px);margin-bottom:clamp(34px,5vh,50px)}
+.layer{border-top:1px solid rgba(20,37,28,.2);padding-top:16px}
+.layer .ln{font-family:var(--ui);font-size:10px;letter-spacing:.16em;color:var(--gold)}
+.layer h3{font-size:16px;font-weight:500;margin:8px 0 7px;letter-spacing:.04em}
+.layer p{font-size:12px;line-height:1.85;color:rgba(20,37,28,.58)}
+
+.partners{display:flex;gap:clamp(20px,3vw,40px);flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--ink)}
+.partners div{font-size:12px;line-height:1.8;color:rgba(20,37,28,.6);max-width:22em}
+.partners b{display:block;font-weight:500;color:var(--ink);font-size:13px;margin-bottom:3px}
+
+/* 收尾 */
+.cap-cta{background:var(--ink);color:var(--cream);padding:clamp(56px,8vh,90px) 0}
+.cap-cta .in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.cap-cta h2{font-size:clamp(24px,3vw,40px);font-weight:500;letter-spacing:.02em;margin:10px 0 8px}
+.cap-cta p{font-size:13px;line-height:1.95;color:rgba(243,239,230,.55);max-width:38em}
+.cap-cta .acts{display:flex;gap:12px;flex-wrap:wrap}
+.cap-cta .btn{border-color:rgba(243,239,230,.35);color:var(--cream)}
+.cap-cta .btn.solid{background:var(--gold);border-color:var(--gold);color:#fff}
+
+@media (max-width:900px){
+  .mnav{display:block}
+  .cap-hero{padding-top:118px}
+  .nine{grid-template-columns:repeat(3,1fr)}
+  .nine div:nth-child(3n){border-right:0}
+  .nine div:nth-child(n+4){border-top:1px solid var(--line)}
+  .stage-head,.centers,.platforms,.mk-nums,.mk-two,.layers{grid-template-columns:1fr}
+  .centers,.platforms,.layers{gap:0}
+  .cen,.pf,.layer{border-top:1px solid rgba(20,37,28,.16);padding:18px 0 0;margin-top:18px}
+  .cen:first-child,.pf:first-child,.layer:first-child{border-top:0;margin-top:0;padding-top:0}
+  .books{grid-template-columns:1fr}
+  .certs{grid-template-columns:1fr 1fr}
+  .mk-two article{margin-top:20px}
+  .cap-hero h1{font-size:clamp(30px,8vw,46px)}
+}
+</style>
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head solid" id="head">
+  <a class="brand" href="cn-home.html" aria-label="miusenphytech 东方淼森">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="cn-home.html">主页</a>
+    <a href="cn-ingredients.html">原料</a>
+    <a href="cn-capability.html" class="on">能力</a>
+    <a href="cn-insights.html">洞察</a>
+    <a href="cn-about.html">关于</a>
+    <a href="cn-news.html">新闻</a>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-capability.html" class="on">CN</a><span class="sep">/</span><a href="en-capability.html">EN</a></span>
+    <a class="btn" href="cn-contact.html">索取样品</a>
+    <button class="burger" id="burger" aria-label="菜单" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="cn-home.html">主页</a>
+  <a href="cn-ingredients.html">原料</a>
+  <a href="cn-capability.html">能力</a>
+  <a href="cn-insights.html">洞察</a>
+  <a href="cn-about.html">关于</a>
+  <a href="cn-news.html">新闻</a>
+  <div class="m-cta">
+    <a class="btn solid" href="cn-contact.html">索取样品</a>
+    <a class="btn" href="cn-home.html">返回首页</a>
+  </div>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="cap-hero">
+  <div class="wrap">
+    <p class="kicker">CAPABILITY</p>
+    <h1>一款原料，<br>要走完九个字。</h1>
+    <p class="lead">症、理、法、方、药、艺、效、证、用——这是太和康美做植物原料的研发体系，从一个皮肤问题开始，一路走到产品上市。东方淼森负责中间的<b>「药」与「艺」</b>：找到分子，再把它做成每一批都一样的原料。</p>
+
+    <div class="nine">
+      <div><b>症</b><span>皮肤问题</span></div>
+      <div><b>理</b><span>皮肤本态</span></div>
+      <div><b>法</b><span>养生路径</span></div>
+      <div><b>方</b><span>组方方案</span></div>
+      <div class="ours"><b>药</b><span>植物与成分</span></div>
+      <div class="ours"><b>艺</b><span>提取与制剂</span></div>
+      <div class="ours"><b>效</b><span>安全与功效</span></div>
+      <div><b>证</b><span>配方验证</span></div>
+      <div><b>用</b><span>临床与转化</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 药 -->
+<section class="stage" id="rd">
+  <div class="wrap">
+    <div class="stage-head">
+      <div>
+        <p class="kicker reveal">01 — 药 / 找到分子</p>
+        <h2 class="reveal" style="--d:1">六个研发中心，<br>一间院士工作站。</h2>
+      </div>
+      <p class="reveal" style="--d:2">东方淼森的研发不是一间实验室，而是一套分工明确的平台：有人负责找植物，有人负责研究消费者，有人负责把实验室的工艺放大到产线。</p>
+    </div>
+
+    <div class="centers reveal">
+      <div class="cen">
+        <span class="cn">01</span>
+        <h3>植物活性物研发中心</h3>
+        <span class="en">Plant Actives R&amp;D Center</span>
+        <p>从中国特色植物资源里筛选活性物，确定目标成分与作用靶点。</p>
+      </div>
+      <div class="cen">
+        <span class="cn">02</span>
+        <h3>消费者研究中心</h3>
+        <span class="en">Consumer Research Center</span>
+        <p>研究皮肤表观与皮肤生理之间的关系——看得见的问题，底层是什么。</p>
+      </div>
+      <div class="cen">
+        <span class="cn">03</span>
+        <h3>战略发展研究中心</h3>
+        <span class="en">Strategic Development Research Center</span>
+        <p>看趋势、看品类、看竞品，决定未来三年做什么原料。</p>
+      </div>
+      <div class="cen">
+        <span class="cn">04</span>
+        <h3>中试研究与制造中心</h3>
+        <span class="en">Pilot Research and Manufacturing Center</span>
+        <p>把实验室工艺放大成可量产参数，解决“实验室能做、产线做不稳”的问题。</p>
+      </div>
+      <div class="cen">
+        <span class="cn">05</span>
+        <h3>安全与功效评价中心</h3>
+        <span class="en">Safety and Efficacy Evaluation Research Center</span>
+        <p>安全性、功效性、机理三层评价，数据和报告从这里出。</p>
+      </div>
+      <div class="cen">
+        <span class="cn">06</span>
+        <h3>中国特色植物资源化妆品研究中心</h3>
+        <span class="en">Chinese Plant Resource Cosmetics Research Center</span>
+        <p>把典籍里的用法翻译成现代配方语言。</p>
+      </div>
+    </div>
+
+    <div class="platforms reveal">
+      <div class="pf">
+        <h4>院士工作站</h4>
+        <span class="pe">Academician Workstation</span>
+        <p>肖培根院士工作站，为植物资源的选育与评价提供学术支持。</p>
+      </div>
+      <div class="pf">
+        <h4>博士后工作站</h4>
+        <span class="pe">Postdoctoral Workstation</span>
+        <p>与北京中医药大学共建，做中医理论与皮肤科学交叉的课题。</p>
+      </div>
+      <div class="pf">
+        <h4>协同创新中心</h4>
+        <span class="pe">Collaborative Innovation Center</span>
+        <p>与北京工商大学共建中国化妆品协同创新中心。</p>
+      </div>
+      <div class="pf">
+        <h4>体外科学研究院</h4>
+        <span class="pe">Institute for In Vitro Sciences</span>
+        <p>与美国 IIVS 合作，引入国际通行的体外安全与功效方法。</p>
+      </div>
+    </div>
+
+    <div class="books reveal">
+      <div>
+        <h4>把「皮肤养生」写成可以教的理论</h4>
+        <p>《皮肤本态》《皮肤表观生理学》——由团队编著出版，系统梳理中国人皮肤特征与表观生理的关系。这两本书，是研发中心判断“什么值得做”的底层依据。</p>
+      </div>
+      <div class="bks">
+        <span class="bk">皮肤本态</span>
+        <span class="bk">皮肤表观生理学</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 艺 -->
+<section class="make" id="make">
+  <div class="wrap">
+    <div class="stage-head">
+      <div>
+        <p class="kicker mute reveal">02 — 艺 / 造出来</p>
+        <h2 class="reveal" style="--d:1">8,494 平方米，<br>原料和成品在一处。</h2>
+      </div>
+      <p class="reveal" style="--d:2">平谷基地里，东方淼森的原料产线与集团的成品产线在同一个园区。打样、放大、量产不用换地方，这是“从实验室到货架”最短的一条路。</p>
+    </div>
+
+    <div class="mk-nums reveal">
+      <div><b>8,494.06</b>&nbsp;&nbsp;<i>㎡</i><span>两大基地合计 · 北京平谷</span></div>
+      <div><b>2</b><span>大生产基地 · 原料 ＋ 成品</span></div>
+      <div><b>27</b>&nbsp;&nbsp;<i>M USD</i><span>年产值</span></div>
+    </div>
+
+    <div class="mk-two">
+      <article class="reveal">
+        <h3>东方淼森原料生产基地</h3>
+        <span class="en">Nutri-Woods Plant Actives</span>
+        <p>提取、分离、纯化与制剂在这里完成。中试与量产共用同一套参数逻辑，批次之间的差异被压缩到最小。</p>
+      </article>
+      <article class="reveal" style="--d:1">
+        <h3>植然天成成品生产基地</h3>
+        <span class="en">Botaview ODM / OBM</span>
+        <p>集团的成品制造板块。原料做完可以直接进入配方与灌装，缩短从打样到上市的周期。</p>
+      </article>
+    </div>
+    <div class="certs reveal">
+      <div class="cert"><b>质量管理体系</b><span>待补</span></div>
+      <div class="cert"><b>环境管理体系</b><span>待补</span></div>
+      <div class="cert"><b>生产许可</b><span>待补</span></div>
+      <div class="cert"><b>有机认证</b><span>待补</span></div>
+      <div class="cert"><b>高新技术企业</b><span>待补</span></div>
+      <div class="cert"><b>其它资质</b><span>待补</span></div>
+    </div>
+    <p class="certs-note">资质证书整理中，上线前替换为实际扫描件与证书编号。</p>
+
+  </div>
+</section>
+
+<!-- 03 效 -->
+<section class="verify" id="eff">
+  <div class="wrap">
+    <div class="stage-head">
+      <div>
+        <p class="kicker reveal">03 — 效 / 证明它</p>
+        <h2 class="reveal" style="--d:1">从细胞到人，<br>四层证据。</h2>
+      </div>
+      <p class="reveal" style="--d:2">一层回答一个问题。配方师要的不是形容词，是可复核的方法、数据和样本量。</p>
+    </div>
+
+    <div class="layers">
+      <div class="layer reveal">
+        <span class="ln">层 01</span>
+        <h3>生化与细胞</h3>
+        <p>酶活、细胞模型，先确认活性存在。</p>
+      </div>
+      <div class="layer reveal" style="--d:1">
+        <span class="ln">层 02</span>
+        <h3>组织与 3D 皮肤</h3>
+        <p>渗透、屏障与结构变化，在近似人体皮肤上观察。</p>
+      </div>
+      <div class="layer reveal" style="--d:2">
+        <span class="ln">层 03</span>
+        <h3>人体功效</h3>
+        <p>仪器测量加受试者自评，周期与样本量都写清楚。</p>
+      </div>
+      <div class="layer reveal" style="--d:3">
+        <span class="ln">层 04</span>
+        <h3>临床</h3>
+        <p>医美场景与医生评估，验证极端条件下的表现。</p>
+      </div>
+    </div>
+
+    <div class="partners reveal">
+      <div><b>三立慧评 EviSkin</b>集团功效评价平台，承担人体与临床评价。</div>
+      <div><b>IIVS</b>美国体外科学研究院，体外方法学合作。</div>
+      <div><b>北京工商大学</b>中国化妆品协同创新中心。</div>
+      <div><b>北京中医药大学</b>博士后工作站，中医理论支持。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 收尾 -->
+<section class="cap-cta">
+  <div class="wrap in">
+    <div>
+      <p class="kicker mute">下一步</p>
+      <h2>想看看这套流程怎么跑？</h2>
+      <p>北京研发中心与平谷生产基地接受预约到访。带上你的配方问题来，比看十页资料快。</p>
+    </div>
+    <div class="acts">
+      <a class="btn solid" href="cn-contact.html">预约参观</a>
+      <a class="btn" href="assets/ingredient-catalog-2026.pdf" download>下载原料手册</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="cn-home.html" aria-label="东方淼森">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">植物功效化妆品原料。<br>北京研发中心 · 平谷生产基地。</p>
+      </div>
+      <div>
+        <h5>原料</h5>
+        <ul>
+          <li><a href="cn-ingredients.html#by-benefit">敏感肌肤护理</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">抗皱 / 紧致</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">保湿</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">美白 / 去角质</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">控油 / 祛痘</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">头发 / 头皮护理</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">婴童护理</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">促渗透</a></li>
+          <li><a href="cn-ingredients.html#by-benefit">械字号</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于东方淼森</h5>
+        <ul>
+          <li><a href="cn-about.html#company">我们的公司</a></li>
+          <li><a href="cn-about.html#company">我们的地点</a></li>
+          <li><a href="cn-about.html#company">我们的历史</a></li>
+          <li><a href="cn-capability.html#rd">我们的科研</a></li>
+          <li><a href="cn-about.html#bases">我们的种植基地</a></li>
+          <li><a href="cn-news.html">新闻中心</a></li>
+        </ul>
+        <h5>定制服务</h5>
+        <ul>
+          <li><a href="cn-contact.html?path=rd">PDRN</a></li>
+          <li><a href="cn-contact.html?path=rd">待补充</a></li>
+        </ul>
+        <h5>加入我们</h5>
+        <ul>
+          <li><a href="cn-contact.html">职位与团队</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>联系</h5>
+        <ul>
+          <li><a href="cn-contact.html">联系我们</a></li>
+          <li><a href="cn-contact.html?path=rd">研发需求</a></li>
+          <li><a href="cn-contact.html?path=sample">样品申请</a></li>
+          <li><a href="cn-contact.html?path=quote">报价申请</a></li>
+        </ul>
+        <h5>社交媒体</h5>
+        <div class="socials">
+          <a href="#" aria-label="公众号" title="公众号">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="视频号" title="视频号">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="小程序" title="小程序">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>太和康美集团</b>
+        <span>东方淼森是太和康美集团旗下企业</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">访问集团官网 ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">太和康美中医研究院</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>隐私政策　·　使用条款　·　京ICP备 xxxxxxxx 号　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rail = document.getElementById('railFill');
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true}); progress();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ mnav.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+  });
+})();
+</script>
+</body>
+</html>

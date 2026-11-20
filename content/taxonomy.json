@@ -1,0 +1,478 @@
+{
+  "categories": [
+    {
+      "id": "sensitive-skin",
+      "nameZh": "敏感肌肤护理",
+      "nameEn": "Sensitive skin",
+      "label": "SENSITIVE SKIN",
+      "descriptionZh": "先把火降下来，再谈修。用于泛红、刺痛、术后与耐受性差的肌肤。",
+      "descriptionEn": "Calm the flare first. For redness, stinging, post-procedure and reactive skin.",
+      "productOrder": [
+        "sensysoothe",
+        "flexiglu-992",
+        "cactycalma",
+        "irrisooths-ii-fn",
+        "j-guard-flowers-oil-t",
+        "purple-duo",
+        "irribate-saa"
+      ]
+    },
+    {
+      "id": "firming",
+      "nameZh": "抗皱 / 紧致",
+      "nameEn": "Firming / anti-wrinkle",
+      "label": "FIRMING",
+      "descriptionZh": "让纤维重新排好队。从 ECM 的「量」到「序」，做的是结构，不只是填充。",
+      "descriptionEn": "Let the fibres line up again. From ECM quantity to ECM order — structure, not filler.",
+      "aliasesZh": [
+        "抗皱"
+      ],
+      "aliasesEn": [
+        "Firming"
+      ],
+      "productOrder": [
+        "tik-ageline",
+        "flexiglu-992",
+        "ganoderm-ot",
+        "royal-treat",
+        "avena-extract-np",
+        "oat-glair-taut-np",
+        "phytospectrum-ots"
+      ]
+    },
+    {
+      "id": "hydration",
+      "nameZh": "保湿",
+      "nameEn": "Hydration",
+      "label": "HYDRATION",
+      "descriptionZh": "不是糊住水，是让水愿意留下。从多糖到脂质，补的是屏障的「储水结构」。",
+      "descriptionEn": "Not trapping water — making water want to stay. From polysaccharides to lipids, we rebuild the barrier’s water-holding structure.",
+      "productOrder": [
+        "dendromoist",
+        "amber-peach-np",
+        "vernix-care",
+        "dew-dew-moist",
+        "avena-beta-glucan-np"
+      ]
+    },
+    {
+      "id": "brightening",
+      "nameZh": "美白 / 去角质",
+      "nameEn": "Brightening / exfoliation",
+      "label": "BRIGHTENING",
+      "descriptionZh": "先有光，才有白。除了抑制黑色素，还要把「光走过的路」修整齐。",
+      "descriptionEn": "Light first, whiteness after. Beyond blocking melanin, we tidy the path light travels.",
+      "aliasesZh": [
+        "美白"
+      ],
+      "aliasesEn": [
+        "Brightening"
+      ],
+      "productOrder": [
+        "auroarc",
+        "puri-six",
+        "ahas-regenaura",
+        "duflorwhite"
+      ]
+    },
+    {
+      "id": "oil-control",
+      "nameZh": "控油 / 祛痘",
+      "nameEn": "Oil control / acne",
+      "label": "OIL CONTROL",
+      "descriptionZh": "把油管住，不是把油抽干。控的是分泌节律，顺带把微生态拉回平衡。",
+      "descriptionEn": "Regulate oil; don’t drain it. We work on the rhythm of sebum, and bring the microbiome back to balance.",
+      "aliasesZh": [
+        "控油"
+      ],
+      "aliasesEn": [
+        "Oil control"
+      ],
+      "productOrder": [
+        "acc-pure",
+        "bio-fornes",
+        "aknas-clear",
+        "sebumbate"
+      ]
+    },
+    {
+      "id": "hair-scalp",
+      "nameZh": "头发 / 头皮护理",
+      "nameEn": "Hair & scalp",
+      "label": "HAIR & SCALP",
+      "descriptionZh": "头皮是土壤，头发是收成。先管好毛囊环境，再谈发丝。",
+      "descriptionEn": "The scalp is soil, hair is the harvest. Fix the follicle environment before the strand.",
+      "aliasesZh": [
+        "头发"
+      ],
+      "productOrder": [
+        "hairdensyl",
+        "sebumbate",
+        "yoyumin-peptide-np"
+      ]
+    },
+    {
+      "id": "baby-care",
+      "nameZh": "婴童护理",
+      "nameEn": "Baby care",
+      "label": "BABY CARE",
+      "descriptionZh": "少即是多，温和即有效。配方越短，对原料的要求越高。",
+      "descriptionEn": "Less is more; gentle is effective. The shorter the formula, the higher the bar for each ingredient.",
+      "aliasesZh": [
+        "婴童"
+      ],
+      "productOrder": [
+        "vernix-care",
+        "purple-duo",
+        "arnefix"
+      ]
+    },
+    {
+      "id": "penetration",
+      "nameZh": "促渗透",
+      "nameEn": "Penetration",
+      "label": "PENETRATION",
+      "descriptionZh": "让有效成分真的进去。不改变配方骨架，只改「到达率」。",
+      "descriptionEn": "Make the active actually get in. We change the delivery rate, not the formula skeleton.",
+      "productOrder": [
+        "promosorb-g"
+      ]
+    },
+    {
+      "id": "medical-device",
+      "nameZh": "械字号",
+      "nameEn": "Device-grade",
+      "label": "MEDICAL DEVICE",
+      "descriptionZh": "医用级的标准，妆用的体验。用于术后修护与屏障重建场景。",
+      "descriptionEn": "Medical-grade standard, cosmetic-grade feel. For post-procedure repair and barrier rebuilding.",
+      "productOrder": [
+        "beta-glucan"
+      ]
+    }
+  ],
+  "plants": [
+    {
+      "id": "sophora-flavescens",
+      "nameZh": "苦参",
+      "nameEn": "Sophora root",
+      "latin": "Sophora flavescens"
+    },
+    {
+      "id": "avena-sativa",
+      "nameZh": "燕麦",
+      "nameEn": "Oat",
+      "latin": "Avena sativa",
+      "productOrder": [
+        "avena-extract-np",
+        "oat-glair-taut-np",
+        "avena-beta-glucan-np"
+      ]
+    },
+    {
+      "id": "opuntia",
+      "nameZh": "仙人掌",
+      "nameEn": "Cactus",
+      "latin": "Opuntia",
+      "productOrder": [
+        "cactycalma"
+      ]
+    },
+    {
+      "id": "ophiopogon-japonicus",
+      "nameZh": "麦冬",
+      "nameEn": "Ophiopogon",
+      "latin": "Ophiopogon japonicus"
+    },
+    {
+      "id": "helianthus-annuus",
+      "nameZh": "向日葵",
+      "nameEn": "Sunflower",
+      "latin": "Helianthus annuus"
+    },
+    {
+      "id": "carthamus-tinctorius",
+      "nameZh": "红花",
+      "nameEn": "Safflower",
+      "latin": "Carthamus tinctorius"
+    },
+    {
+      "id": "gardenia-jasminoides",
+      "nameZh": "栀子花",
+      "nameEn": "Gardenia",
+      "latin": "Gardenia jasminoides"
+    },
+    {
+      "id": "chrysanthemum-morifolium",
+      "nameZh": "菊花",
+      "nameEn": "Chrysanthemum",
+      "latin": "Chrysanthemum morifolium"
+    },
+    {
+      "id": "prunus-mume",
+      "nameZh": "梅花",
+      "nameEn": "Plum blossom",
+      "latin": "Prunus mume"
+    },
+    {
+      "id": "arnebia-euchroma",
+      "nameZh": "紫草",
+      "nameEn": "Arnebia",
+      "latin": "Arnebia euchroma",
+      "productOrder": [
+        "arnefix",
+        "purple-duo"
+      ]
+    },
+    {
+      "id": "perilla-frutescens",
+      "nameZh": "紫苏",
+      "nameEn": "Perilla",
+      "latin": "Perilla frutescens",
+      "productOrder": [
+        "purple-duo"
+      ]
+    },
+    {
+      "id": "prunus-persica",
+      "nameZh": "桃树脂",
+      "nameEn": "Peach resin",
+      "latin": "Prunus persica",
+      "productOrder": [
+        "amber-peach-np"
+      ]
+    },
+    {
+      "id": "portulaca-oleracea",
+      "nameZh": "马齿苋",
+      "nameEn": "Purslane",
+      "latin": "Portulaca oleracea"
+    },
+    {
+      "id": "gentiana-scabra",
+      "nameZh": "龙胆",
+      "nameEn": "Gentian",
+      "latin": "Gentiana scabra"
+    },
+    {
+      "id": "inula-japonica",
+      "nameZh": "旋覆花",
+      "nameEn": "Inula",
+      "latin": "Inula japonica"
+    },
+    {
+      "id": "ganoderma-lucidum",
+      "nameZh": "紫芝",
+      "nameEn": "Reishi",
+      "latin": "Ganoderma lucidum",
+      "productOrder": [
+        "ganoderm-ot"
+      ]
+    },
+    {
+      "id": "panax-ginseng",
+      "nameZh": "人参",
+      "nameEn": "Ginseng",
+      "latin": "Panax ginseng",
+      "productOrder": [
+        "ganoderm-ot"
+      ]
+    },
+    {
+      "id": "paeonia-suffruticosa",
+      "nameZh": "牡丹",
+      "nameEn": "Peony",
+      "latin": "Paeonia suffruticosa"
+    },
+    {
+      "id": "saussurea-involucrata",
+      "nameZh": "雪莲花",
+      "nameEn": "Snow lotus",
+      "latin": "Saussurea involucrata"
+    },
+    {
+      "id": "tricholoma-matsutake",
+      "nameZh": "松口蘑",
+      "nameEn": "Matsutake",
+      "latin": "Tricholoma matsutake"
+    },
+    {
+      "id": "angelica-sinensis",
+      "nameZh": "当归",
+      "nameEn": "Angelica",
+      "latin": "Angelica sinensis"
+    },
+    {
+      "id": "panax-notoginseng",
+      "nameZh": "三七",
+      "nameEn": "Notoginseng",
+      "latin": "Panax notoginseng"
+    },
+    {
+      "id": "astragalus-membranaceus",
+      "nameZh": "黄芪",
+      "nameEn": "Astragalus",
+      "latin": "Astragalus membranaceus",
+      "productOrder": [
+        "j-guard-flowers-oil-t"
+      ]
+    },
+    {
+      "id": "ligustrum-lucidum",
+      "nameZh": "女贞果",
+      "nameEn": "Ligustrum",
+      "latin": "Ligustrum lucidum"
+    },
+    {
+      "id": "osmanthus-fragrans",
+      "nameZh": "桂花",
+      "nameEn": "Osmanthus",
+      "latin": "Osmanthus fragrans"
+    },
+    {
+      "id": "dendrobium-officinale",
+      "nameZh": "铁皮石斛",
+      "nameEn": "Dendrobium",
+      "latin": "Dendrobium officinale",
+      "productOrder": [
+        "dendromoist"
+      ]
+    },
+    {
+      "id": "sparassis-crispa",
+      "nameZh": "绣球菌",
+      "nameEn": "Cauliflower mushroom",
+      "latin": "Sparassis crispa"
+    },
+    {
+      "id": "tremella-fuciformis",
+      "nameZh": "银耳",
+      "nameEn": "Tremella",
+      "latin": "Tremella fuciformis"
+    },
+    {
+      "id": "aloe-vera",
+      "nameZh": "库拉索芦荟",
+      "nameEn": "Aloe vera",
+      "latin": "Aloe vera"
+    },
+    {
+      "id": "coix-lacryma-jobi",
+      "nameZh": "薏苡",
+      "nameEn": "Coix seed",
+      "latin": "Coix lacryma-jobi",
+      "productOrder": [
+        "yoyumin-peptide-np"
+      ]
+    },
+    {
+      "id": "phragmites-australis",
+      "nameZh": "芦苇",
+      "nameEn": "Reed",
+      "latin": "Phragmites australis"
+    },
+    {
+      "id": "glycyrrhiza-uralensis",
+      "nameZh": "甘草",
+      "nameEn": "Licorice",
+      "latin": "Glycyrrhiza uralensis"
+    },
+    {
+      "id": "salvia-miltiorrhiza",
+      "nameZh": "丹参",
+      "nameEn": "Salvia",
+      "latin": "Salvia miltiorrhiza",
+      "productOrder": [
+        "aknas-clear"
+      ]
+    },
+    {
+      "id": "cornus-officinalis",
+      "nameZh": "山茱萸",
+      "nameEn": "Cornus",
+      "latin": "Cornus officinalis"
+    },
+    {
+      "id": "lycium-barbarum",
+      "nameZh": "枸杞",
+      "nameEn": "Goji",
+      "latin": "Lycium barbarum"
+    },
+    {
+      "id": "leontopodium-alpinum",
+      "nameZh": "高山火绒草",
+      "nameEn": "Edelweiss",
+      "latin": "Leontopodium alpinum"
+    },
+    {
+      "id": "pueraria-lobata",
+      "nameZh": "葛根",
+      "nameEn": "Kudzu",
+      "latin": "Pueraria lobata",
+      "productOrder": [
+        "acc-pure"
+      ]
+    },
+    {
+      "id": "syzygium-aromaticum",
+      "nameZh": "丁香",
+      "nameEn": "Clove",
+      "latin": "Syzygium aromaticum"
+    },
+    {
+      "id": "scutellaria-baicalensis",
+      "nameZh": "黄芩",
+      "nameEn": "Scutellaria",
+      "latin": "Scutellaria baicalensis"
+    },
+    {
+      "id": "centella-asiatica",
+      "nameZh": "积雪草",
+      "nameEn": "Centella",
+      "latin": "Centella asiatica"
+    },
+    {
+      "id": "calendula-officinalis",
+      "nameZh": "金盏花",
+      "nameEn": "Calendula",
+      "latin": "Calendula officinalis"
+    },
+    {
+      "id": "platycladus-orientalis",
+      "nameZh": "侧柏",
+      "nameEn": "Arborvitae",
+      "latin": "Platycladus orientalis",
+      "productOrder": [
+        "hairdensyl"
+      ]
+    },
+    {
+      "id": "arctium-lappa",
+      "nameZh": "牛蒡",
+      "nameEn": "Burdock",
+      "latin": "Arctium lappa",
+      "productOrder": [
+        "auroarc"
+      ]
+    }
+  ],
+  "blendOrder": [
+    "sensysoothe",
+    "flexiglu-992",
+    "irrisooths-ii-fn",
+    "j-guard-flowers-oil-t",
+    "purple-duo",
+    "irribate-saa",
+    "tik-ageline",
+    "royal-treat",
+    "phytospectrum-ots",
+    "vernix-care",
+    "dew-dew-moist",
+    "puri-six",
+    "ahas-regenaura",
+    "duflorwhite",
+    "bio-fornes",
+    "sebumbate",
+    "promosorb-g",
+    "beta-glucan"
+  ]
+}

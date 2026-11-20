@@ -1,0 +1,147 @@
+/* ============================================================
+   English edition — typographic & spacing layer
+   Sits after site.css. Retunes the CJK-native rhythm for Latin
+   text: shorter leading, wider measure, quieter labels, looser
+   sections. Nothing here changes structure, only proportion.
+   ============================================================ */
+
+:root{
+  --en-measure: 62ch;
+  --en-lead: 44ch;
+}
+
+/* ---------- base ---------- */
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{
+  font-size:15.5px;
+  line-height:1.66;
+  letter-spacing:-.003em;
+  font-feature-settings:"kern" 1,"liga" 1,"calt" 1;
+}
+p{margin:0;line-height:1.66;max-width:var(--en-measure)}
+p + p{margin-top:.9em}
+
+/* ---------- headings ---------- */
+h1,h2,h3,h4,h5{letter-spacing:-.014em;font-feature-settings:"kern" 1,"liga" 1}
+h1{line-height:1.04;text-wrap:balance}
+h2{line-height:1.14;text-wrap:balance}
+h3{line-height:1.3}
+h4,h5{line-height:1.35}
+h1 em,h2 em{font-style:normal}
+
+/* ---------- eyebrow labels ---------- */
+.kicker{
+  font-size:10.5px;
+  letter-spacing:.16em;
+  font-weight:500;
+  text-transform:none;
+  opacity:.72;
+}
+
+/* ---------- wide, calm hero copy ---------- */
+.hero p,.hero .sub,
+.ing-hero .lead,.cap-hero .lead,
+.about-hero .lead,.news-hero .lead,
+.contact-hero .lead,.ins-hero .lead{
+  font-size:17px;
+  line-height:1.62;
+  letter-spacing:-.005em;
+  max-width:var(--en-lead);
+}
+
+/* ---------- section intros sit in a narrower column ---------- */
+.blk-head .note,.stage-head > p,.blk-head > p{
+  font-size:14.5px;
+  line-height:1.66;
+  max-width:46ch;
+}
+.stage-head{gap:clamp(36px,5.5vw,88px)}
+.blk-head{gap:clamp(32px,5vw,80px)}
+
+/* ---------- more air around sections ---------- */
+section{scroll-margin-top:96px}
+
+/* ---------- ingredients ---------- */
+.ing-hero h1{line-height:1.02}
+.fork a b{letter-spacing:-.01em}
+.idx .nm{letter-spacing:-.01em;line-height:1.22}
+.idx .nm em{letter-spacing:.1em;font-size:9.5px;opacity:.8}
+.idx-preview{letter-spacing:0;line-height:1.7}
+.p{padding:18px 0}
+.p .pen{letter-spacing:.02em}
+.p .pcn{letter-spacing:0;font-size:15px}
+.p .pdesc{font-size:13px;line-height:1.62;max-width:58ch}
+.pl h3{letter-spacing:0;font-size:15px}
+.pl .lat{letter-spacing:0;font-size:10px}
+.pl .prods{font-size:12px;line-height:1.72;letter-spacing:0}
+.pl .none{letter-spacing:.02em;font-size:10.5px}
+.multi li{font-size:12px;letter-spacing:0}
+.multi li .en{font-size:9.5px}
+.entries h3{letter-spacing:-.01em;line-height:1.3}
+.entries p{font-size:13px;line-height:1.62}
+.legend{font-size:10px;letter-spacing:.02em}
+
+/* ---------- capability ---------- */
+.cap-hero h1{line-height:1.02}
+.nine b{font-size:clamp(11px,1.15vw,15px)!important;letter-spacing:.01em!important;font-weight:500}
+.nine span{font-size:9.5px;letter-spacing:.02em;line-height:1.5}
+.cen h3{font-size:15.5px;letter-spacing:-.01em;line-height:1.3}
+.cen .en,.pf .pe{letter-spacing:.02em;font-size:9.5px}
+.cen p,.pf p{font-size:12.5px;line-height:1.6}
+.pf h4{letter-spacing:-.01em}
+.books h4{letter-spacing:-.01em}
+.books p{font-size:13px;line-height:1.65;max-width:52ch}
+.mk-nums b{letter-spacing:-.02em}
+.mk-two h3{letter-spacing:-.01em;line-height:1.3}
+.mk-two p{font-size:13px;line-height:1.65}
+.cert b{letter-spacing:.01em}
+.layer h3{letter-spacing:-.01em}
+.layer p{font-size:12.5px;line-height:1.6}
+.partners div{font-size:12.5px;line-height:1.65}
+
+/* ---------- index (home) ---------- */
+.hero h1{letter-spacing:-.025em}
+.manifesto h2{letter-spacing:-.02em;line-height:1.08}
+.card h3{letter-spacing:-.012em;line-height:1.25}
+.card p{font-size:13px;line-height:1.62}
+.panel h3,.panel .nm{letter-spacing:-.012em}
+.num-item b{letter-spacing:-.02em}
+.journey p,.factory p{font-size:13.5px;line-height:1.65}
+
+/* ---------- insights / about / news / contact ---------- */
+.featured h2,.pillar h3,.lib h3{letter-spacing:-.012em}
+.plate h3,.gate h3{letter-spacing:-.012em}
+.list h3,.media h3{letter-spacing:-.012em}
+.door h3,.direct h3,.faq summary{letter-spacing:-.008em}
+
+
+/* ---------- headline measure: width decides the break ---------- */
+.hero h1,
+.ing-hero h1,
+.cap-hero h1,
+.about-hero h1,
+.news-hero h1,
+.contact-hero h1,
+.ins-hero h1{max-width:13em}
+
+.stage-head h2,
+.blk-head h2{max-width:15em}
+
+/* merged hero line still reveals cleanly */
+.hero h1 .line-mask > span{white-space:normal}
+
+/* ---------- footer ---------- */
+.foot h5{letter-spacing:.12em;font-size:10.5px}
+.foot-note{line-height:1.6}
+
+/* ---------- keep CJK-only bits out of English layout ---------- */
+.p .pcn:empty{display:none}
+
+@media (max-width:900px){
+  body{font-size:15px}
+  h1{line-height:1.08}
+  .hero p,.hero .sub,
+  .ing-hero .lead,.cap-hero .lead,
+  .about-hero .lead,.news-hero .lead,
+  .contact-hero .lead,.ins-hero .lead{font-size:16px}
+}

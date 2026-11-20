@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>miusenphytech 东方淼森 · 官网概念原型 v1.0</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head" id="head">
+  <a class="brand" href="#top" aria-label="miusenphytech 东方淼森">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <button data-menu="m-ing" aria-expanded="false">原料</button>
+    <button data-menu="m-cap" aria-expanded="false">能力</button>
+    <button data-menu="m-ins" aria-expanded="false">洞察</button>
+    <button data-menu="m-abo" aria-expanded="false">关于</button>
+    <button data-menu="m-new" aria-expanded="false">新闻</button>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-home.html" class="on">CN</a><span class="sep">/</span><a href="en-home.html">EN</a></span>
+    <a class="btn" href="cn-contact.html">索取样品</a>
+    <button class="burger" id="burger" aria-label="菜单"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="dim" id="dim"></div>
+
+<!-- ================= 下拉层 ================= -->
+<div class="mega" id="mega">
+<div class="mega-in">
+
+  <!-- 原料 -->
+  <section class="mega-panel" data-panel="m-ing">
+    <div class="grid g4">
+      <div>
+        <h6>按功效</h6>
+        <ul>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E6%95%8F%E6%84%9F%E8%82%8C%E8%82%A4%E6%8A%A4%E7%90%86">敏感肌肤护理</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E6%8A%97%E7%9A%B1">抗皱 / 紧致</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E4%BF%9D%E6%B9%BF">保湿</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E7%BE%8E%E7%99%BD">美白 / 去角质</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E6%8E%A7%E6%B2%B9">控油 / 祛痘</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E5%A4%B4%E5%8F%91">头发 / 头皮护理</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E5%A9%B4%E7%AB%A5">婴童护理</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E4%BF%83%E6%B8%97%E9%80%8F">促渗透</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?cat=%E6%A2%B0%E5%AD%97%E5%8F%B7">械字号</a></li>
+        </ul>
+        <a class="mlink all" href="cn-ingredients.html">全部功效 →</a>
+      </div>
+      <div>
+        <h6>按植物</h6>
+        <ul class="plants three">
+          <li><a class="mlink" href="cn-ingredients.html?plant=苦参">苦参</a></li><li><a class="mlink" href="cn-ingredients.html?plant=燕麦">燕麦</a></li><li><a class="mlink" href="cn-ingredients.html?plant=仙人掌">仙人掌</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=麦冬">麦冬</a></li><li><a class="mlink" href="cn-ingredients.html?plant=向日葵">向日葵</a></li><li><a class="mlink" href="cn-ingredients.html?plant=红花">红花</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=栀子花">栀子花</a></li><li><a class="mlink" href="cn-ingredients.html?plant=菊花">菊花</a></li><li><a class="mlink" href="cn-ingredients.html?plant=梅花">梅花</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=紫草">紫草</a></li><li><a class="mlink" href="cn-ingredients.html?plant=紫苏">紫苏</a></li><li><a class="mlink" href="cn-ingredients.html?plant=桃树脂">桃树脂</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=马齿苋">马齿苋</a></li><li><a class="mlink" href="cn-ingredients.html?plant=龙胆">龙胆</a></li><li><a class="mlink" href="cn-ingredients.html?plant=旋覆花">旋覆花</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=紫芝">紫芝</a></li><li><a class="mlink" href="cn-ingredients.html?plant=人参">人参</a></li><li><a class="mlink" href="cn-ingredients.html?plant=牡丹">牡丹</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=雪莲花">雪莲花</a></li><li><a class="mlink" href="cn-ingredients.html?plant=松口蘑">松口蘑</a></li><li><a class="mlink" href="cn-ingredients.html?plant=当归">当归</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=三七">三七</a></li><li><a class="mlink" href="cn-ingredients.html?plant=黄芪">黄芪</a></li><li><a class="mlink" href="cn-ingredients.html?plant=女贞果">女贞果</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=桂花">桂花</a></li><li><a class="mlink" href="cn-ingredients.html?plant=铁皮石斛">铁皮石斛</a></li><li><a class="mlink" href="cn-ingredients.html?plant=绣球菌">绣球菌</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=银耳">银耳</a></li><li><a class="mlink" href="cn-ingredients.html?plant=库拉索芦荟">库拉索芦荟</a></li><li><a class="mlink" href="cn-ingredients.html?plant=薏苡">薏苡</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=芦苇">芦苇</a></li><li><a class="mlink" href="cn-ingredients.html?plant=甘草">甘草</a></li><li><a class="mlink" href="cn-ingredients.html?plant=丹参">丹参</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=山茱萸">山茱萸</a></li><li><a class="mlink" href="cn-ingredients.html?plant=枸杞">枸杞</a></li><li><a class="mlink" href="cn-ingredients.html?plant=高山火绒草">高山火绒草</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=葛根">葛根</a></li><li><a class="mlink" href="cn-ingredients.html?plant=丁香">丁香</a></li><li><a class="mlink" href="cn-ingredients.html?plant=黄芩">黄芩</a></li>
+          <li><a class="mlink" href="cn-ingredients.html?plant=积雪草">积雪草</a></li><li><a class="mlink" href="cn-ingredients.html?plant=金盏花">金盏花</a></li><li><a class="mlink" href="cn-ingredients.html?plant=侧柏">侧柏</a></li>
+        </ul>
+        <a class="mlink all" href="cn-ingredients.html">全部植物 →</a>
+      </div>
+      <div>
+        <h6>定制解决方案</h6>
+        <a class="mlink" href="#">PDRN</a>
+        <a class="mlink" href="#">待补充</a>
+        <a class="mlink" href="#">待补充</a>
+        <h6 style="margin-top:24px">资料下载</h6>
+        <a class="mlink" href="#">技术资料 TDS</a>
+        <a class="mlink" href="#">产品手册</a>
+        <a class="mega-title" href="cn-contact.html" style="margin-top:24px">联系我们</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 能力 -->
+  <section class="mega-panel" data-panel="m-cap">
+    <div class="grid g3">
+      <div>
+        <h6>研发</h6>
+        <a class="mlink" href="cn-capability.html#rd">中医理论依据</a>
+        <a class="mlink" href="cn-capability.html#rd">专家</a>
+        <a class="mlink" href="cn-capability.html#rd">专利与文献</a>
+      </div>
+      <div>
+        <h6>质控</h6>
+        <a class="mlink" href="cn-capability.html#qc">工厂产线</a>
+        <a class="mlink" href="cn-capability.html#qc">质量控制体系</a>
+        <a class="mlink" href="cn-capability.html#qc">认证与资质</a>
+      </div>
+      <div>
+        <h6>功效验证</h6>
+        <a class="mlink" href="cn-capability.html#eff">体外 / 3D 皮肤 / 人体 / 临床</a>
+        <a class="mlink" href="cn-capability.html#eff">验证数据</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 洞察 -->
+  <section class="mega-panel" data-panel="m-ins">
+    <div class="grid" style="grid-template-columns:1fr 1fr 1fr 1.2fr">
+      <div><h6>功效趋势</h6><a class="mlink" href="cn-insights.html#p1">肌肤长寿与 ECM</a><a class="mlink" href="cn-insights.html#p1">敏感肌的下一步</a><a class="mlink" href="cn-insights.html#p1">头皮抗衰</a><a class="mlink all" href="cn-insights.html#p1">全部 →</a></div>
+      <div><h6>植物科学</h6><a class="mlink" href="cn-insights.html#p2">东方植物的活性物</a><a class="mlink" href="cn-insights.html#p2">PDRN 的植物源路径</a><a class="mlink" href="cn-insights.html#p2">提取工艺与活性留存</a><a class="mlink all" href="cn-insights.html#p2">全部 →</a></div>
+      <div><h6>法规动态</h6><a class="mlink" href="cn-insights.html#p3">化妆品新原料备案</a><a class="mlink" href="cn-insights.html#p3">械字号与妆字号</a><a class="mlink" href="cn-insights.html#p3">功效宣称合规</a><a class="mlink all" href="cn-insights.html#p3">全部 →</a></div>
+      <div><h6>资料下载</h6><a class="mlink" href="cn-insights.html#lib">技术白皮书</a><a class="mlink" href="cn-insights.html#lib">趋势报告</a><a class="mlink" href="cn-insights.html#lib">展会资料</a></div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section class="mega-panel" data-panel="m-abo">
+    <div class="grid g3">
+      <div>
+        <h6>东方淼森</h6>
+        <a class="mlink" href="cn-about.html#company">我们的公司</a>
+        <a class="mlink" href="cn-about.html#company">我们的地点</a>
+        <a class="mlink" href="cn-about.html#company">我们的历史</a>
+        <a class="mlink" href="cn-about.html#company">我们的科研</a>
+        <a class="mlink" href="cn-about.html#company">我们的领导层 <span style="opacity:.45">（待定）</span></a>
+      </div>
+      <div>
+        <h6>太和康美集团</h6>
+        <a class="mlink" href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--gold);margin-top:8px">访问集团官网 ↗</a>
+      </div>
+      <div>
+        <h6>种植基地</h6>
+        <a class="mlink" href="cn-about.html#bases">基地区域分布图 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新闻 -->
+  <section class="mega-panel" data-panel="m-new">
+    <div class="grid g3">
+      <div>
+        <h6>新闻</h6>
+        <a class="mlink" href="cn-news.html">近期新闻 · TOP 10</a>
+        <a class="mlink" href="#">2026「了不起的中国原料」三奖加冕</a>
+        <a class="mlink" href="#">in-cosmetics Asia 2026</a>
+        <a class="mlink all" href="#">全部新闻 →</a>
+      </div>
+      <div>
+        <h6>年度新闻</h6>
+        <a class="mlink" href="cn-news.html">2026 年度</a>
+        <a class="mlink" href="cn-news.html">2025 年度</a>
+        <a class="mlink" href="cn-news.html">2024 年度</a>
+      </div>
+      <div>
+        <h6>媒体下载中心</h6>
+        <a class="mlink" href="cn-news.html#media">活动照片</a>
+        <a class="mlink" href="cn-news.html#media">会议与展会视频</a>
+        <a class="mlink" href="cn-news.html#media">品牌素材包</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  
+
+</div>
+</div>
+
+<main id="top">
+
+<!-- S1 首屏 -->
+<section class="hero" id="hero">
+  <div class="hero-media" id="heroMedia"><div class="tex tex-plant"></div></div>
+  <div class="hero-veil"></div>
+  <div class="hero-inner">
+    <p class="kicker mute">BOTANICAL ACTIVES　·　植物功效化妆品原料</p>
+    <h1>
+      <span class="line-mask"><span>从一株植物，</span></span>
+      <span class="line-mask"><span>到一滴有效的原料</span></span>
+    </h1>
+    <p class="hero-en">From plant to proof.</p>
+    <div class="hero-foot">
+      <div class="hero-cta">
+        <a class="btn solid" href="cn-ingredients.html">浏览原料</a>
+        <a class="btn" href="cn-about.html" style="border-color:rgba(243,239,230,.4)">了解东方淼森</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>SCROLL</span><i></i></div>
+</section>
+
+<!-- S2 明星原料 -->
+<section class="signature">
+  <div class="wrap">
+    <div class="sig-head">
+      <div>
+        <p class="kicker reveal">01 — 明星原料 / SIGNATURE ACTIVES</p>
+        <h2 class="reveal" style="--d:1;margin-top:14px">三个能被记住的名字。</h2>
+      </div>
+      <a class="more" href="cn-ingredients.html" style="font-family:var(--ui);font-size:11.5px;letter-spacing:.12em;color:var(--moss);border-bottom:1px solid var(--line);padding-bottom:4px">全部原料 →</a>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="thumb tex tex-powder"><span style="position:absolute;left:16px;bottom:14px;font-family:var(--ui);font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.65)">素材位 · 粉体 / 料体</span></div>
+        <div class="body">
+          <h3><span class="ce">AuroArc®</span>&nbsp;&nbsp;水光瑧</h3>
+          <p>不是把水糊在脸上，是让皮肤自己透光。</p>
+          <div class="metric"><b>38</b><span>% 皮下散射提升 · 4 周</span></div>
+        </div>
+      </article>
+      <article class="card reveal" style="--d:1">
+        <div class="thumb tex tex-plant"><span style="position:absolute;left:16px;bottom:14px;font-family:var(--ui);font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.65)">素材位 · 仙人掌 / 微距</span></div>
+        <div class="body">
+          <h3><span class="ce">CactyCalma®</span>&nbsp;&nbsp;仙之盾</h3>
+          <p>来自仙人掌的自护力：先安抚，再修护，最后把屏障垒厚。</p>
+          <div class="metric"><b>42</b><span>% 泛红降低 · 14 天</span></div>
+        </div>
+      </article>
+      <article class="card reveal" style="--d:2">
+        <div class="thumb tex tex-lab"><span style="position:absolute;left:16px;bottom:14px;font-family:var(--ui);font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.65)">素材位 · 实验室 / 分子</span></div>
+        <div class="body">
+          <h3><span class="ce">FlexiGlu 992®</span>&nbsp;&nbsp;妙可修</h3>
+          <p>植物 EGF 与 ECM 有序重构，把“修护”做成可测量的秩序。</p>
+          <div class="metric"><b>2.1</b><span>× 再上皮化速度</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- S3 宣言 -->
+<section class="manifesto">
+  <div class="wrap">
+    <p class="kicker reveal">做有思想的植物功效原料</p>
+    <h2>
+      <span class="line-mask"><span>找到它。</span></span>
+      <span class="line-mask"><span>验证它。</span></span>
+      <span class="line-mask"><span>把它变成配方师<em>能直接用</em>的原料。</span></span>
+    </h2>
+    <div class="mani-foot">
+      <p class="mani-note reveal" style="--d:1">
+        东方淼森是一家专注于化妆品植物功效原料创研的国家高新技术企业。东方淼森旨在以中医理论为指导，以皮肤养生学和皮肤表观生理学为基础，充分利用现代科技，结合消费者需求和化妆品属性，研发“有思想的植物功效原料”，为化妆品企业提供品质原料及定制化服务，以创新驱动引领行业发展。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- S4 九类索引 -->
+<section class="index" id="index">
+  <div class="wrap">
+    <div class="index-head">
+      <div>
+        <p class="kicker mute reveal">02 — 原料 / INGREDIENTS</p>
+        <h2 class="reveal" style="--d:1;margin-top:12px">九种功效，一条来路。</h2>
+      </div>
+      <a class="more" href="cn-ingredients.html">查看全部原料 →</a>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0">
+    <div class="panels">
+      <a class="panel" href="cn-ingredients.html?cat=%E6%95%8F%E6%84%9F%E8%82%8C%E8%82%A4%E6%8A%A4%E7%90%86" style="--h:150"><span class="num">01</span><span class="cn">敏感肌肤护理</span><span class="en">SENSITIVE SKIN</span><span class="desc">先把火降下来，再谈修。<span class="go">进入类目 →</span></span></a>
+      <a class="panel" href="cn-ingredients.html?cat=%E6%8A%97%E7%9A%B1%20/%20%E7%B4%A7%E8%87%B4" style="--h:28"><span class="num">02</span><span class="cn">抗皱 / 紧致</span><span class="en">FIRMING</span><span class="desc">让纤维重新排好队。<span class="go">进入类目 →</span></span></a>
+      <a class="panel" href="cn-ingredients.html?cat=%E4%BF%9D%E6%B9%BF" style="--h:165"><span class="num">03</span><span class="cn">保湿</span><span class="en">HYDRATION</span><span class="desc">不是糊住水，是让水愿意留下。<span class="go">进入类目 →</span></span></a>
+      <a class="panel" href="cn-ingredients.html?cat=%E7%BE%8E%E7%99%BD%20/%20%E5%8E%BB%E8%A7%92%E8%B4%A8" style="--h:52"><span class="num">04</span><span class="cn">美白 / 去角质</span><span class="en">BRIGHTENING</span><span class="desc">先有光，才有白。<span class="go">进入类目 →</span></span></a>
+      <a class="panel" href="cn-ingredients.html?cat=%E6%8E%A7%E6%B2%B9%20/%20%E7%A5%9B%E7%97%98" style="--h:195"><span class="num">05</span><span class="cn">控油 / 祛痘</span><span class="en">OIL CONTROL</span><span class="desc">把油管住，不是把油抽干。<span class="go">进入类目 →</span></span></a>
+      <a class="panel" href="cn-ingredients.html?cat=%E5%A4%B4%E5%8F%91%20/%20%E5%A4%B4%E7%9A%AE%E6%8A%A4%E7%90%86" style="--h:18"><span class="num">06</span><span class="cn">头发 / 头皮护理</span><span class="en">HAIR &amp; SCALP</span><span class="desc">头皮是土壤，头发是收成。<span class="go">进入类目 →</span></span></a>
+      <a class="panel" href="cn-ingredients.html?cat=%E5%A9%B4%E7%AB%A5%E6%8A%A4%E7%90%86" style="--h:95"><span class="num">07</span><span class="cn">婴童护理</span><span class="en">BABY CARE</span><span class="desc">少即是多，温和即有效。<span class="go">进入类目 →</span></span></a>
+      <a class="panel" href="cn-ingredients.html?cat=%E4%BF%83%E6%B8%97%E9%80%8F" style="--h:212"><span class="num">08</span><span class="cn">促渗透</span><span class="en">PENETRATION</span><span class="desc">让有效成分真的进去。<span class="go">进入类目 →</span></span></a>
+      <a class="panel" href="cn-ingredients.html?cat=%E6%A2%B0%E5%AD%97%E5%8F%B7" style="--h:40"><span class="num">09</span><span class="cn">械字号</span><span class="en">MEDICAL DEVICE</span><span class="desc">医用级的标准，妆用的体验。<span class="go">进入类目 →</span></span></a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="index-note">
+      <span>HOVER 展开 · 点击进入类目页 · 类目页再分单品</span>
+      <span>9 张微距须同一灯位、同一 LUT</span>
+    </div>
+  </div>
+</section>
+
+<!-- S5 能力 / 旅程 -->
+<section class="journey" id="journey">
+  <div class="wrap">
+    <div class="journey-h">
+      <p class="kicker reveal">03 — 能力 / CAPABILITY</p>
+      <h2 class="reveal" style="--d:1;margin-top:14px">一款原料要被信任，<br>要走过四道关。</h2>
+    </div>
+    <div class="jgrid">
+      <div class="jmedia" id="jmedia">
+        <div class="frame tex tex-plant on" data-f="0"></div>
+        <div class="frame tex tex-factory" data-f="1"></div>
+        <div class="frame tex tex-lab" data-f="2"></div>
+        <div class="frame tex tex-powder" data-f="3"></div>
+        <div class="step-no" id="jNo">01</div>
+        <div class="cap" id="jCap">素材位 · 植物 / 山野</div>
+      </div>
+
+      <div class="steps" id="steps">
+        <article class="step" data-step="0">
+          <div class="idx">01 / 研发</div>
+          <h3>先问典籍，再问仪器。</h3>
+          <p>中医理论依据告诉我们“它为什么可能有效”，现代药理学告诉我们“它凭什么有效”。两条线索对齐之后，才进入提取与纯化。</p>
+          <div class="data">
+            <div><b data-count="6" data-dec="0">0</b><span>个研发中心</span></div>
+            <div><b data-count="2" data-dec="0">0</b><span>个工作站</span></div>
+          </div>
+        </article>
+
+        <article class="step" data-step="1">
+          <div class="idx">02 / 质控</div>
+          <h3>把叶子，变成一罐稳定的液体。</h3>
+          <p>低温提取、膜分离、纯化——每一步都影响活性物留存。产线稳不稳定，决定你第三批货和第一批是不是同一个东西。</p>
+          <div class="data">
+            <div><b data-count="8494" data-dec="0">0</b><span>㎡ 两大基地合计</span></div>
+            <div><b data-count="2" data-dec="0">0</b><span>大生产基地</span></div>
+          </div>
+        </article>
+
+        <article class="step" data-step="2">
+          <div class="idx">03 / 功效验证</div>
+          <h3>不靠感觉，靠证据。</h3>
+          <p>体外、人体、临床，三层验证。每个数字都带方法、样本量与来源——配方师要的不是形容词，是可复核的实验。</p>
+          <div class="data">
+            <div><b data-count="4" data-dec="0">0</b><span>层验证体系</span></div>
+            <div><b data-count="1" data-dec="0">0</b><span>个功效评价平台</span></div>
+          </div>
+        </article>
+
+        <article class="step" data-step="3">
+          <div class="idx">04 / 交付</div>
+          <h3>装进你的配方表。</h3>
+          <p>TDS、INCI、配伍建议、起订量与样品，一次给全。你不需要再打三个电话确认一个参数。</p>
+          <div class="data">
+            <div><b data-count="31" data-dec="0">0</b><span>款原料</span></div>
+            <div><b data-count="9" data-dec="0">0</b><span>个功效方向</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <p class="index-note" style="color:rgba(20,37,28,.4);font-family:var(--ui);margin-top:30px">＊页面内数字为示意，待替换为实际数据</p>
+  </div>
+</section>
+
+<!-- S6 质控 -->
+<section class="factory" id="factory">
+  <div class="factory-tex tex tex-factory"></div>
+  <div class="factory-veil"></div>
+  <div class="factory-in">
+    <div class="wrap">
+      <p class="kicker mute reveal">04 — 质控 / QUALITY</p>
+      <h2 class="reveal" style="--d:1;margin-top:14px">稳定的另一面，是秩序。</h2>
+      <div class="nums">
+        <div class="num-item reveal"><b data-count="8494" data-dec="0">0</b><span>㎡ 两大基地合计</span></div>
+        <div class="num-item reveal" style="--d:1"><b data-count="2" data-dec="0">0</b><span>大生产基地 · 原料 ＋ 成品</span></div>
+        <div class="num-item reveal" style="--d:2"><b data-count="27" data-dec="0">0</b>&nbsp;&nbsp;<i>M USD</i><span>年产值</span></div>
+        <div class="num-item reveal" style="--d:3"><b data-count="11" data-dec="0">0</b><span>个种植基地</span></div>
+      </div>
+      <div class="group-band">
+        <span>太和康美集团 · 北京研发中心 ＋ 北京平谷生产基地</span>
+        <span>东方淼森是太和康美集团旗下企业　<a href="https://www.beaut-n-health.com" target="_blank" rel="noopener">访问集团官网 ↗</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 洞察 -->
+<section class="insights" id="insights">
+  <div class="wrap">
+    <div class="ins-head">
+      <div>
+        <p class="kicker reveal">05 — 洞察 / INSIGHTS</p>
+        <h2 class="reveal" style="--d:1;margin-top:12px">我们看到的下一步。</h2>
+      </div>
+      <a href="cn-insights.html" style="font-family:var(--ui);font-size:11.5px;color:var(--moss);letter-spacing:.1em">全部洞察 →</a>
+    </div>
+    <div class="ins-list">
+      <a class="ins-row" href="#">
+        <span class="date">2026.10</span><span class="cat">功效趋势</span>
+        <h3>肌肤长寿：从“抗衰”到“维持最佳生物状态”</h3>
+        <span class="arrow">↗</span>
+        <span class="ins-thumb tex tex-lab"></span>
+      </a>
+      <a class="ins-row" href="#">
+        <span class="date">2026.09</span><span class="cat">植物科学</span>
+        <h3>植物 PDRN 的“柔性”，对配方意味着什么</h3>
+        <span class="arrow">↗</span>
+        <span class="ins-thumb tex tex-powder"></span>
+      </a>
+      <a class="ins-row" href="#">
+        <span class="date">2026.08</span><span class="cat">法规动态</span>
+        <h3>新原料备案之后：械字号与妆字号的边界</h3>
+        <span class="arrow">↗</span>
+        <span class="ins-thumb tex tex-plant"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- S8 新闻 -->
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="news-head">
+      <div>
+        <p class="kicker reveal">06 — 新闻 / NEWS</p>
+        <h2 class="reveal" style="--d:1;margin-top:12px">最近发生的事。</h2>
+      </div>
+      <a href="#" style="font-family:var(--ui);font-size:11.5px;color:var(--moss);letter-spacing:.1em">全部新闻 →</a>
+    </div>
+    <div class="news-grid">
+      <a class="news-item reveal" href="cn-news.html">
+        <span class="d">2026.10.28</span>
+        <h3>三奖加冕：AuroArc、CactyCalma 与柔性植物 PDRN 技术</h3>
+        <p>公司动态 · 阅读 3 分钟</p>
+      </a>
+      <a class="news-item reveal" style="--d:1" href="cn-news.html">
+        <span class="d">2026.11.12</span>
+        <h3>in-cosmetics Asia 2026 展后回顾</h3>
+        <p>展会活动 · 阅读 4 分钟</p>
+      </a>
+      <a class="news-item reveal" style="--d:2" href="cn-news.html">
+        <span class="d">2026.09.16</span>
+        <h3>北京平谷生产基地完成新一轮产线升级</h3>
+        <p>制造与质控 · 阅读 2 分钟</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- S9 CTA -->
+<section class="cta" id="cta">
+  <div class="wrap">
+    <h2 class="reveal">先寄一支样品给你。</h2>
+    <p class="reveal" style="--d:1">留下地址与需求，48 小时内发出；技术资料含 INCI、配伍建议与功效数据。</p>
+    <div class="cta-btns reveal" style="--d:2">
+      <a class="btn solid" href="cn-contact.html?path=rd#form">提交研发需求</a>
+      <a class="btn" href="cn-contact.html?path=sample#form">申请样品</a>
+      <a class="btn" href="cn-contact.html?path=quote#form">申请报价</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="#top" aria-label="东方淼森">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">植物功效化妆品原料。<br>北京研发中心 · 平谷生产基地。</p>
+      </div>
+      <div>
+        <h5>原料</h5>
+        <ul>
+          <li><a href="#">敏感肌肤护理</a></li>
+          <li><a href="#">抗皱 / 紧致</a></li>
+          <li><a href="#">保湿</a></li>
+          <li><a href="#">美白 / 去角质</a></li>
+          <li><a href="#">控油 / 祛痘</a></li>
+          <li><a href="#">头发 / 头皮护理</a></li>
+          <li><a href="#">婴童护理</a></li>
+          <li><a href="#">促渗透</a></li>
+          <li><a href="#">械字号</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于东方淼森</h5>
+        <ul>
+          <li><a href="cn-about.html#company">我们的公司</a></li>
+          <li><a href="cn-about.html#company">我们的地点</a></li>
+          <li><a href="cn-about.html#company">我们的历史</a></li>
+          <li><a href="cn-about.html#company">我们的科研</a></li>
+          <li><a href="cn-about.html#bases">我们的种植基地</a></li>
+          <li><a href="cn-news.html">新闻中心</a></li>
+        </ul>
+        <h5>定制服务</h5>
+        <ul>
+          <li><a href="#">PDRN</a></li>
+          <li><a href="#">待补充</a></li>
+        </ul>
+        <h5>加入我们</h5>
+        <ul>
+          <li><a href="#">职位与团队</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>联系</h5>
+        <ul>
+          <li><a href="cn-contact.html">联系我们</a></li>
+          <li><a href="cn-contact.html?path=rd">研发需求</a></li>
+          <li><a href="cn-contact.html?path=sample">样品申请</a></li>
+          <li><a href="cn-contact.html?path=quote">报价申请</a></li>
+        </ul>
+        <h5>社交媒体</h5>
+        <div class="socials">
+          <a href="#" aria-label="公众号" title="公众号">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="视频号" title="视频号">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="小程序" title="小程序">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>太和康美集团</b>
+        <span>东方淼森是太和康美集团旗下企业</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">访问集团官网 ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">太和康美中医研究院</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>隐私政策　·　使用条款　·　京ICP备 xxxxxxxx 号　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<div class="badge">CONCEPT PROTOTYPE v1.0　·　素材与数据为占位示意</div>
+
+<script>
+(function(){
+  var still = /(\?|&)still=1/.test(location.search);
+  if (still) document.documentElement.classList.add('still');
+
+  window.addEventListener('load', function(){ document.body.classList.add('loaded'); });
+  requestAnimationFrame(function(){ document.body.classList.add('loaded'); });
+
+  var rail = document.getElementById('railFill');
+  var head = document.getElementById('head');
+  var heroMedia = document.getElementById('heroMedia');
+  var heroInner = document.querySelector('.hero-inner');
+
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  function headState(){ if (!document.body.classList.contains('mega-open')) head.classList.toggle('solid', scrollY > 80); }
+  function parallax(){
+    if (scrollY < innerHeight * 1.2){
+      var p = Math.min(1, scrollY / innerHeight);
+      heroMedia.style.transform = 'translateY(' + (p * 60) + 'px) scale(' + (1 + p * .06) + ')';
+      heroInner.style.transform = 'translateY(' + (p * -40) + 'px)';
+      heroInner.style.opacity = 1 - p * .9;
+    }
+  }
+  var ticking = false;
+  addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ headState(); progress(); parallax(); ticking = false; });
+  }, {passive:true});
+  headState(); progress(); parallax();
+
+  /* ---------- 下拉菜单 ---------- */
+  var mega = document.getElementById('mega');
+  var dim = document.getElementById('dim');
+  var navBtns = Array.prototype.slice.call(document.querySelectorAll('.nav button'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.mega-panel'));
+  var current = null;
+
+  function openMega(id, btn){
+    if (current === id){ closeMega(); return; }
+    current = id;
+    panels.forEach(function(p){ p.classList.toggle('on', p.dataset.panel === id); });
+    navBtns.forEach(function(b){
+      b.classList.toggle('active', b === btn);
+      b.setAttribute('aria-expanded', b === btn ? 'true' : 'false');
+    });
+    mega.classList.add('open');
+    dim.classList.add('on');
+    head.classList.add('on-light');
+    document.body.classList.add('mega-open');
+    document.body.style.overflow = 'hidden';
+    mega.scrollTop = 0;
+  }
+  function closeMega(){
+    if (!current) return;
+    current = null;
+    mega.classList.remove('open');
+    dim.classList.remove('on');
+    head.classList.remove('on-light');
+    document.body.classList.remove('mega-open');
+    document.body.style.overflow = '';
+    navBtns.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-expanded','false'); });
+    headState();
+  }
+  navBtns.forEach(function(b){
+    b.addEventListener('click', function(e){ e.preventDefault(); openMega(b.dataset.menu, b); });
+  });
+  dim.addEventListener('click', closeMega);
+  mega.addEventListener('click', function(e){ if (e.target.closest('a')) closeMega(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMega(); });
+
+  var burger = document.getElementById('burger');
+  burger.addEventListener('click', function(){
+    if (document.body.classList.contains('mega-open')) closeMega();
+    else openMega('m-ing', navBtns[0]);
+  });
+
+  /* ---------- 揭示 ---------- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---------- 计数 ---------- */
+  function countUp(el){
+    var to = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec || 0, 10);
+    var dur = 1000, t0 = performance.now();
+    function tick(t){
+      var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      var v = to * e;
+      el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = dec ? to.toFixed(dec) : to.toLocaleString('en-US');
+    }
+    requestAnimationFrame(tick);
+  }
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ countUp(e.target); cio.unobserve(e.target); } });
+  }, {threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+  /* ---------- 旅程步骤 ---------- */
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.jmedia .frame'));
+  var jNo = document.getElementById('jNo'), jCap = document.getElementById('jCap');
+  var caps = ['素材位 · 植物 / 山野','素材位 · 提取车间（硬光）','素材位 · 实验室（显微）','素材位 · 粉体 / 料体'];
+  function setStep(i){
+    frames.forEach(function(f,k){ f.classList.toggle('on', k === i); });
+    jNo.textContent = '0' + (i + 1);
+    jCap.textContent = caps[i];
+  }
+  var sio = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) setStep(parseInt(e.target.dataset.step, 10)); });
+  }, {rootMargin:'-45% 0px -45% 0px'});
+  steps.forEach(function(s){ sio.observe(s); });
+
+
+  if (still){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var to = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec || 0, 10);
+      el.textContent = dec ? to.toFixed(dec) : to.toLocaleString('en-US');
+    });
+  }
+})();
+</script>
+</body>
+</html>

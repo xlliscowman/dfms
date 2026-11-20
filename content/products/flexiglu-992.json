@@ -1,0 +1,31 @@
+{
+  "id": "flexiglu-992",
+  "nameZh": "妙可修",
+  "nameEn": "FlexiGlu 992®",
+  "inci": "",
+  "summaryZh": "柔性葡聚糖结构，主打修护与再上皮化，也可用于抗皱。",
+  "summaryEn": "Flexible glucan structure for repair and re-epithelialisation; also used for firming.",
+  "originZh": "柔性多糖",
+  "originEn": "Flexible polysaccharide",
+  "categories": [
+    "sensitive-skin",
+    "firming"
+  ],
+  "plants": [],
+  "badges": [
+    "award",
+    "pat"
+  ],
+  "blend": true,
+  "image": "",
+  "documents": [],
+  "published": true,
+  "reviewed": false,
+  "categorySummaries": [
+    {
+      "category": "firming",
+      "summaryZh": "植物 EGF × ECM 有序重构，把「修护」做成可测量的秩序。",
+      "summaryEn": "Plant EGF × ordered ECM remodelling — repair you can measure."
+    }
+  ]
+}

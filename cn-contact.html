@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>联系我们 · 东方淼森 miusenphytech</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/dm-sans@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-sc@5/600.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ================= 本页专属 ================= */
+.nav a{font-family:var(--ui);font-size:16.5px;font-weight:600;letter-spacing:.08em;padding:11px 15px;color:inherit;position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--gold)}
+
+.mnav{display:none;position:fixed;inset:0;z-index:1250;background:var(--cream);padding:96px var(--pad) 40px;transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s;overflow:auto}
+.mnav.open{transform:none;visibility:visible;transition:transform .45s var(--ease)}
+.menu-open .burger i:nth-child(1){top:16px;transform:rotate(45deg)}
+.menu-open .burger i:nth-child(2){top:16px;transform:rotate(-45deg)}
+.mnav a{display:block;font-size:22px;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.mnav .m-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ---------- 首屏 ---------- */
+.contact-hero{padding:clamp(130px,18vh,200px) 0 clamp(50px,8vh,90px)}
+.contact-hero h1{font-size:clamp(38px,6vw,88px);line-height:1.16;font-weight:400;letter-spacing:.02em;margin:20px 0 26px}
+.contact-hero .lead{max-width:660px;font-size:15px;line-height:2.05;color:rgba(20,37,28,.66)}
+.contact-hero .micro{margin-top:28px;font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:rgba(20,37,28,.42)}
+.contact-hero .micro a{color:var(--moss);border-bottom:1px solid rgba(20,37,28,.25);padding-bottom:2px}
+
+/* ---------- 三条路 ---------- */
+.doors-sec{background:var(--ink);color:var(--cream);padding:clamp(60px,9vh,100px) 0}
+.doors-head{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:36px}
+.doors-head h2{font-size:clamp(26px,3.4vw,46px);font-weight:500;letter-spacing:.02em}
+.doors-head .dh-note{font-family:var(--ui);font-size:11.5px;letter-spacing:.05em;line-height:1.9;color:rgba(243,239,230,.45);max-width:330px}
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.door{position:relative;text-align:left;background:rgba(255,255,255,.025);border:1px solid rgba(243,239,230,.16);padding:26px 24px 22px;color:inherit;font-family:inherit;cursor:pointer;transition:background .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease)}
+.door:hover{background:rgba(255,255,255,.06);border-color:rgba(201,187,166,.45);transform:translateY(-3px)}
+.door.active{border-color:var(--gold);background:rgba(169,138,91,.12)}
+.door .n{font-family:var(--ui);font-size:12px;letter-spacing:.2em;color:var(--gold)}
+.door h3{font-size:20px;font-weight:500;margin:12px 0 8px;letter-spacing:.02em}
+.door p{font-size:12.5px;line-height:1.9;color:rgba(243,239,230,.58);min-height:3.6em}
+.door .meta{display:block;margin-top:18px;font-family:var(--ui);font-size:12px;letter-spacing:.12em;color:rgba(243,239,230,.38)}
+.door.active .meta{color:var(--gold)}
+.door .tick{position:absolute;top:22px;right:22px;width:16px;height:16px;border-radius:50%;border:1px solid rgba(243,239,230,.22);display:grid;place-items:center;opacity:0;transition:.3s}
+.door.active .tick{opacity:1;border-color:var(--gold);background:var(--gold)}
+.door .tick svg{width:9px;height:9px;stroke:#0B1511;stroke-width:2.6;fill:none}
+
+/* ---------- 表单 ---------- */
+.form-sec{padding:clamp(60px,9vh,110px) 0 clamp(50px,7vh,80px);scroll-margin-top:86px}
+.doors-sec{scroll-margin-top:86px}
+.form-grid{display:grid;grid-template-columns:minmax(0,920px);gap:0;align-items:start}
+.form-head h2{font-size:clamp(26px,3.2vw,42px);font-weight:500;margin:12px 0 8px;letter-spacing:.02em}
+.form-head .sub{font-size:13.5px;color:rgba(20,37,28,.6)}
+.chip{display:inline-flex;align-items:center;gap:10px;margin-top:16px;border:1px solid var(--line);padding:6px 12px;font-family:var(--ui);font-size:12.5px;letter-spacing:.08em;color:var(--moss);background:rgba(255,255,255,.45)}
+.chip button{appearance:none;background:none;border:0;font:inherit;color:var(--gold);cursor:pointer;padding:0;letter-spacing:.08em}
+.progress{height:2px;background:var(--line);margin-top:26px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--gold);transition:width .45s var(--ease)}
+
+.fgroup{border-top:1px solid var(--line);padding:24px 0 6px;margin-top:24px}
+.fg-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.fg-head b{font-family:var(--ui);font-size:11px;letter-spacing:.16em;color:rgba(20,37,28,.32);font-weight:500;transition:color .3s}
+.fg-head span{font-family:var(--ui);font-size:11.5px;letter-spacing:.14em;color:rgba(20,37,28,.55)}
+.fgroup.done .fg-head b{color:var(--gold)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}
+label.f{display:flex;flex-direction:column;gap:7px;font-family:var(--ui);font-size:12px;letter-spacing:.12em;color:rgba(20,37,28,.45)}
+label.f.wide{grid-column:1/-1}
+label.f input,label.f select,label.f textarea{
+  width:100%;background:transparent;border:0;border-bottom:1px solid rgba(20,37,28,.2);
+  padding:8px 0 7px;font-family:var(--mix);font-size:15px;color:var(--ink);border-radius:0;
+  transition:border-color .25s;
+}
+label.f textarea{border:1px solid rgba(20,37,28,.2);padding:12px;min-height:88px;resize:vertical;margin-top:2px}
+label.f input:focus,label.f select:focus,label.f textarea:focus{outline:0;border-color:var(--gold)}
+label.f input::placeholder,label.f textarea::placeholder{color:rgba(20,37,28,.26)}
+label.f select{appearance:none;padding-right:18px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6' fill='none' stroke='%235C6B4F' stroke-width='1'/></svg>") no-repeat right 2px center}
+
+.submit-row{display:flex;align-items:center;gap:20px;margin-top:32px;flex-wrap:wrap}
+.submit-row .btn{padding:14px 34px;font-size:13px}
+.form-note{font-family:var(--ui);font-size:12.5px;letter-spacing:.04em;color:rgba(20,37,28,.4);line-height:1.9;max-width:26em}
+
+/* ---------- 直接联系 ---------- */
+.qr{width:104px;height:104px;border:1px dashed rgba(20,37,28,.28);display:grid;place-items:center;text-align:center;padding:10px;font-family:var(--ui);font-size:10.5px;letter-spacing:.12em;color:rgba(20,37,28,.36);line-height:2;margin:2px 0 14px}
+.direct{background:var(--cream2);padding:clamp(60px,9vh,100px) 0;scroll-margin-top:86px}
+.direct-grid{display:grid;grid-template-columns:.8fr 1.75fr;gap:clamp(28px,4.5vw,64px);align-items:start}
+.direct-lead h2{font-size:clamp(24px,3vw,38px);font-weight:500;letter-spacing:.02em;margin:12px 0 14px}
+.direct-lead p{font-size:13.5px;line-height:2.05;color:rgba(20,37,28,.6);max-width:24em}
+.direct-items{display:grid;grid-template-columns:repeat(3,1fr)}
+.di{padding:2px 22px 0;border-left:1px solid rgba(20,37,28,.14)}
+.di:first-child{border-left:0;padding-left:0}
+.di-n{font-family:var(--ui);font-size:12px;letter-spacing:.2em;color:var(--gold)}
+.di h3{font-size:16px;font-weight:500;margin:8px 0 12px;letter-spacing:.05em}
+.di a{display:inline-block;font-family:var(--ui);font-size:13px;color:var(--ink);border-bottom:1px solid rgba(20,37,28,.25);padding-bottom:2px;transition:color .25s,border-color .25s;overflow-wrap:break-word}
+.di a:hover{color:var(--gold);border-color:var(--gold)}
+.di p{font-family:var(--ui);font-size:12px;letter-spacing:.04em;color:rgba(20,37,28,.45);margin-top:12px;line-height:1.9}
+
+/* ---------- 成功态 ---------- */
+.success{display:none}
+.success.on{display:block;animation:fadeUp .5s var(--ease) both}
+.success .ok{width:36px;height:36px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-size:16px;margin-bottom:16px}
+.success h3{font-size:22px;font-weight:500;margin-bottom:8px}
+.success .s-sub{font-size:13px;line-height:1.95;color:rgba(20,37,28,.6)}
+.success .sum{margin:18px 0;border-top:1px solid rgba(20,37,28,.15);border-bottom:1px solid rgba(20,37,28,.15);padding:14px 0;font-family:var(--ui);font-size:11.5px;line-height:2.1;color:rgba(20,37,28,.62);white-space:pre-wrap}
+.success .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+
+/* ---------- FAQ ---------- */
+.faq{padding:clamp(60px,9vh,100px) 0 clamp(70px,10vh,120px)}
+.faq h2{font-size:clamp(26px,3.4vw,44px);font-weight:500;letter-spacing:.02em}
+.faq-list{margin-top:32px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:20px 0;font-size:15.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--ui);font-size:18px;color:var(--moss);transition:transform .3s var(--ease);line-height:1}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 20px;font-size:13.5px;line-height:2;color:rgba(20,37,28,.62);max-width:72em}
+
+@media (max-width:900px){
+  .mnav{display:block}
+  .contact-hero{padding-top:118px}
+  .form-grid{grid-template-columns:1fr}
+  .doors{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .contact-hero h1{font-size:clamp(34px,9vw,52px)}
+  .direct-grid{grid-template-columns:1fr;gap:30px}
+  .direct-items{grid-template-columns:1fr;gap:0}
+  .di{border-left:0;border-top:1px solid rgba(20,37,28,.14);padding:22px 0 0;margin-top:22px}
+  .di:first-child{border-top:0;margin-top:0;padding-top:0}
+}
+</style>
+</head>
+<body>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.line-mask>span{transform:none!important}</style></noscript>
+
+<div class="grain"></div>
+<div class="rail"><i id="railFill"></i></div>
+
+<header class="head solid" id="head">
+  <a class="brand" href="cn-home.html" aria-label="miusenphytech 东方淼森">
+    <span class="logo-box">
+      <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+      <img class="logo-img is-dark" src="assets/logo-cn-base.png" alt="" aria-hidden="true">
+      <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+    </span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="cn-home.html">主页</a>
+    <a href="cn-ingredients.html">原料</a>
+    <a href="cn-capability.html">能力</a>
+    <a href="cn-insights.html">洞察</a>
+    <a href="cn-about.html">关于</a>
+    <a href="cn-news.html">新闻</a>
+  </nav>
+  <div class="head-r">
+    <span class="lang"><a href="cn-contact.html" class="on">CN</a><span class="sep">/</span><a href="en-contact.html">EN</a></span>
+    <a class="btn" href="#form">索取样品</a>
+    <button class="burger" id="burger" aria-label="菜单" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <a href="cn-home.html">主页</a>
+  <a href="cn-ingredients.html">原料</a>
+  <a href="cn-capability.html">能力</a>
+  <a href="cn-insights.html">洞察</a>
+  <a href="cn-about.html">关于</a>
+  <a href="cn-news.html">新闻</a>
+  <div class="m-cta">
+    <a class="btn solid" href="#form">索取样品</a>
+    <a class="btn" href="cn-home.html">返回首页</a>
+  </div>
+</div>
+
+<main>
+
+<!-- 首屏 -->
+<section class="contact-hero">
+  <div class="wrap">
+    <p class="kicker">GET IN TOUCH</p>
+    <h1>联系我们</h1>
+    <p class="lead">一支样品、一份报价、一个还没想清楚的配方难题——从这里开始，都会有人接。工作日 24 小时内，你会收到回复。</p>
+    <p class="micro">不想填表？<a href="#help">直接加企业微信或打电话 →</a></p>
+  </div>
+</section>
+
+<!-- 三条路 -->
+<section class="doors-sec" id="choose">
+  <div class="wrap">
+    <div class="doors-head">
+      <div>
+        <p class="kicker mute reveal">01 — 选一条路</p>
+        <h2 class="reveal" style="--d:1;margin-top:12px">你现在需要哪一种？</h2>
+      </div>
+      <p class="dh-note">三条流程，最后都汇到同一个人手里：负责你的那个。选一条，下面只需要一分钟。</p>
+    </div>
+    <div class="doors reveal" style="--d:2">
+      <button class="door" data-path="rd" type="button">
+        <span class="tick"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.6 2.6L10 3.4"/></svg></span>
+        <span class="n">01</span>
+        <h3>研发需求</h3>
+        <p>有明确的功效目标，或一个还没解决的配方难题。</p>
+        <span class="meta">技术团队回复 · 约 2 个工作日</span>
+      </button>
+      <button class="door active" data-path="sample" type="button">
+        <span class="tick"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.6 2.6L10 3.4"/></svg></span>
+        <span class="n">02</span>
+        <h3>申请样品</h3>
+        <p>先拿到实物，验证肤感、稳定性与配伍。</p>
+        <span class="meta">48 小时内寄出 · 附 TDS</span>
+      </button>
+      <button class="door" data-path="quote" type="button">
+        <span class="tick"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.6 2.6L10 3.4"/></svg></span>
+        <span class="n">03</span>
+        <h3>申请报价</h3>
+        <p>原料已定，需要价格、交期与起订量。</p>
+        <span class="meta">1 个工作日内报价</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 表单 -->
+<section class="form-sec" id="form">
+  <div class="wrap">
+    <div class="form-grid">
+
+      <div>
+        <div class="form-head">
+          <p class="kicker">02 — 留个信息</p>
+          <h2 id="formTitle">申请样品</h2>
+          <p class="sub" id="formSub">48 小时内寄出样品与 TDS，附配伍建议。</p>
+          <div class="chip">你选的是 <b id="chipName">申请样品</b>　<button type="button" id="changePath">换一条</button></div>
+          <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+        </div>
+
+        <form id="leadForm">
+          <!-- 01 -->
+          <div class="fgroup" data-step="1" role="group" aria-labelledby="g1">
+            <div class="fg-head"><b>01</b><span id="g1">你是谁</span></div>
+            <div class="frow">
+              <label class="f"><span>公司名称 *</span><input name="公司名称" required placeholder="例：某某化妆品有限公司" autocomplete="organization"></label>
+              <label class="f"><span>姓名 *</span><input name="姓名" required placeholder="怎么称呼你" autocomplete="name"></label>
+            </div>
+            <div class="frow" style="margin-top:18px">
+              <label class="f"><span>职位</span><input name="职位" placeholder="配方师 / 产品经理 / 采购" autocomplete="organization-title"></label>
+              <label class="f"><span>所在城市</span><input name="城市" placeholder="上海 / 广州 / 杭州"></label>
+            </div>
+          </div>
+
+          <!-- 02 -->
+          <div class="fgroup" data-step="2" role="group" aria-labelledby="g2">
+            <div class="fg-head"><b>02</b><span id="g2">你要什么</span></div>
+
+            <div class="path-fields" data-path="rd">
+              <div class="frow">
+                <label class="f"><span>目标功效 *</span>
+                  <select name="目标功效" required>
+                    <option value="">请选择</option>
+                    <option>敏感肌肤护理</option><option>抗皱 / 紧致</option><option>保湿</option>
+                    <option>美白 / 去角质</option><option>控油 / 祛痘</option><option>头发 / 头皮护理</option>
+                    <option>婴童护理</option><option>促渗透</option><option>械字号</option><option>其他</option>
+                  </select>
+                </label>
+                <label class="f"><span>配方体系</span>
+                  <select name="配方体系">
+                    <option value="">请选择</option>
+                    <option>水剂 / 精华</option><option>乳霜</option><option>洗护</option><option>面膜</option><option>其他 / 待定</option>
+                  </select>
+                </label>
+              </div>
+              <div class="frow" style="margin-top:18px">
+                <label class="f"><span>成本区间</span>
+                  <select name="成本区间">
+                    <option value="">请选择</option>
+                    <option>100 元 / kg 以内</option><option>100–300 元 / kg</option>
+                    <option>300–800 元 / kg</option><option>800 元以上</option><option>待定</option>
+                  </select>
+                </label>
+                <label class="f"><span>期望上市时间</span>
+                  <select name="期望上市时间">
+                    <option value="">请选择</option>
+                    <option>3 个月内</option><option>半年内</option><option>一年内</option><option>待定</option>
+                  </select>
+                </label>
+              </div>
+              <div class="frow" style="margin-top:18px">
+                <label class="f wide"><span>项目简述</span><textarea name="项目简述" placeholder="想解决什么问题、现在卡在哪里。写得越具体，回复越有用。"></textarea></label>
+              </div>
+            </div>
+
+            <div class="path-fields" data-path="sample" hidden>
+              <div class="frow">
+                <label class="f"><span>原料 / 功效方向 *</span>
+                  <select name="原料或功效方向" required>
+                    <option value="">请选择</option>
+                    <option>敏感肌肤护理</option><option>抗皱 / 紧致</option><option>保湿</option>
+                    <option>美白 / 去角质</option><option>控油 / 祛痘</option><option>头发 / 头皮护理</option>
+                    <option>婴童护理</option><option>促渗透</option><option>械字号</option>
+                    <option>指定原料（在补充说明里写）</option>
+                  </select>
+                </label>
+                <label class="f"><span>样品数量</span>
+                  <select name="样品数量">
+                    <option>1 份（常规）</option><option>3 份（多方案对比）</option><option>50g 以上（大样）</option>
+                  </select>
+                </label>
+              </div>
+              <div class="frow" style="margin-top:18px">
+                <label class="f"><span>用途</span>
+                  <select name="用途">
+                    <option>打样测试</option><option>稳定性验证</option><option>备案 / 送检</option><option>客户提案</option><option>其他</option>
+                  </select>
+                </label>
+                <label class="f"><span>收货人</span><input name="收货人" placeholder="与姓名一致可留空"></label>
+              </div>
+              <div class="frow" style="margin-top:18px">
+                <label class="f wide"><span>收货地址 *</span><input name="收货地址" required placeholder="省 / 市 / 区 / 街道门牌"></label>
+              </div>
+            </div>
+
+            <div class="path-fields" data-path="quote" hidden>
+              <div class="frow">
+                <label class="f"><span>原料名称 / 型号 *</span><input name="原料名称" required placeholder="例：AuroArc 水光瑧"></label>
+                <label class="f"><span>年用量</span>
+                  <select name="年用量">
+                    <option value="">请选择</option>
+                    <option>100 kg 以内</option><option>100–500 kg</option>
+                    <option>500–2000 kg</option><option>2000 kg 以上</option><option>待定</option>
+                  </select>
+                </label>
+              </div>
+              <div class="frow" style="margin-top:18px">
+                <label class="f"><span>包装规格</span>
+                  <select name="包装规格">
+                    <option>1 kg</option><option>5 kg</option><option>25 kg</option><option>定制</option>
+                  </select>
+                </label>
+                <label class="f"><span>交期要求</span>
+                  <select name="交期要求">
+                    <option>2 周内</option><option>1 个月内</option><option>可协商</option>
+                  </select>
+                </label>
+              </div>
+              <div class="frow" style="margin-top:18px">
+                <label class="f wide"><span>目标价格 / 备注</span><input name="目标价格" placeholder="例：目标 300 元 / kg 以内，含税含运"></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 -->
+          <div class="fgroup" data-step="3" role="group" aria-labelledby="g3">
+            <div class="fg-head"><b>03</b><span id="g3">怎么联系你</span></div>
+            <div class="frow">
+              <label class="f"><span>手机 *</span><input name="手机" type="tel" required placeholder="11 位手机号" autocomplete="tel"></label>
+              <label class="f"><span>邮箱 *</span><input name="邮箱" type="email" required placeholder="name@company.com" autocomplete="email"></label>
+            </div>
+            <div class="frow" style="margin-top:18px">
+              <label class="f wide"><span>补充说明</span><textarea name="补充说明" placeholder="其他需要我们知道的：认证要求、目标人群、竞品参考……"></textarea></label>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button class="btn solid" type="submit">提交需求</button>
+            <p class="form-note">大约 1 分钟填完。我们只用这些信息回复你，不用于其他用途，也不会转给第三方。</p>
+          </div>
+        </form>
+
+        <div class="success" id="success" aria-live="polite">
+          <div class="ok">✓</div>
+          <h3>收到了，工作日 24 小时内联系你。</h3>
+          <p class="s-sub">我们已经把你的信息整理成一封邮件。点下面发送，或直接加企业微信——两条路都通。</p>
+          <div class="sum" id="summary"></div>
+          <div class="acts">
+            <a class="btn solid" id="mailBtn" href="#">用邮件发送这份需求</a>
+            <a class="btn" href="#help">加企业微信</a>
+            <a class="btn" href="tel:+8610xxxxxxx">打电话</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 不想填表 -->
+<section class="direct" id="help">
+  <div class="wrap">
+    <div class="direct-grid">
+      <div class="direct-lead">
+        <p class="kicker">03 — 不想填表？</p>
+        <h2>那就不填，直接说。</h2>
+        <p>扫码、发邮件、打电话，三条都通。样品、报价、技术问题，同一个人接。</p>
+      </div>
+      <div class="direct-items">
+        <div class="di">
+          <span class="di-n">01</span>
+          <h3>企业微信</h3>
+          <div class="qr">企业微信<br>二维码<br><span style="opacity:.7">（待替换为客服码）</span></div>
+          <p>扫码加客服，直接把需求发过来。工作日 9:00–18:00 在线。</p>
+        </div>
+        <div class="di">
+          <span class="di-n">02</span>
+          <h3>邮箱</h3>
+          <a href="mailto:DFMS@beaut-n-health.com">DFMS@beaut-n-health.com</a>
+          <p>把需求、图纸、配方表发过来。工作日 24 小时内回复。</p>
+        </div>
+        <div class="di">
+          <span class="di-n">03</span>
+          <h3>电话</h3>
+          <a href="tel:+8610xxxxxxx">+86 10 xxxx xxxx</a>
+          <p>周一至周五 9:00–18:00。其他时间留言，次日回电。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <p class="kicker">04 — 常见问题</p>
+    <h2 style="margin-top:12px">你可能还想问。</h2>
+    <div class="faq-list">
+      <details><summary>样品收费吗？</summary><p>常规样品免费，运费到付；大样与定制样按成本收取，会在寄出前先告知金额。同一家公司每年可申请多次。</p></details>
+      <details><summary>有起订量吗？</summary><p>常规原料 1 kg 起订，部分定制原料 5 kg 起。报价时会一并给出阶梯价，用量越大单价越低。</p></details>
+      <details><summary>可以定制吗？</summary><p>可以。植物基源、分子区间、复配方案都能调。从打样到量产通常 6–10 周，具体看原料与工艺。</p></details>
+      <details><summary>我的配方信息会保密吗？</summary><p>会。我们默认可以签署保密协议，配方信息只停留在对接的技术与销售人员，不进入任何公开材料。</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="f-brand">
+        <a class="logo-box" href="cn-home.html" aria-label="东方淼森">
+          <img class="logo-img is-light" src="assets/logo-cn-base-white.png" alt="东方淼森">
+          <span class="leaf-anim" aria-hidden="true"><img src="assets/leaf.png" alt=""></span>
+        </a>
+        <p class="foot-note">植物功效化妆品原料。<br>北京研发中心 · 平谷生产基地。</p>
+      </div>
+      <div>
+        <h5>原料</h5>
+        <ul>
+          <li><a href="cn-home.html#index">敏感肌肤护理</a></li>
+          <li><a href="cn-home.html#index">抗皱 / 紧致</a></li>
+          <li><a href="cn-home.html#index">保湿</a></li>
+          <li><a href="cn-home.html#index">美白 / 去角质</a></li>
+          <li><a href="cn-home.html#index">控油 / 祛痘</a></li>
+          <li><a href="cn-home.html#index">头发 / 头皮护理</a></li>
+          <li><a href="cn-home.html#index">婴童护理</a></li>
+          <li><a href="cn-home.html#index">促渗透</a></li>
+          <li><a href="cn-home.html#index">械字号</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于东方淼森</h5>
+        <ul>
+          <li><a href="cn-about.html#company">我们的公司</a></li>
+          <li><a href="cn-about.html#company">我们的地点</a></li>
+          <li><a href="cn-about.html#company">我们的历史</a></li>
+          <li><a href="cn-capability.html#rd">我们的科研</a></li>
+          <li><a href="cn-about.html#bases">我们的种植基地</a></li>
+          <li><a href="cn-news.html">新闻中心</a></li>
+        </ul>
+        <h5>定制服务</h5>
+        <ul>
+          <li><a href="#form">PDRN</a></li>
+          <li><a href="#form">待补充</a></li>
+        </ul>
+        <h5>加入我们</h5>
+        <ul>
+          <li><a href="#form">职位与团队</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>联系</h5>
+        <ul>
+          <li><a href="#form">联系我们</a></li>
+          <li><a href="#form">研发需求</a></li>
+          <li><a href="#form">样品申请</a></li>
+          <li><a href="#form">报价申请</a></li>
+        </ul>
+        <h5>社交媒体</h5>
+        <div class="socials">
+          <a href="#" aria-label="公众号" title="公众号">
+            <svg viewBox="0 0 24 24"><path d="M4 6.5h11a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H9l-4 3v-3H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2z"/><circle cx="8" cy="11" r=".9" fill="currentColor"/><circle cx="12" cy="11" r=".9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="视频号" title="视频号">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </a>
+          <a href="#" aria-label="小程序" title="小程序">
+            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="5.5" height="5.5" rx="1"/><rect x="13.5" y="5" width="5.5" height="5.5" rx="1"/><rect x="5" y="13.5" width="5.5" height="5.5" rx="1"/><circle cx="16.2" cy="16.2" r="2.6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-foot">
+      <div class="g">
+        <b>太和康美集团</b>
+        <span>东方淼森是太和康美集团旗下企业</span>
+      </div>
+      <div style="display:flex;gap:18px;font-family:var(--ui);font-size:11px">
+        <a href="https://www.beaut-n-health.com" target="_blank" rel="noopener" style="color:var(--sand);border-bottom:1px solid rgba(201,187,166,.35);padding-bottom:2px">访问集团官网 ↗</a>
+        <a href="#" style="color:rgba(243,239,230,.55)">太和康美中医研究院</a>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Miusenphytech. All rights reserved.</span>
+      <span>隐私政策　·　使用条款　·　京ICP备 xxxxxxxx 号　·　CN / EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- 滚动进度 / 揭示 ---------- */
+  var rail = document.getElementById('railFill');
+  function progress(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    rail.style.height = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  }
+  addEventListener('scroll', progress, {passive:true}); progress();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---------- 移动端菜单 ---------- */
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')){ mnav.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); }
+  });
+
+  /* ---------- 三条路 ---------- */
+  var META = {
+    rd:     {title:'研发需求', sub:'技术团队 2 个工作日内回复，可约一次线上技术会。'},
+    sample: {title:'申请样品', sub:'48 小时内寄出样品与 TDS，附配伍建议。'},
+    quote:  {title:'申请报价', sub:'1 个工作日内给出价格、交期与起订量。'}
+  };
+  var doors = Array.prototype.slice.call(document.querySelectorAll('.door'));
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('.path-fields'));
+  var formTitle = document.getElementById('formTitle');
+  var formSub = document.getElementById('formSub');
+  var chipName = document.getElementById('chipName');
+  var current = 'sample';
+
+  function setPath(p, scroll){
+    current = p;
+    doors.forEach(function(d){ d.classList.toggle('active', d.dataset.path === p); });
+    blocks.forEach(function(b){
+      var on = b.dataset.path === p;
+      b.hidden = !on;
+      b.querySelectorAll('input,select,textarea').forEach(function(i){ i.disabled = !on; });
+    });
+    formTitle.textContent = META[p].title;
+    formSub.textContent = META[p].sub;
+    chipName.textContent = META[p].title;
+    updateProgress();
+    if (scroll) document.getElementById('form').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  doors.forEach(function(d){
+    d.addEventListener('click', function(){ setPath(d.dataset.path, true); });
+  });
+  document.getElementById('changePath').addEventListener('click', function(){
+    document.getElementById('choose').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  /* ---------- 填写进度 ---------- */
+  var form = document.getElementById('leadForm');
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.fgroup'));
+  var bar = document.getElementById('bar');
+  function updateProgress(){
+    var done = 0;
+    groups.forEach(function(g){
+      var req = Array.prototype.slice.call(g.querySelectorAll('[required]')).filter(function(el){ return !el.disabled; });
+      var ok = req.length > 0 && req.every(function(el){ return el.value.trim() !== ''; });
+      g.classList.toggle('done', ok);
+      if (ok) done++;
+    });
+    bar.style.width = (done / groups.length * 100) + '%';
+  }
+  form.addEventListener('input', updateProgress);
+  form.addEventListener('change', updateProgress);
+
+  /* ---------- 提交 ---------- */
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+
+    var rows = [];
+    Array.prototype.forEach.call(form.querySelectorAll('input,select,textarea'), function(el){
+      if (el.disabled || el.type === 'checkbox') return;
+      var v = (el.value || '').trim();
+      if (!v) return;
+      var lab = el.closest('label');
+      var name = lab ? (lab.querySelector('span') || {}).textContent || el.name : el.name;
+      rows.push(String(name).replace('*','').trim() + '：' + v);
+    });
+    var text = '需求类型：' + META[current].title + '\n' + rows.join('\n') + '\n\n提交时间：' + new Date().toLocaleString('zh-CN');
+
+    var company = (form.querySelector('[name="公司名称"]').value || '').trim();
+    var subject = '[官网留资] ' + META[current].title + (company ? ' · ' + company : '');
+    document.getElementById('mailBtn').href =
+      'mailto:DFMS@beaut-n-health.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+
+    document.getElementById('summary').textContent = text;
+    form.style.display = 'none';
+    var s = document.getElementById('success');
+    s.classList.add('on');
+    s.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  /* 初始化：URL 带 ?path=rd / sample / quote 时预选 */
+  var qp = null;
+  try { qp = new URLSearchParams(location.search).get('path'); } catch (err) {}
+  if (qp && META[qp]) current = qp;
+  setPath(current, false);
+  updateProgress();
+})();
+</script>
+</body>
+</html>

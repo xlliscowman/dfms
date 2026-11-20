@@ -1,0 +1,181 @@
+media:
+  - name: images
+    label: 网站图片
+    input: assets/uploads/images
+    output: /assets/uploads/images
+    rename: safe
+    extensions: [png, jpg, jpeg, webp, avif]
+  - name: documents
+    label: 公开 PDF
+    input: assets/uploads/documents
+    output: /assets/uploads/documents
+    rename: safe
+    extensions: [pdf]
+
+content:
+  - name: products
+    label: 原料产品
+    type: collection
+    path: content/products
+    format: json
+    filename: "{id}.json"
+    operations:
+      rename: false
+      delete: false
+    view:
+      primary: nameZh
+      fields: [nameZh, nameEn, categories, published, reviewed]
+      sort: [nameZh, nameEn]
+      default:
+        sort: nameZh
+        order: asc
+      search: [nameZh, nameEn, id, inci]
+    fields:
+      - name: id
+        label: 产品编号
+        description: 使用小写字母、数字和短横线，创建后保持原编号以保留详情链接。
+        type: string
+        required: true
+        pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
+      - { name: nameZh, label: 中文名, type: string, required: true }
+      - { name: nameEn, label: 英文商品名, type: string, required: true }
+      - { name: inci, label: INCI, type: string }
+      - { name: summaryZh, label: 中文简介, type: text, required: true }
+      - { name: summaryEn, label: 英文简介, type: text, required: true }
+      - name: categories
+        label: 功效分类
+        type: select
+        required: true
+        options:
+          multiple: true
+          min: 1
+          values: &categories
+            - { name: sensitive-skin, label: "敏感肌肤护理" }
+            - { name: firming, label: "抗皱 / 紧致" }
+            - { name: hydration, label: "保湿" }
+            - { name: brightening, label: "美白 / 去角质" }
+            - { name: oil-control, label: "控油 / 祛痘" }
+            - { name: hair-scalp, label: "头发 / 头皮护理" }
+            - { name: baby-care, label: "婴童护理" }
+            - { name: penetration, label: "促渗透" }
+            - { name: medical-device, label: "械字号" }
+      - name: plants
+        label: 植物来源
+        type: select
+        options:
+          multiple: true
+          values:
+            - { name: sophora-flavescens, label: "苦参" }
+            - { name: avena-sativa, label: "燕麦" }
+            - { name: opuntia, label: "仙人掌" }
+            - { name: ophiopogon-japonicus, label: "麦冬" }
+            - { name: helianthus-annuus, label: "向日葵" }
+            - { name: carthamus-tinctorius, label: "红花" }
+            - { name: gardenia-jasminoides, label: "栀子花" }
+            - { name: chrysanthemum-morifolium, label: "菊花" }
+            - { name: prunus-mume, label: "梅花" }
+            - { name: arnebia-euchroma, label: "紫草" }
+            - { name: perilla-frutescens, label: "紫苏" }
+            - { name: prunus-persica, label: "桃树脂" }
+            - { name: portulaca-oleracea, label: "马齿苋" }
+            - { name: gentiana-scabra, label: "龙胆" }
+            - { name: inula-japonica, label: "旋覆花" }
+            - { name: ganoderma-lucidum, label: "紫芝" }
+            - { name: panax-ginseng, label: "人参" }
+            - { name: paeonia-suffruticosa, label: "牡丹" }
+            - { name: saussurea-involucrata, label: "雪莲花" }
+            - { name: tricholoma-matsutake, label: "松口蘑" }
+            - { name: angelica-sinensis, label: "当归" }
+            - { name: panax-notoginseng, label: "三七" }
+            - { name: astragalus-membranaceus, label: "黄芪" }
+            - { name: ligustrum-lucidum, label: "女贞果" }
+            - { name: osmanthus-fragrans, label: "桂花" }
+            - { name: dendrobium-officinale, label: "铁皮石斛" }
+            - { name: sparassis-crispa, label: "绣球菌" }
+            - { name: tremella-fuciformis, label: "银耳" }
+            - { name: aloe-vera, label: "库拉索芦荟" }
+            - { name: coix-lacryma-jobi, label: "薏苡" }
+            - { name: phragmites-australis, label: "芦苇" }
+            - { name: glycyrrhiza-uralensis, label: "甘草" }
+            - { name: salvia-miltiorrhiza, label: "丹参" }
+            - { name: cornus-officinalis, label: "山茱萸" }
+            - { name: lycium-barbarum, label: "枸杞" }
+            - { name: leontopodium-alpinum, label: "高山火绒草" }
+            - { name: pueraria-lobata, label: "葛根" }
+            - { name: syzygium-aromaticum, label: "丁香" }
+            - { name: scutellaria-baicalensis, label: "黄芩" }
+            - { name: centella-asiatica, label: "积雪草" }
+            - { name: calendula-officinalis, label: "金盏花" }
+            - { name: platycladus-orientalis, label: "侧柏" }
+            - { name: arctium-lappa, label: "牛蒡" }
+      - { name: originZh, label: 来源补充（中文）, type: string }
+      - { name: originEn, label: 来源补充（英文）, type: string }
+      - { name: blend, label: 复配体系, type: boolean, default: false }
+      - name: badges
+        label: 产品标记
+        type: select
+        options:
+          multiple: true
+          values:
+            - { name: award, label: 获奖 }
+            - { name: pat, label: 专利 }
+            - { name: new, label: 新品 }
+      - name: image
+        label: 产品主图
+        type: image
+        options: { media: images }
+      - name: documents
+        label: 公开资料
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{labelZh}" }
+        fields:
+          - { name: labelZh, label: 中文标题, type: string, required: true }
+          - { name: labelEn, label: 英文标题, type: string, required: true }
+          - { name: file, label: 公开 PDF, type: file, required: true, options: { media: documents } }
+      - name: categorySummaries
+        label: 分类专用简介
+        type: object
+        list:
+          collapsible: true
+        fields:
+          - { name: category, label: 功效分类, type: select, required: true, options: { values: *categories } }
+          - { name: summaryZh, label: 中文简介, type: text }
+          - { name: summaryEn, label: 英文简介, type: text }
+      - { name: reviewed, label: 资料已复核, type: boolean, default: false }
+      - { name: published, label: 官网已上架, type: boolean, default: false }
+
+  - name: home
+    label: 首页
+    type: file
+    path: content/home.json
+    format: json
+    fields:
+      - { name: headlineZh, label: 中文首屏标题, type: text, required: true }
+      - { name: headlineEn, label: 英文首屏标题, type: text, required: true }
+      - { name: image, label: 首页主图, type: image, options: { media: images } }
+      - name: featuredProducts
+        label: 推荐原料及顺序
+        type: reference
+        options:
+          collection: products
+          multiple: true
+          max: 3
+          label: "{fields.nameZh}"
+          value: "{fields.id}"
+          search: "nameZh,nameEn,id"
+
+  - name: contact
+    label: 联系方式
+    type: file
+    path: content/contact.json
+    format: json
+    fields:
+      - { name: email, label: 业务邮箱, type: string }
+      - { name: phone, label: 联系电话, type: string }
+      - { name: addressZh, label: 中文地址, type: string }
+      - { name: addressEn, label: 英文地址, type: string }
+      - name: wechatQr
+        label: 企业微信二维码
+        type: image
+        options: { media: images }
