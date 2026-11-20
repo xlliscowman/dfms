@@ -1,4 +1,4 @@
-name: 构建东方淼森官网
+name: 发布东方淼森官网预览
 
 on:
   push:
@@ -9,20 +9,37 @@ permissions:
   contents: read
 
 concurrency:
-  group: build-site-${{ github.ref }}
-  cancel-in-progress: true
+  group: github-pages
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: 22
       - run: npm run build
-      - uses: actions/upload-artifact@v4
+        env:
+          SITE_PREVIEW: '1'
+      - uses: actions/upload-pages-artifact@v4
         with:
-          name: miusenphytech-static-site
           path: dist/
-          if-no-files-found: error
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布预览
+        id: deployment
+        uses: actions/deploy-pages@v4

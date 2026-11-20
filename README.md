@@ -20,7 +20,9 @@
 
 ### 发布
 
-执行 `npm run build` 生成 `dist/`。GitHub Actions 会在 `main` 更新后生成同样的静态产物 `miusenphytech-static-site`。将 `dist/` **里面的内容**发布到公司网站主机的站点目录，选择实际主机后可把部署接到该工作流。使用 `index.html` 作为根目录入口。公开站点只需静态产物，仓库源码和后台配置放在 GitHub。
+预览由 GitHub Pages 托管。仓库的 `Settings → Pages → Source` 选择 `GitHub Actions` 后，每次 `main` 更新都会先生成并校验 `dist/`，再发布到 GitHub Pages 提供的预览地址。预览页面带 `noindex`。
+
+独立部署时可执行 `npm run build`，将 `dist/` **里面的内容**发布到公司主机的站点目录。使用 `index.html` 作为根目录入口。网站主机只需静态产物，仓库源码和后台配置保存在 GitHub。
 
 整册原料手册约 26 MiB。使用对单文件有限制的静态主机时，需确认支持这个大小，或为手册配置独立的公开存储。
 

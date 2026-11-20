@@ -57,7 +57,10 @@ try {
   await mkdir(output)
   for (const [name, html] of pages) {
     if (!/^(index|(?:cn|en)-[a-z0-9-]+)\.html$/.test(name)) throw new Error(`无效页面路径：${name}`)
-    await writeFile(join(output, name), html, { flag: 'wx' })
+    const outputHtml = process.env.SITE_PREVIEW === '1'
+      ? html.replace('</head>', '<meta name="robots" content="noindex">\n</head>')
+      : html
+    await writeFile(join(output, name), outputHtml, { flag: 'wx' })
   }
   for (const path of publicAssets) {
     const source = await realpath(join(root, path))
