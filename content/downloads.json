@@ -1,0 +1,55 @@
+{
+  "documents": [
+    {
+      "id": "ingredient-catalog-2026",
+      "titleZh": "《2026 原料手册》",
+      "titleEn": "2026 Ingredient Catalogue",
+      "descriptionZh": "整本 52 页，含 9 大类 31 款原料的目录、机理、验证数据与配方建议。",
+      "descriptionEn": "All 52 pages: 9 categories, 31 ingredients, mechanisms, study data and formulation notes.",
+      "file": "assets/ingredient-catalog-2026.pdf",
+      "published": true
+    },
+    {
+      "id": "botanical-pdrn-white-paper",
+      "titleZh": "柔性植物 PDRN 技术白皮书",
+      "titleEn": "Flexible botanical PDRN technical white paper",
+      "file": "",
+      "published": false
+    },
+    {
+      "id": "china-skincare-trend-2026",
+      "titleZh": "2026 中国功效护肤趋势报告",
+      "titleEn": "2026 China efficacy skincare trend report",
+      "file": "",
+      "published": false
+    },
+    {
+      "id": "skin-longevity-ecm-white-paper",
+      "titleZh": "肌肤长寿与 ECM 有序重构",
+      "titleEn": "Skin longevity and ordered ECM remodelling",
+      "file": "",
+      "published": false
+    },
+    {
+      "id": "botanical-extraction-technical-data",
+      "titleZh": "植物提取工艺与活性留存",
+      "titleEn": "Botanical extraction and active retention",
+      "file": "",
+      "published": false
+    },
+    {
+      "id": "cosmetic-ingredient-filing-handbook",
+      "titleZh": "化妆品新原料备案实务手册",
+      "titleEn": "New cosmetic ingredient filing handbook",
+      "file": "",
+      "published": false
+    },
+    {
+      "id": "in-cosmetics-asia-2026-pack",
+      "titleZh": "in-cosmetics Asia 2026 展后资料",
+      "titleEn": "in-cosmetics Asia 2026 post-show pack",
+      "file": "",
+      "published": false
+    }
+  ]
+}

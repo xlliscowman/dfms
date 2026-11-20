@@ -126,6 +126,7 @@ content:
         options: { media: images }
       - name: documents
         label: 公开资料
+        description: 仅上传已确认可公开的 PDF。文件保存在公开网站仓库。
         type: object
         list:
           collapsible: { collapsed: true, summary: "{labelZh}" }
@@ -143,6 +144,56 @@ content:
           - { name: summaryZh, label: 中文简介, type: text }
           - { name: summaryEn, label: 英文简介, type: text }
       - { name: reviewed, label: 资料已复核, type: boolean, default: false }
+      - { name: published, label: 官网已上架, type: boolean, default: false }
+
+  - name: articles
+    label: 文章与新闻
+    type: collection
+    path: content/articles
+    format: json
+    filename: "{id}.json"
+    operations:
+      rename: false
+      delete: false
+    view:
+      primary: titleZh
+      fields: [titleZh, category, date, published, prototype]
+      sort: [date, titleZh]
+      default:
+        sort: date
+        order: desc
+      search: [titleZh, titleEn, id]
+    fields:
+      - name: id
+        label: 文章编号
+        description: 使用小写字母、数字和短横线。创建后保持原编号，以保留分享链接。
+        type: string
+        required: true
+        pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
+      - name: category
+        label: 栏目
+        type: select
+        required: true
+        options:
+          values:
+            - { name: news, label: 新闻 }
+            - { name: efficacy, label: 功效趋势 }
+            - { name: botanical, label: 植物科学 }
+            - { name: regulation, label: 法规与合规 }
+      - name: date
+        label: 文章日期
+        type: string
+        description: 填写 YYYY-MM-DD 或 YYYY-MM。只有月度资料时可省略日期。
+      - { name: titleZh, label: 中文标题, type: string, required: true }
+      - { name: titleEn, label: 英文标题, type: string, required: true }
+      - { name: summaryZh, label: 中文摘要, type: text }
+      - { name: summaryEn, label: 英文摘要, type: text }
+      - { name: bodyZh, label: 中文正文, type: text }
+      - { name: bodyEn, label: 英文正文, type: text }
+      - { name: tagZh, label: 中文标签, type: string }
+      - { name: tagEn, label: 英文标签, type: string }
+      - { name: featured, label: 推荐文章, type: boolean, default: false }
+      - { name: prototype, label: 原型资料待复核, type: boolean, default: false }
       - { name: published, label: 官网已上架, type: boolean, default: false }
 
   - name: home
@@ -165,8 +216,33 @@ content:
           value: "{fields.id}"
           search: "nameZh,nameEn,id"
 
+  - name: downloads
+    label: 资料下载
+    type: file
+    path: content/downloads.json
+    format: json
+    fields:
+      - name: documents
+        label: 公开资料及顺序
+        description: 仅上传已确认可公开的 PDF。文件保存在公开网站仓库。
+        type: object
+        list:
+          collapsible: { collapsed: true, summary: "{titleZh}" }
+        fields:
+          - name: id
+            label: 资料编号
+            type: string
+            required: true
+            pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
+          - { name: titleZh, label: 中文标题, type: string, required: true }
+          - { name: titleEn, label: 英文标题, type: string, required: true }
+          - { name: descriptionZh, label: 中文说明, type: text }
+          - { name: descriptionEn, label: 英文说明, type: text }
+          - { name: file, label: 公开 PDF, type: file, options: { media: documents } }
+          - { name: published, label: 允许官网下载, type: boolean, default: false }
+
   - name: contact
-    label: 联系方式
+    label: 联系我们
     type: file
     path: content/contact.json
     format: json

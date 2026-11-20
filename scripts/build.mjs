@@ -1,22 +1,27 @@
 import { copyFile, lstat, mkdir, mkdtemp, readFile, readdir, realpath, rename, rm, stat, writeFile } from 'node:fs/promises'
 import { dirname, isAbsolute, join, relative, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { loadArticles, renderArticleDetails, renderArticlePage } from './articles.mjs'
 import { applyContact, validateContact } from './contact.mjs'
+import { applyDownloads, getPublishedDownloadPaths, validateDownloads } from './downloads.mjs'
 import { applyHome, validateHome } from './home.mjs'
 import { loadProducts, renderProductDetails, renderProductPage } from './products.mjs'
 
 const root = await realpath(fileURLToPath(new URL('../', import.meta.url)))
 const assets = join(root, 'assets')
 const dist = join(root, 'dist')
-const [catalog, contact, home, files, assetFiles] = await Promise.all([
+const [catalog, articles, contact, home, downloads, files, assetFiles] = await Promise.all([
   loadProducts(root),
+  loadArticles(root),
   readFile(join(root, 'content', 'contact.json'), 'utf8').then(JSON.parse),
   readFile(join(root, 'content', 'home.json'), 'utf8').then(JSON.parse),
+  readFile(join(root, 'content', 'downloads.json'), 'utf8').then(JSON.parse),
   readdir(root, { withFileTypes: true }),
   readdir(assets, { withFileTypes: true }),
 ])
 validateContact(contact)
 validateHome(home, catalog.products)
+validateDownloads(downloads)
 catalog.home = home
 
 const pages = await Promise.all(files
@@ -24,12 +29,21 @@ const pages = await Promise.all(files
   .map(async file => {
     const html = await readFile(join(root, file.name), 'utf8')
     const productPage = renderProductPage(html, file.name, catalog)
-    return [file.name, applyContact(applyHome(productPage, file.name, home), file.name, contact, catalog)]
+    const homePage = applyHome(productPage, file.name, home)
+    const articlePage = renderArticlePage(homePage, file.name, articles)
+    const downloadPage = applyDownloads(articlePage, file.name, downloads)
+    return [file.name, applyContact(downloadPage, file.name, contact, catalog)]
   }))
-const details = renderProductDetails(catalog)
-pages.push(...Array.from(details, ([name, html]) => [name, applyContact(html, name, contact, catalog)]))
+const productDetails = renderProductDetails(catalog)
+const articleDetails = renderArticleDetails(articles)
+for (const [name, html] of [...productDetails, ...articleDetails]) {
+  pages.push([name, applyContact(applyDownloads(html, name, downloads), name, contact, catalog)])
+}
 
-const publicAssets = new Set(assetFiles.filter(file => file.isFile()).map(file => `assets/${file.name}`))
+const publicAssets = new Set(assetFiles
+  .filter(file => file.isFile() && !/\.pdf$/i.test(file.name))
+  .map(file => `assets/${file.name}`))
+for (const path of getPublishedDownloadPaths(downloads)) publicAssets.add(path)
 function includeUpload(value, extensions) {
   if (!value) return
   const path = value.trim().replace(/^\//, '')
@@ -96,4 +110,4 @@ try {
   if (!preservePrevious) await rm(staged, { recursive: true, force: true })
 }
 
-console.log(`已生成 ${pages.length} 个静态页面（其中 ${details.size} 个原料详情页）和 ${publicAssets.size} 份公开资源：${dist}`)
+console.log(`已生成 ${pages.length} 个静态页面（含 ${productDetails.size} 个原料和 ${articleDetails.size} 个文章详情页）及 ${publicAssets.size} 份公开资源：${dist}`)
